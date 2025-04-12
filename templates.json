@@ -54,6 +54,19 @@
         "53/udp",
         "53/tcp"
       ]
+    },
+    {
+      "type": 1,
+      "title": "cyberchef",
+      "description": "The Cyber Swiss Army Knife",
+      "categories": ["docker"],
+      "platform": "linux",
+      "logo": "https://avatars.githubusercontent.com/u/15800240",
+      "image": "ghcr.io/gchq/cyberchef:latest",
+      "restart_policy": "always",
+      "ports": [
+        "80/tcp"
+      ]
     }
   ]
 }

@@ -3,63 +3,9 @@
   "templates": [
     {
       "type": 1,
-      "title": "cloudflared-tunnel",
-      "description": "cloudflared tunnel",
-      "categories": ["docker"],
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/Cloudflare_Logo.png",
-      "image": "cloudflare/cloudflared:latest",
-      "command": "cloudflared tunnel --no-autoupdate run",
-      "restart_policy": "always",
-      "env": [
-        {
-          "name": "TUNNEL_TOKEN",
-          "label": "Tunnel Token",
-          "description": "The token for the cloudflared tunnel",
-          "default": ""
-        }
-      ]
-    },
-    {
-      "type": 1,
-      "title": "cloudflared-proxy-doh",
-      "description": "cloudflared DNS over HTTPS proxy server",
-      "categories": ["docker"],
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/Cloudflare_Logo.png",
-      "image": "cloudflare/cloudflared:latest",
-      "command": "cloudflared proxy-dns",
-      "restart_policy": "always",
-      "env": [
-        {
-          "name": "TUNNEL_METRICS",
-          "label": "Tunnel Metrics",
-          "description": "Listen address for metrics reporting",
-          "default": "localhost"
-        },
-        {
-          "name": "TUNNEL_DNS_ADDRESS",
-          "label": "Tunnel DNS Address",
-          "description": "Listen address for the DNS over HTTPS proxy server",
-          "default": "localhost"
-        },
-        {
-          "name": "TUNNEL_DNS_PORT",
-          "label": "Tunnel DNS Port",
-          "description": "Listen port for the DNS over HTTPS proxy server",
-          "default": "53"
-        }
-      ],
-      "ports": [
-        "53/udp",
-        "53/tcp"
-      ]
-    },
-    {
-      "type": 1,
       "title": "cyberchef",
       "description": "The Cyber Swiss Army Knife",
-      "categories": ["docker"],
+      "categories": ["Web"],
       "platform": "linux",
       "logo": "https://avatars.githubusercontent.com/u/15800240",
       "image": "ghcr.io/gchq/cyberchef:latest",

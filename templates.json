@@ -1,0 +1,55 @@
+{
+  "version": "2",
+  "templates": [
+    {
+      "type": 1,
+      "title": "cloudflared-tunnel",
+      "description": "cloudflared tunnel",
+      "categories": ["docker"],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/registry.png",
+      "image": "cloudflare/cloudflared:latest",
+      "entrypoint": ["cloudflared", "tunnel", "--no-autoupdate", "run"],
+      "restart_policy": "always",
+      "env": [
+        {
+          "name": "TUNNEL_TOKEN",
+          "label": "Tunnel Token",
+          "description": "The token for the cloudflared tunnel",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "cloudflared-proxy-doh",
+      "description": "cloudflared DNS over HTTPS proxy server",
+      "categories": ["docker"],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/registry.png",
+      "image": "cloudflare/cloudflared:latest",
+      "entrypoint": ["cloudflared", "proxy-dns"],
+      "restart_policy": "always",
+      "env": [
+        {
+          "name": "TUNNEL_METRICS",
+          "label": "Tunnel Metrics",
+          "description": "Listen address for metrics reporting",
+          "default": "localhost"
+        },
+        {
+          "name": "TUNNEL_DNS_ADDRESS",
+          "label": "Tunnel DNS Address",
+          "description": "Listen address for the DNS over HTTPS proxy server",
+          "default": "localhost"
+        },
+        {
+          "name": "TUNNEL_DNS_PORT",
+          "label": "Tunnel DNS Port",
+          "description": "Listen port for the DNS over HTTPS proxy server",
+          "default": "53"
+        }
+      ]
+    }
+  ]
+}

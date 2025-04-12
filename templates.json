@@ -9,7 +9,7 @@
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/Cloudflare_Logo.png",
       "image": "cloudflare/cloudflared:latest",
-      "entrypoint": ["cloudflared", "tunnel", "--no-autoupdate", "run"],
+      "command": ["cloudflared", "tunnel", "--no-autoupdate", "run"],
       "restart_policy": "always",
       "env": [
         {
@@ -28,7 +28,7 @@
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/Cloudflare_Logo.png",
       "image": "cloudflare/cloudflared:latest",
-      "entrypoint": ["cloudflared", "proxy-dns"],
+      "command": ["cloudflared", "proxy-dns"],
       "restart_policy": "always",
       "env": [
         {
@@ -49,6 +49,10 @@
           "description": "Listen port for the DNS over HTTPS proxy server",
           "default": "53"
         }
+      ],
+      "ports": [
+        "53/udp",
+        "53/tcp"
       ]
     }
   ]

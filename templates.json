@@ -1,12 +1,12 @@
 {
-  "version": "2",
+  "version": "3",
   "templates": [
     {
       "id": 1,
       "type": 1,
       "title": "cloudflared-tunnel",
       "description": "cloudflared tunnel",
-      "categories": ["Network"],
+      "categories": ["edge","Network"],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/Cloudflare_Logo.png",
       "image": "cloudflare/cloudflared:latest",
@@ -26,7 +26,7 @@
       "type": 1,
       "title": "cloudflared-proxy-doh",
       "description": "cloudflared DNS over HTTPS proxy server",
-      "categories": ["Network","DNS","Web"],
+      "categories": ["edge","Network","DNS","Web"],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/Cloudflare_Logo.png",
       "image": "cloudflare/cloudflared:latest",
@@ -62,7 +62,7 @@
       "type": 1,
       "title": "cyberchef",
       "description": "The Cyber Swiss Army Knife",
-      "categories": ["Web"],
+      "categories": ["edge","Web"],
       "platform": "linux",
       "logo": "https://avatars.githubusercontent.com/u/15800240",
       "image": "ghcr.io/gchq/cyberchef:latest",

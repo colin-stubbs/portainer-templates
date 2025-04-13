@@ -92,10 +92,10 @@
 			"image": "traefik:latest",
 			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/traefik.png",
 			"name": "traefik",
+      "command": "--api.insecure=true --providers.docker",
 			"ports": [
 				"80:80/tcp",
-				"443:443/tcp",
-				"8080:8080/tcp"
+				"443:443/tcp"
 			],
       "restart_policy": "always",
 			"volumes": [
@@ -163,7 +163,7 @@
         {
           "name": "HOMEPAGE_ALLOWED_HOSTS",
           "label": "HOMEPAGE_ALLOWED_HOSTS",
-          "default": "localhost",
+          "default": "homepage.localhost",
           "preset": true
         }
       ],
@@ -171,6 +171,10 @@
         {
           "name": "traefik.enable",
           "value": "true"
+        },
+        {
+          "name": "traefik.http.routers.homepage.rule",
+          "value": "Host(`homepage.localhost`)"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -192,6 +196,68 @@
         {
           "name": "traefik.enable",
           "value": "true"
+        },
+        {
+          "name": "traefik.http.routers.cyberchef.rule",
+          "value": "Host(`cyberchef.localhost`)"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 5005,
+      "type": 1,
+      "image": "excalidraw/excalidraw:latest",
+      "name": "excalidraw",
+      "title": "Excalidraw",
+      "description": "Virtual whiteboard for sketching hand-drawn like diagrams. Collaborative and end-to-end encrypted.",
+      "logo": "https://github.com/excalidraw/excalidraw/raw/master/public/og-image-sm.png",
+      "categories": [
+        "Productivity",
+        "Drawing"
+      ],
+      "restart_policy": "always",
+      "ports": [
+        "80/tcp"
+      ],
+      "labels": [
+        {
+          "name": "traefik.enable",
+          "value": "true"
+        },
+        {
+          "name": "traefik.http.routers.excalidraw.rule",
+          "value": "Host(`excalidraw.localhost`)"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 5006,
+      "type": 1,
+      "image": "lissy93/web-check:latest",
+      "name": "web-check",
+      "title": "Web Check",
+      "platform": "linux",
+      "description": "Web Check give you a comprehensive, on-demand open source intelligence for any website",
+      "logo": "https://camo.githubusercontent.com/e081ebebf2ef1dbe9ecffa081063db7c9f696e5913d75699f7d2968a186d0d72/68747470733a2f2f692e6962622e636f2f7131675a4e32702f7765622d636865636b2d6c6f676f2e706e67",
+      "categories": [
+        "Tools",
+        "Web",
+        "Security",
+        "OSINT"
+      ],
+      "ports": [
+        "5377/tcp"
+      ],
+      "labels": [
+        {
+          "name": "traefik.enable",
+          "value": "true"
+        },
+        {
+          "name": "traefik.http.routers.web_check.rule",
+          "value": "Host(`web-check.localhost`)"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

@@ -53,8 +53,8 @@
         }
       ],
       "ports": [
-        "53/udp",
-        "53/tcp"
+        "53:53/udp",
+        "53:53/tcp"
       ]
     },
     {
@@ -68,7 +68,7 @@
       "image": "ghcr.io/gchq/cyberchef:latest",
       "restart_policy": "always",
       "ports": [
-        "80/tcp"
+        "80:80/tcp"
       ]
     }
   ]

@@ -4,6 +4,26 @@
     {
       "id": 1,
       "type": 1,
+      "name": "watchtower",
+      "title": "Watchtower",
+      "description": "Automatically update running Docker containers",
+      "logo": "https://mediadepot.github.io/templates/img/watchtower-logo.png",
+      "image": "containrrr/watchtower:latest",
+      "command": "--cleanup --label-enable",
+      "categories": [
+        "Tools"
+      ],
+      "volumes": [
+        {
+          "container": "/var/run/docker.sock",
+          "bind": "/var/run/docker.sock"
+        }
+      ],
+      "env": []
+    },
+    {
+      "id": 2,
+      "type": 1,
       "title": "cloudflared-tunnel",
       "description": "cloudflared tunnel",
       "categories": ["edge","Network"],
@@ -19,10 +39,11 @@
           "description": "The token for the cloudflared tunnel",
           "default": "CHANGE_ME"
         }
-      ]
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
-      "id": 2,
+      "id": 3,
       "type": 1,
       "title": "cloudflared-proxy-doh",
       "description": "cloudflared DNS over HTTPS proxy server",
@@ -55,21 +76,129 @@
       "ports": [
         "53:53/udp",
         "53:53/tcp"
-      ]
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
-    {
-      "id": 3,
+		{
+      "id": 4,
       "type": 1,
-      "title": "cyberchef",
-      "description": "The Cyber Swiss Army Knife",
-      "categories": ["edge","Web"],
-      "platform": "linux",
-      "logo": "https://avatars.githubusercontent.com/u/15800240",
-      "image": "ghcr.io/gchq/cyberchef:latest",
+			"title": "Traefik",
+			"description": "Cloud-Native Networking Stack That Just Works.",
+			"categories": [
+        "edge",
+        "Web",
+				"Proxy",
+				"Security",
+				"Tools"
+			],
+			"image": "traefik:latest",
+			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/traefik.png",
+			"name": "traefik",
+			"platform": "linux",
+			"ports": [
+				"80:80/tcp",
+				"443:443/tcp",
+				"8080:8080/tcp"
+			],
+      "restart_policy": "always",
+			"volumes": [
+				{
+					"bind": "/opt/portainer/config/traefik/traefik.yml",
+					"container": "/traefik.yml"
+				},
+				{
+					"bind": "/opt/portainer/config/traefik/config.yml",
+					"container": "/config.yml"
+				},
+				{
+					"bind": "/opt/portainer/config/traefik/acme.json",
+					"container": "/acme.json"
+				},
+				{
+					"bind": "/var/run/docker.sock",
+					"container": "/var/run/docker.sock",
+          "readonly": true
+				}
+			],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+		},
+    {
+      "id": 5000,
+      "type": 1,
+      "image": "ghcr.io/gethomepage/homepage:latest",
+      "name": "homepage",
+      "title": "Homepage",
+      "description": "A modern (fully static, fast), secure (fully proxied), highly customizable application dashboard with integrations for more than 25 services and translations for over 15 languages. Easily configured via YAML files (or discovery via docker labels).",
+      "logo": "https://mediadepot.github.io/templates/img/homepage.png",
+      "categories": [
+        "Tools",
+        "Network",
+        "Web"
+      ],
       "restart_policy": "always",
       "ports": [
-        "80:80/tcp"
-      ]
+        "3000/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/app/config",
+          "bind": "/opt/portainer/config/homepage"
+        },
+				{
+					"bind": "/var/run/docker.sock",
+					"container": "/var/run/docker.sock",
+          "readonly": true
+				}
+      ],
+      "env": [
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "5001",
+          "preset": true
+        },
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "5001",
+          "preset": true
+        },
+        {
+          "name": "HOMEPAGE_ALLOWED_HOSTS",
+          "label": "HOMEPAGE_ALLOWED_HOSTS",
+          "default": "localhost",
+          "preset": true
+        }
+      ],
+      "labels": [
+        {
+          "name": "traefik.enable",
+          "value": "true"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 5004,
+      "type": 1,
+      "image": "ghcr.io/gchq/cyberchef:latest",
+      "name": "cyberchef",
+      "title": "CyberChef",
+      "description": "A Cyber Swiss Army Knife",
+      "categories": ["edge","Web","Tools"],
+      "platform": "linux",
+      "logo": "https://avatars.githubusercontent.com/u/15800240",
+      "restart_policy": "always",
+      "ports": [
+        "80/tcp"
+      ],
+      "labels": [
+        {
+          "name": "traefik.enable",
+          "value": "true"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

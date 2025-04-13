@@ -101,18 +101,6 @@
       "restart_policy": "always",
 			"volumes": [
 				{
-					"bind": "/opt/data/portainer/config/traefik/traefik.yml",
-					"container": "/traefik.yml"
-				},
-				{
-					"bind": "/opt/data/portainer/config/traefik/config.yml",
-					"container": "/config.yml"
-				},
-				{
-					"bind": "/opt/data/portainer/config/traefik/acme.json",
-					"container": "/acme.json"
-				},
-				{
 					"bind": "/var/run/docker.sock",
 					"container": "/var/run/docker.sock",
           "readonly": true

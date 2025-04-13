@@ -36,8 +36,8 @@
         {
           "name": "TUNNEL_METRICS",
           "label": "Tunnel Metrics",
-          "description": "Listen address for metrics reporting",
-          "default": "localhost"
+          "description": "Listen address including port for metrics reporting",
+          "default": "localhost:5300"
         },
         {
           "name": "TUNNEL_DNS_ADDRESS",

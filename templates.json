@@ -121,7 +121,7 @@
         "Network",
         "Web"
       ],
-      "restart_policy": "always",
+      "restart_policy": "unless-stopped",
       "ports": [
         "3000/tcp"
       ],
@@ -179,7 +179,7 @@
       "description": "A Cyber Swiss Army Knife",
       "categories": ["edge","Web","Tools"],
       "logo": "https://avatars.githubusercontent.com/u/15800240",
-      "restart_policy": "always",
+      "restart_policy": "unless-stopped",
       "ports": [
         "80/tcp"
       ],
@@ -207,7 +207,7 @@
         "Productivity",
         "Drawing"
       ],
-      "restart_policy": "always",
+      "restart_policy": "unless-stopped",
       "ports": [
         "80/tcp"
       ],
@@ -241,6 +241,7 @@
       "ports": [
         "5377/tcp"
       ],
+      "restart_policy": "unless-stopped",
       "labels": [
         {
           "name": "traefik.enable",
@@ -249,6 +250,74 @@
         {
           "name": "traefik.http.routers.web_check.rule",
           "value": "Host(`web-check.localhost`)"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 5007,
+      "type": 1,
+      "image": "louislam/uptime-kuma:latest",
+      "name": "uptime-kuma",
+      "title": "Uptime Kuma",
+      "description": "It is a self-hosted monitoring tool like Uptime Robot",
+      "logo": "https://images.opencollective.com/uptime-kuma/29c5113/logo/256.png",
+      "categories": [
+        "Taskserver"
+      ],
+      "platform": "linux",
+      "ports": [
+        "3001/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/app/data"
+        }
+      ],
+      "labels": [
+        {
+          "name": "traefik.enable",
+          "value": "true"
+        },
+        {
+          "name": "traefik.http.routers.uptime_kuma.rule",
+          "value": "Host(`uptime-kuma.localhost`)"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 5008,
+      "type": 1,
+      "image": "ghcr.io/dgtlmoon/changedetection.io:latest",
+      "name": "changedetection",
+      "title": "ChangeDetection",
+      "description": "changedetection.io - The best and simplest self-hosted open source website change detection monitoring and notification service. An alternative to Visualping, Watchtower",
+      "logo": "https://mediadepot.github.io/templates/img/changedetection.jpg",
+      "categories": [
+        "Documents",
+        "Networkother",
+        "Tools"
+      ],
+      "ports": [
+        "5000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/datastore"
+        }
+      ],
+      "env": [],
+      "labels": [
+        {
+          "name": "traefik.enable",
+          "value": "true"
+        },
+        {
+          "name": "traefik.http.routers.changedetection_io.rule",
+          "value": "Host(`changedetection-io.localhost`)"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

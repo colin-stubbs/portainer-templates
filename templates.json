@@ -159,11 +159,13 @@
       "labels": [
         {
           "name": "traefik.enable",
-          "value": "true"
+          "value": "true",
+          "preset": true
         },
         {
           "name": "traefik.http.routers.homepage.rule",
-          "value": "Host(`homepage.localhost`)"
+          "value": "Host(`homepage.localhost`)",
+          "preset": true
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

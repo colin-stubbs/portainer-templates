@@ -1,7 +1,8 @@
 {
-  "version": "2",
+  "version": "3",
   "templates": [
     {
+      "id": 1,
       "type": 1,
       "title": "cloudflared-tunnel",
       "description": "cloudflared tunnel",
@@ -16,11 +17,12 @@
           "name": "TUNNEL_TOKEN",
           "label": "Tunnel Token",
           "description": "The token for the cloudflared tunnel",
-          "default": ""
+          "default": "CHANGE_ME"
         }
       ]
     },
     {
+      "id": 2,
       "type": 1,
       "title": "cloudflared-proxy-doh",
       "description": "cloudflared DNS over HTTPS proxy server",
@@ -56,6 +58,7 @@
       ]
     },
     {
+      "id": 3,
       "type": 1,
       "title": "cyberchef",
       "description": "The Cyber Swiss Army Knife",

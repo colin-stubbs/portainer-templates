@@ -296,8 +296,8 @@
       "description": "changedetection.io - The best and simplest self-hosted open source website change detection monitoring and notification service. An alternative to Visualping, Watchtower",
       "logo": "https://mediadepot.github.io/templates/img/changedetection.jpg",
       "categories": [
-        "Documents",
-        "Networkother",
+        "Network",
+        "Web",
         "Tools"
       ],
       "ports": [
@@ -318,6 +318,67 @@
         {
           "name": "traefik.http.routers.changedetection_io.rule",
           "value": "Host(`changedetection-io.localhost`)"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 5009,
+      "type": 1,
+      "image": "docker.elastic.co/elastic-agent/elastic-agent:latest",
+      "name": "elastic-agent",
+      "title": "Elastic Agent",
+      "description": "Elastic agent",
+      "logo": "https://images.squarespace-cdn.com/content/v1/600f75472fdc3d6dff8d0b87/ae1d32d9-5a8c-4262-a3d4-147e9f7556bc/Elastic.png",
+      "categories": [
+        "Logs",
+        "Tools"
+      ],
+      "ports": [
+        "80/tcp",
+        "443/tcp",
+        "514/udp",
+        "514/tcp",
+        "6514/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/data",
+          "bind": "/opt/data/elastic-agent"
+        },
+        {
+          "container": "/usr/share/elastic-agent/state"
+        }
+      ],
+      "env": [
+        {
+          "name": "FLEET_ENROLL",
+          "label": "FLEET_ENROLL",
+          "default": "1",
+          "preset": true
+        },
+        {
+          "name": "FLEET_URL",
+          "label": "FLEET_URL",
+          "default": "CHANGE_ME",
+          "preset": true
+        },
+        {
+          "name": "FLEET_ENROLLMENT_TOKEN",
+          "label": "FLEET_ENROLLMENT_TOKEN",
+          "default": "CHANGE_ME",
+          "preset": true
+        }
+      ],
+      "labels": [
+        {
+          "name": "traefik.enable",
+          "value": "true"
+        },
+        {
+          "name": "traefik.http.routers.changedetection_io.rule",
+          "value": "Host(`elastic-agent.localhost`)"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

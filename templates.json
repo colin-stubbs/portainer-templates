@@ -349,26 +349,33 @@
         },
         {
           "container": "/usr/share/elastic-agent/state"
-        }
+        },
+				{
+					"bind": "/var/run/docker.sock",
+					"container": "/var/run/docker.sock",
+          "readonly": true
+				},
+				{
+					"bind": "/var/lib/docker/containers",
+					"container": "/var/lib/docker/containers",
+          "readonly": true
+				}
       ],
       "env": [
         {
           "name": "FLEET_ENROLL",
           "label": "FLEET_ENROLL",
-          "default": "1",
-          "preset": true
+          "default": "1"
         },
         {
           "name": "FLEET_URL",
           "label": "FLEET_URL",
-          "default": "CHANGE_ME",
-          "preset": true
+          "default": "CHANGE_ME"
         },
         {
           "name": "FLEET_ENROLLMENT_TOKEN",
           "label": "FLEET_ENROLLMENT_TOKEN",
-          "default": "CHANGE_ME",
-          "preset": true
+          "default": "CHANGE_ME"
         }
       ],
       "labels": [

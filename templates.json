@@ -140,32 +140,27 @@
         {
           "name": "PGID",
           "label": "PGID",
-          "default": "5001",
-          "preset": true
+          "default": "5001"
         },
         {
           "name": "PUID",
           "label": "PUID",
-          "default": "5001",
-          "preset": true
+          "default": "5001"
         },
         {
           "name": "HOMEPAGE_ALLOWED_HOSTS",
           "label": "HOMEPAGE_ALLOWED_HOSTS",
-          "default": "homepage.localhost",
-          "preset": true
+          "default": "homepage.localhost"
         }
       ],
       "labels": [
         {
           "name": "traefik.enable",
-          "value": "true",
-          "preset": true
+          "value": "true"
         },
         {
           "name": "traefik.http.routers.homepage.rule",
-          "value": "Host(`homepage.localhost`)",
-          "preset": true
+          "value": "Host(`homepage.localhost`)"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -229,7 +224,6 @@
       "image": "lissy93/web-check:latest",
       "name": "web-check",
       "title": "Web Check",
-      "platform": "linux",
       "description": "Web Check give you a comprehensive, on-demand open source intelligence for any website",
       "logo": "https://camo.githubusercontent.com/e081ebebf2ef1dbe9ecffa081063db7c9f696e5913d75699f7d2968a186d0d72/68747470733a2f2f692e6962622e636f2f7131675a4e32702f7765622d636865636b2d6c6f676f2e706e67",
       "categories": [
@@ -265,7 +259,6 @@
       "categories": [
         "Taskserver"
       ],
-      "platform": "linux",
       "ports": [
         "3001/tcp"
       ],
@@ -386,6 +379,46 @@
         {
           "name": "traefik.http.routers.changedetection_io.rule",
           "value": "Host(`elastic-agent.localhost`)"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10000,
+      "type": 1,
+      "image": "ollama/ollama:latest",
+      "name": "ollama",
+      "title": "Ollama",
+      "description": "Ollama",
+      "logo": "https://avatars.githubusercontent.com/u/151674099",
+      "categories": [
+        "AI"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/root/.ollama",
+          "bind": "/home/ollama"
+        }
+      ],
+      "env": [
+        {
+          "name": "OLLAMA_MAX_LOADED_MODELS",
+          "label": "OLLAMA_MAX_LOADED_MODELS",
+          "default": "1"
+        }
+      ],
+      "ports": [
+        "11434/tcp"
+      ],
+      "labels": [
+        {
+          "name": "traefik.enable",
+          "value": "true"
+        },
+        {
+          "name": "traefik.http.routers.changedetection_io.rule",
+          "value": "Host(`ollama.localhost`)"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

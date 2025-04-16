@@ -424,7 +424,7 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
-      "id": 10000,
+      "id": 10001,
       "type": 3,
       "name": "ollama-rocm",
       "title": "Ollama (ROCM)",

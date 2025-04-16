@@ -425,7 +425,7 @@
     },
     {
       "id": 10000,
-      "type": 1,
+      "type": 3,
       "name": "ollama-rocm",
       "title": "Ollama (ROCM)",
       "description": "Ollama with ROCM for AMD GPU's",

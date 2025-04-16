@@ -1,0 +1,27 @@
+services:
+  ollama:
+    image: ollama/ollama:rocm
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - /opt/amdgpu:/opt/amdgpu:ro
+      - /home/ollama/.ollama:/root/.ollama
+    ports:
+      - 11434/tcp
+    environment:
+      - OLLAMA_MAX_LOADED_MODELS=${OLLAMA_MAX_LOADED_MODELS:-1}
+      - HSA_OVERRIDE_GFX_VERSION=${HSA_OVERRIDE_GFX_VERSION:-}
+    healthcheck:
+      test: timeout 5 bash -c "</dev/tcp/localhost/11434"
+      interval: 10s
+      timeout: 30s
+      retries: 5
+      start_period: 15s
+    restart: unless-stopped
+    deploy:
+      labels:
+        traefik.enable: "true"
+        traefik.http.routers.ollama.rule: "ollama.localhost"

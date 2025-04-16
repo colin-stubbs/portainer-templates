@@ -422,6 +422,35 @@
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10000,
+      "type": 1,
+      "name": "ollama-rocm",
+      "title": "Ollama (ROCM)",
+      "description": "Ollama with ROCM for AMD GPU's",
+      "logo": "https://avatars.githubusercontent.com/u/151674099",
+      "platform": "linux",
+      "categories": [
+        "AI"
+      ],
+      "repository": {
+        "url": "https://github.com//colin-stubbs/portainer-templates",
+        "stackfile": "stacks/ollama-rocm/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "OLLAMA_MAX_LOADED_MODELS",
+          "label": "OLLAMA_MAX_LOADED_MODELS",
+          "default": "1"
+        },
+        {
+          "name": "HSA_OVERRIDE_GFX_VERSION",
+          "label": "HSA_OVERRIDE_GFX_VERSION",
+          "default": ""
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

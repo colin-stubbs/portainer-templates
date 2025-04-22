@@ -451,6 +451,48 @@
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10002,
+      "type": 1,
+      "image": "wallabag/wallabag:latest",
+      "name": "wallabag",
+      "title": "wallabag",
+      "description": "wallabag⁠ is a self hostable application for saving web pages. Unlike other services, wallabag is free (as in freedom) and open source.",
+      "logo": "https://www.gravatar.com/avatar/5ec91100620f8632bdc665e5facb4d0c",
+      "categories": [
+        "Web"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/var/www/wallabag/data"
+        },
+        {
+          "container": "/var/www/wallabag/web/assets/images"
+        }
+      ],
+      "env": [
+        {
+          "name": "SYMFONY__ENV__DOMAIN_NAME",
+          "label": "SYMFONY__ENV__DOMAIN_NAME",
+          "default": "http://wallabag.localhost"
+        }
+      ],
+      "ports": [
+        "80/tcp"
+      ],
+      "labels": [
+        {
+          "name": "traefik.enable",
+          "value": "true"
+        },
+        {
+          "name": "traefik.http.routers.changedetection_io.rule",
+          "value": "Host(`wallabag.localhost`)"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

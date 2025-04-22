@@ -488,7 +488,7 @@
           "value": "true"
         },
         {
-          "name": "traefik.http.routers.changedetection_io.rule",
+          "name": "traefik.http.routers.wallabag.rule",
           "value": "Host(`wallabag.localhost`)"
         }
       ],

@@ -39,6 +39,12 @@
           "default": "CHANGE_ME"
         }
       ],
+      "labels": [
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
+        }
+      ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
@@ -75,6 +81,12 @@
         "53:53/udp",
         "53:53/tcp"
       ],
+      "labels": [
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
+        }
+      ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
 		{
@@ -106,6 +118,24 @@
           "readonly": true
 				}
 			],
+      "labels": [
+        {
+          "name": "traefik.enable",
+          "value": "true"
+        },
+        {
+          "name": "traefik.http.routers.traefik.rule",
+          "value": "Host(`traefik.localhost`)"
+        },
+        {
+          "name": "traefik.http.services.traefik.loadbalancer.server.port",
+          "value": "8080"
+        },
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
+        }
+      ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
 		},
     {
@@ -161,6 +191,10 @@
         {
           "name": "traefik.http.routers.homepage.rule",
           "value": "Host(`homepage.localhost`)"
+        },
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -186,6 +220,10 @@
         {
           "name": "traefik.http.routers.cyberchef.rule",
           "value": "Host(`cyberchef.localhost`)"
+        },
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -214,6 +252,10 @@
         {
           "name": "traefik.http.routers.excalidraw.rule",
           "value": "Host(`excalidraw.localhost`)"
+        },
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -244,6 +286,10 @@
         {
           "name": "traefik.http.routers.web_check.rule",
           "value": "Host(`web-check.localhost`)"
+        },
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -276,6 +322,10 @@
         {
           "name": "traefik.http.routers.uptime_kuma.rule",
           "value": "Host(`uptime-kuma.localhost`)"
+        },
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -311,6 +361,10 @@
         {
           "name": "traefik.http.routers.changedetection_io.rule",
           "value": "Host(`changedetection-io.localhost`)"
+        },
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -377,8 +431,12 @@
           "value": "true"
         },
         {
-          "name": "traefik.http.routers.changedetection_io.rule",
+          "name": "traefik.http.routers.elastic_agent.rule",
           "value": "Host(`elastic-agent.localhost`)"
+        },
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -417,8 +475,12 @@
           "value": "true"
         },
         {
-          "name": "traefik.http.routers.changedetection_io.rule",
+          "name": "traefik.http.routers.ollama.rule",
           "value": "Host(`ollama.localhost`)"
+        },
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -448,6 +510,20 @@
           "name": "HSA_OVERRIDE_GFX_VERSION",
           "label": "HSA_OVERRIDE_GFX_VERSION",
           "default": ""
+        }
+      ],
+      "labels": [
+        {
+          "name": "traefik.enable",
+          "value": "true"
+        },
+        {
+          "name": "traefik.http.routers.ollama.rule",
+          "value": "Host(`ollama.localhost`)"
+        },
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -490,6 +566,10 @@
         {
           "name": "traefik.http.routers.wallabag.rule",
           "value": "Host(`wallabag.localhost`)"
+        },
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

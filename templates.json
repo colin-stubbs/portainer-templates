@@ -84,6 +84,12 @@
       },
       "env": [
         {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
           "name": "TUNNEL_TOKEN",
           "label": "Tunnel Token",
           "description": "The token for the cloudflared tunnel",
@@ -104,6 +110,12 @@
         "stackfile": "stacks/cloudflared-proxy-doh.yml"
       },
       "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
         {
           "name": "TUNNEL_DNS_ADDRESS",
           "label": "Tunnel DNS Address",
@@ -138,6 +150,14 @@
         "url": "https://github.com/colin-stubbs/portainer-templates/",
         "stackfile": "stacks/traefik.yml"
       },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        }
+      ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
 		},
     {

@@ -4,8 +4,10 @@ networks:
     external: true
 
 services:
-  watchtower:
+  traefik:
     image: traefik:latest
+    hostname: ${HOSTNAME:-traefik}
+    domainname: ${DOMAINNAME:-localhost}
     command: "'--api.insecure=true' '--providers.docker'"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

@@ -19,64 +19,55 @@
           "name": "NETWORK",
           "label": "NETWORK",
           "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
-          "default": "localnet",
-          "preset": true
+          "default": "localnet"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "description": "Timezone",
-          "default": "Australia/Brisbane",
-          "preset": true
+          "default": "Australia/Brisbane"
         },
         {
           "name": "WATCHTOWER_CLEANUP",
           "label": "WATCHTOWER_CLEANUP",
           "description": "Removes old images after updating.",
-          "default": "true",
-          "preset": true
+          "default": "true"
         },
         {
           "name": "WATCHTOWER_LABEL_ENABLE",
           "label": "WATCHTOWER_LABEL_ENABLE",
           "description": "Monitor and update containers that have a com.centurylinklabs.watchtower.enable label set to true.",
-          "default": "true",
-          "preset": true
+          "default": "true"
         },
         {
           "name": "WATCHTOWER_POLL_INTERVAL",
           "label": "WATCHTOWER_POLL_INTERVAL",
           "description": "Poll interval (in seconds). This value controls how frequently watchtower will poll for new images",
-          "default": "86400",
-          "preset": true
+          "default": "86400"
         },
         {
           "name": "WATCHTOWER_HTTP_API_UPDATE",
           "label": "WATCHTOWER_HTTP_API_UPDATE",
           "description": "Runs Watchtower in HTTP API mode, only allowing image updates to be triggered by an HTTP request.",
-          "default": "false",
-          "preset": true
+          "default": "false"
         },
         {
           "name": "WATCHTOWER_HTTP_API_TOKEN",
           "label": "WATCHTOWER_HTTP_API_TOKEN",
           "description": "Sets an authentication token to HTTP API requests. Can also reference a file, in which case the contents of the file are used.",
-          "default": "CHANGE_ME",
-          "preset": true
+          "default": "CHANGE_ME"
         },
         {
           "name": "WATCHTOWER_HTTP_API_PERIODIC_POLLS",
           "label": "WATCHTOWER_HTTP_API_PERIODIC_POLLS",
           "description": "Keep running periodic updates if the HTTP API mode is enabled, otherwise the HTTP API would prevent periodic polls.",
-          "default": "true",
-          "preset": true
+          "default": "true"
         },
         {
           "name": "WATCHTOWER_ROLLING_RESTART",
           "label": "WATCHTOWER_ROLLING_RESTART",
           "description": "Restart one image at time instead of stopping and starting all at once.",
-          "default": "true",
-          "preset": true
+          "default": "true"
         }
       ]
     },
@@ -96,15 +87,14 @@
           "name": "TUNNEL_TOKEN",
           "label": "Tunnel Token",
           "description": "The token for the cloudflared tunnel",
-          "default": "CHANGE_ME",
-          "preset": true
+          "default": "CHANGE_ME"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
       "id": 3,
-      "type": 1,
+      "type": 3,
       "title": "cloudflared-proxy-doh",
       "description": "cloudflared DNS over HTTPS proxy server",
       "categories": ["edge","Cloud","Network","DNS"],
@@ -118,15 +108,13 @@
           "name": "TUNNEL_DNS_ADDRESS",
           "label": "Tunnel DNS Address",
           "description": "Listen address for the DNS over HTTPS proxy server",
-          "default": "0.0.0.0",
-          "preset": true
+          "default": "0.0.0.0"
         },
         {
           "name": "TUNNEL_DNS_PORT",
           "label": "Tunnel DNS Port",
           "description": "Listen port for the DNS over HTTPS proxy server",
-          "default": "53",
-          "preset": true
+          "default": "53"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

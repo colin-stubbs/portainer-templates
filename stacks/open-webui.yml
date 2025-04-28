@@ -1,6 +1,13 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
 services:
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
+    hostname: ${HOSTNAME:-open-webui}
+    domainname: ${DOMAINNAME:-localhost}
     ports:
       - "8080/tcp"
     extra_hosts:
@@ -27,6 +34,8 @@ services:
     restart: always
     volumes:
       - open_webui:/app/backend/data
+    networks:
+      network:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.open_webui.rule=Host(`open-webui.localhost`)"

@@ -6,6 +6,8 @@ networks:
 services:
   postgres:
     image: postgres:${PG_MAJOR:-latest}
+    hostname: ${HOSTNAME:-postgres}
+    domainname: ${DOMAINNAME:-localhost}
     environment:
       - TZ=${TIMEZONE:-Australia/Brisbane}
       - POSTGRES_DB=${POSTGRES_DB:-postgress}

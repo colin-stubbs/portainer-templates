@@ -703,6 +703,7 @@
       "name": "searxng",
       "title": "SearXNG",
       "description": "SearXNG is a free internet metasearch engine which aggregates results from various search services and databases. Users are neither tracked nor profiled.",
+      "note": "<p>Test 1234</p>",
       "logo": "https://avatars.githubusercontent.com/u/80454229",
       "categories": [
         "Web",
@@ -716,7 +717,7 @@
         {
           "name": "NETWORK",
           "label": "NETWORK",
-          "description": "Which exisitng user defined network to connect the container too. Note that 'bridge' will not work.",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
           "default": "localnet",
           "preset": true
         },

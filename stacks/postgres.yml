@@ -1,3 +1,8 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
 services:
   postgres:
     image: postgres:${PG_MAJOR:-latest}
@@ -16,7 +21,7 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data:rw
     networks:
-      localnet:
+      network:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 

@@ -714,6 +714,25 @@
       },
       "env": [
         {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which exisitng user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet",
+          "preset": true
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "searxng",
+          "preset": true
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost",
+          "preset": true
+        },
+        {
           "name": "SEARXNG_SECRET",
           "label": "SEARXNG_SECRET",
           "description": "Crucial for secure operation and should be a randomly generated, unique string.",

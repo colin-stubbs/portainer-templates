@@ -698,68 +698,25 @@
     },
     {
       "id": 10003,
-      "type": 1,
+      "type": 3,
       "image": "searxng/searxng:latest",
       "name": "searxng",
-      "title": "searxng",
+      "title": "SearXNG",
       "description": "SearXNG is a free internet metasearch engine which aggregates results from various search services and databases. Users are neither tracked nor profiled.",
       "logo": "https://avatars.githubusercontent.com/u/80454229",
       "categories": [
         "Web",
         "Search"
       ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
-        {
-          "container": "/etc/searxng",
-          "bind": "/opt/data/portainer/config/searxng"
-        }
-      ],
-      "env": [
-        {
-          "name": "SEARXNG_SECRET",
-          "label": "SEARXNG_SECRET",
-          "default": "secret"
-        },
-        {
-          "name": "SEARXNG_BIND_ADDRESS",
-          "label": "SEARXNG_BIND_ADDRESS",
-          "default": "0.0.0.0"
-        },
-        {
-          "name": "SEARXNG_PORT",
-          "label": "SEARXNG_PORT",
-          "default": "8080"
-        },
-        {
-          "name": "SEARXNG_URL",
-          "label": "SEARXNG_URL",
-          "default": "/"
-        }
-      ],
-      "ports": [
-        "8080/tcp"
-      ],
-      "labels": [
-        {
-          "name": "traefik.enable",
-          "value": "true"
-        },
-        {
-          "name": "traefik.http.routers.searxng.rule",
-          "value": "Host(`searxng.localhost`)"
-        },
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
-        }
-      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/searxng.yml"
+      },
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
       "id": 10004,
-      "type": 1,
-      "image": "ghcr.io/open-webui/open-webui:main",
+      "type": 3,
       "name": "open-webui",
       "title": "Open WebUI",
       "description": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline. It supports various LLM runners like Ollama and OpenAI-compatible APIs, with built-in inference engine for RAG, making it a powerful AI deployment solution.",
@@ -768,82 +725,11 @@
         "Web",
         "AI"
       ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
-        {
-          "container": "/app/backend/data"
-        }
-      ],
-      "env": [
-        {
-          "name": "OLLAMA_BASE_URL",
-          "label": "OLLAMA_BASE_URL",
-          "default": "http://host-gateway:11434"
-        },
-        {
-          "name": "ENABLE_RAG_WEB_SEARCH",
-          "label": "ENABLE_RAG_WEB_SEARCH",
-          "default": "false"
-        },
-        {
-          "name": "RAG_WEB_SEARCH_ENGINE",
-          "label": "RAG_WEB_SEARCH_ENGINE",
-          "default": "searxng"
-        },
-        {
-          "name": "RAG_WEB_SEARCH_RESULT_COUNT",
-          "label": "RAG_WEB_SEARCH_RESULT_COUNT",
-          "default": "3"
-        },
-        {
-          "name": "RAG_WEB_SEARCH_CONCURRENT_REQUEST",
-          "label": "RAG_WEB_SEARCH_CONCURRENT_REQUEST",
-          "default": "10"
-        },
-        {
-          "name": "SEARXNG_QUERY_URL",
-          "label": "SEARXNG_QUERY_URL",
-          "default": "http://searxng:8080/search?q=<query>"
-        },
-        {
-          "name": "OAUTH_MERGE_ACCOUNTS_BY_EMAIL",
-          "label": "OAUTH_MERGE_ACCOUNTS_BY_EMAIL",
-          "default": "false"
-        },
-        {
-          "name": "WEBUI_SECRET_KEY",
-          "label": "WEBUI_SECRET_KEY",
-          "default": "secret"
-        },
-        {
-          "name": "USE_CUDA_DOCKER",
-          "label": "USE_CUDA_DOCKER",
-          "default": "false"
-        },
-        {
-          "name": "DATABASE_URL",
-          "label": "DATABASE_URL",
-          "default": "postgresql://postgres:P@55w0rd@postgres:5432/postgres"
-        }
-      ],
-      "ports": [
-        "8080/tcp"
-      ],
-      "labels": [
-        {
-          "name": "traefik.enable",
-          "value": "true"
-        },
-        {
-          "name": "traefik.http.routers.open_webui.rule",
-          "value": "Host(`open-webui.localhost`)"
-        },
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
-        }
-      ],
-      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/open-webui.yml"
+      },
+      "maintainer": "https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

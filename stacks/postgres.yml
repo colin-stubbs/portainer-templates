@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:${PG_MAJOR:-latest}
+    environment:
+      - TZ=${TIMEZONE:-Australia/Brisbane}
+      - POSTGRES_DB=${POSTGRES_DB:-postgress}
+      - POSTGRES_USER=${POSTGRES_USER:-postgress}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-P@55w0rd}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+    healthcheck:
+      test: ['CMD-SHELL', "sh -c 'pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-P@55w0rd}'"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    restart: always
+    volumes:
+      - postgres:/var/lib/postgresql/data:rw
+    networks:
+      localnet:
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  postgres:

@@ -1,6 +1,13 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
 services:
   searxng:
     image: searxng/searxng:latest
+    hostname: ${HOSTNAME:-searxng}
+    domainname: ${DOMAINNAME:-localhost}
     volumes:
       - /opt/data/portainer/config/searxng:/etc/searxng
     environment:
@@ -10,7 +17,7 @@ services:
       - SEARXNG_URL=${SEARXNG_URL:-/}
     restart: always
     networks:
-      localnet:
+      network:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.searxng.rule=Host(`searxng.localhost`)"

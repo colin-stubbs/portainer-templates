@@ -22,6 +22,8 @@ services:
     restart: always
     volumes:
       - postgres:/var/lib/postgresql/data:rw
+    ports:
+      - "5432/tcp"
     networks:
       network:
     labels:

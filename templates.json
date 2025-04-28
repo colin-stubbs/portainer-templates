@@ -16,6 +16,13 @@
       },
       "env": [
         {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet",
+          "preset": true
+        },
+        {
           "name": "TZ",
           "label": "TZ",
           "description": "Timezone",

@@ -1,3 +1,8 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
 services:
   watchtower:
     image: containrrr/watchtower:latest

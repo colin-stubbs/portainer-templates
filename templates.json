@@ -96,7 +96,8 @@
           "name": "TUNNEL_TOKEN",
           "label": "Tunnel Token",
           "description": "The token for the cloudflared tunnel",
-          "default": "CHANGE_ME"
+          "default": "CHANGE_ME",
+          "preset": true
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -106,39 +107,26 @@
       "type": 1,
       "title": "cloudflared-proxy-doh",
       "description": "cloudflared DNS over HTTPS proxy server",
-      "categories": ["edge"],
+      "categories": ["edge","Cloud","Network","DNS"],
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/Cloudflare_Logo.png",
-      "image": "cloudflare/cloudflared:latest",
-      "command": "proxy-dns",
-      "restart_policy": "always",
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/cloudflared-proxy-doh.yml"
+      },
       "env": [
-        {
-          "name": "TUNNEL_METRICS",
-          "label": "Tunnel Metrics",
-          "description": "Listen address including port for metrics reporting",
-          "default": "localhost:5300"
-        },
         {
           "name": "TUNNEL_DNS_ADDRESS",
           "label": "Tunnel DNS Address",
           "description": "Listen address for the DNS over HTTPS proxy server",
-          "default": "localhost"
+          "default": "0.0.0.0",
+          "preset": true
         },
         {
           "name": "TUNNEL_DNS_PORT",
           "label": "Tunnel DNS Port",
           "description": "Listen port for the DNS over HTTPS proxy server",
-          "default": "53"
-        }
-      ],
-      "ports": [
-        "53:53/udp",
-        "53:53/tcp"
-      ],
-      "labels": [
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
+          "default": "53",
+          "preset": true
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

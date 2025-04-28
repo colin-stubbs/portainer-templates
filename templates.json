@@ -712,6 +712,33 @@
         "url": "https://github.com/colin-stubbs/portainer-templates/",
         "stackfile": "stacks/searxng.yml"
       },
+      "env": [
+        {
+          "name": "SEARXNG_SECRET",
+          "label": "SEARXNG_SECRET",
+          "description": "Crucial for secure operation and should be a randomly generated, unique string.",
+          "default": "s3c537!",
+          "preset": true
+        },
+        {
+          "name": "SEARXNG_BIND_ADDRESS",
+          "label": "SEARXNG_BIND_ADDRESS",
+          "default": "0.0.0.0",
+          "preset": true
+        },
+        {
+          "name": "SEARXNG_PORT",
+          "label": "SEARXNG_PORT",
+          "default": "8080",
+          "preset": true
+        },
+        {
+          "name": "SEARXNG_URL",
+          "label": "SEARXNG_URL",
+          "default": "/",
+          "preset": true
+        }
+      ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {

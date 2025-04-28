@@ -9,7 +9,7 @@
       "description": "Automatically update running Docker containers",
       "note": "TBC",
       "logo": "https://mediadepot.github.io/templates/img/watchtower-logo.png",
-      "categories": ["edge"],
+      "categories": ["edge","System","Tools"],
       "repository": {
         "url": "https://github.com/colin-stubbs/portainer-templates/",
         "stackfile": "stacks/watchtower.yml"

@@ -19,5 +19,5 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.open_webui.rule=Host(`traefik.localhost`)"
-      - "com.centurylinklabs.watchtower.enable=true"
       - "traefik.http.services.traefik.loadbalancer.server.port=8080"
+      - "com.centurylinklabs.watchtower.enable=true"

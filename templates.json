@@ -121,7 +121,7 @@
     },
 		{
       "id": 4,
-      "type": 1,
+      "type": 3,
 			"name": "traefik",
 			"title": "Traefik",
 			"description": "Cloud-Native Networking Stack That Just Works.",

@@ -1,0 +1,23 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  watchtower:
+    image: traefik:latest
+    command: "'--api.insecure=true' '--providers.docker'"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "80/tcp"
+      - "443/tcp"
+      - "8080/tcp"
+    restart: always
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.open_webui.rule=Host(`traefik.localhost`)"
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.http.services.traefik.loadbalancer.server.port=8080"

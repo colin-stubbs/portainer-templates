@@ -205,6 +205,61 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
 		},
     {
+      "id": 5,
+      "type": 1,
+      "image": "postgres:latest",
+      "name": "postgres",
+      "title": "PostgreSQL",
+      "description": "PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.",
+      "logo": "https://www.postgresql.org/media/img/about/press/elephant.png",
+      "categories": [
+        "Database"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data"
+        }
+      ],
+      "env": [
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "POSTGRES_DB",
+          "label": "POSTGRES_DB",
+          "default": "postgres"
+        },
+        {
+          "name": "POSTGRES_USER",
+          "label": "POSTGRES_USER",
+          "default": "postgres"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "label": "POSTGRES_PASSWORD",
+          "default": "P@55w0rd"
+        },
+        {
+          "name": "POSTGRES_PORT",
+          "label": "POSTGRES_PORT",
+          "default": "5432"
+        }
+      ],
+      "ports": [
+        "5432/tcp"
+      ],
+      "labels": [
+        {
+          "name": "com.centurylinklabs.watchtower.enable",
+          "value": "true"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
       "id": 5000,
       "type": 1,
       "image": "ghcr.io/gethomepage/homepage:latest",

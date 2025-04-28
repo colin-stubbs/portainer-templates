@@ -1,0 +1,16 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  watchtower:
+    image: cloudflare/cloudflared:latest
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN:-CHANGE_ME}
+    restart: always
+    networks:
+      network:
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"

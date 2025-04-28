@@ -82,26 +82,21 @@
     },
     {
       "id": 2,
-      "type": 1,
+      "type": 3,
       "title": "cloudflared-tunnel",
       "description": "cloudflared tunnel",
-      "categories": ["edge"],
+      "categories": ["edge","Cloud","Network"],
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/Cloudflare_Logo.png",
-      "image": "cloudflare/cloudflared:latest",
-      "command": "tunnel run",
-      "restart_policy": "always",
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/cloudflared-tunnel.yml"
+      },
       "env": [
         {
           "name": "TUNNEL_TOKEN",
           "label": "Tunnel Token",
           "description": "The token for the cloudflared tunnel",
           "default": "CHANGE_ME"
-        }
-      ],
-      "labels": [
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

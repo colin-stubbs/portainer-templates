@@ -22,6 +22,16 @@
           "default": "localnet"
         },
         {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "watchtower"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
           "name": "TZ",
           "label": "TZ",
           "description": "Timezone",
@@ -76,7 +86,11 @@
       "type": 3,
       "title": "cloudflared-tunnel",
       "description": "cloudflared tunnel",
-      "categories": ["edge","Cloud","Network"],
+      "categories": [
+        "edge",
+        "Cloud",
+        "Network"
+      ],
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/Cloudflare_Logo.png",
       "repository": {
         "url": "https://github.com/colin-stubbs/portainer-templates/",
@@ -159,6 +173,16 @@
           "default": "localnet"
         },
         {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "traefik"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
           "name": "TRAEFIK_PROVIDERS_DOCKER",
           "label": "TRAEFIK_PROVIDERS_DOCKER",
           "description": "Enable Docker backend with default settings.",
@@ -216,6 +240,12 @@
       ],
       "env": [
         {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
           "name": "TZ",
           "label": "TZ",
           "default": "Australia/Brisbane"
@@ -265,8 +295,7 @@
     },
     {
       "id": 5000,
-      "type": 1,
-      "image": "ghcr.io/gethomepage/homepage:latest",
+      "type": 3,
       "name": "homepage",
       "title": "Homepage",
       "description": "A modern (fully static, fast), secure (fully proxied), highly customizable application dashboard with integrations for more than 25 services and translations for over 15 languages. Easily configured via YAML files (or discovery via docker labels).",
@@ -276,31 +305,32 @@
         "Network",
         "Web"
       ],
-      "restart_policy": "unless-stopped",
-      "ports": [
-        "3000/tcp"
-      ],
-      "volumes": [
-        {
-          "container": "/app/config",
-          "bind": "/opt/data/portainer/config/homepage"
-        },
-				{
-					"bind": "/var/run/docker.sock",
-					"container": "/var/run/docker.sock",
-          "readonly": true
-				}
-      ],
       "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "homepage"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
         {
           "name": "PGID",
           "label": "PGID",
-          "default": "5001"
+          "default": "1000"
         },
         {
           "name": "PUID",
           "label": "PUID",
-          "default": "5001"
+          "default": "1000"
         },
         {
           "name": "HOMEPAGE_ALLOWED_HOSTS",
@@ -308,20 +338,10 @@
           "default": "homepage.localhost"
         }
       ],
-      "labels": [
-        {
-          "name": "traefik.enable",
-          "value": "true"
-        },
-        {
-          "name": "traefik.http.routers.homepage.rule",
-          "value": "Host(`homepage.localhost`)"
-        },
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
-        }
-      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/homepage.yml"
+      },
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
@@ -341,6 +361,24 @@
         "url": "https://github.com/colin-stubbs/portainer-templates/",
         "stackfile": "stacks/cyberchef.yml"
       },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "cyberchef"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        }
+      ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
@@ -361,6 +399,24 @@
         "url": "https://github.com/colin-stubbs/portainer-templates/",
         "stackfile": "stacks/excalidraw.yml"
       },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "excalidraw"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        }
+      ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
@@ -382,11 +438,29 @@
         "url": "https://github.com/colin-stubbs/portainer-templates/",
         "stackfile": "stacks/web-check.yml"
       },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "web-check"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        }
+      ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
       "id": 5007,
-      "type": 1,
+      "type": 3,
       "name": "uptime-kuma",
       "title": "Uptime Kuma",
       "description": "It is a self-hosted monitoring tool like Uptime Robot",
@@ -400,85 +474,115 @@
         "url": "https://github.com/colin-stubbs/portainer-templates/",
         "stackfile": "stacks/uptime-kuma.yml"
       },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "uptime-kuma"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "1000"
+        },
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1000"
+        },
+        {
+          "name": "HOMEPAGE_ALLOWED_HOSTS",
+          "label": "HOMEPAGE_ALLOWED_HOSTS",
+          "default": "homepage.localhost"
+        }
+      ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
       "id": 5008,
-      "type": 1,
+      "type": 3,
       "image": "ghcr.io/dgtlmoon/changedetection.io:latest",
-      "name": "changedetection",
-      "title": "ChangeDetection",
+      "name": "changedetection-io",
+      "title": "ChangeDetection.io",
       "description": "changedetection.io - The best and simplest self-hosted open source website change detection monitoring and notification service. An alternative to Visualping, Watchtower",
       "logo": "https://mediadepot.github.io/templates/img/changedetection.jpg",
       "categories": [
         "Network",
         "Web",
-        "Tools"
+        "Tools",
+        "Monitoring"
       ],
-      "ports": [
-        "5000/tcp"
-      ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/changedetection-io.yml"
+      },
+      "env": [
         {
-          "container": "/datastore"
-        }
-      ],
-      "env": [],
-      "labels": [
-        {
-          "name": "traefik.enable",
-          "value": "true"
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
         },
         {
-          "name": "traefik.http.routers.changedetection_io.rule",
-          "value": "Host(`changedetection-io.localhost`)"
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "changedetection-io"
         },
         {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "PORT",
+          "label": "PORT",
+          "default": "80"
+        },
+        {
+          "name": "LOGGER_LEVEL",
+          "label": "LOGGER_LEVEL",
+          "default": "INFO"
+        },
+        {
+          "name": "HIDE_REFERER",
+          "label": "HIDE_REFERER",
+          "default": "true"
+        },
+        {
+          "name": "DISABLE_VERSION_CHECK",
+          "label": "DISABLE_VERSION_CHECK",
+          "default": "true"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Australia/Brisbane"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
       "id": 5009,
-      "type": 1,
-      "image": "docker.elastic.co/elastic-agent/elastic-agent:latest",
+      "type": 3,
       "name": "elastic-agent",
       "title": "Elastic Agent",
       "description": "Elastic agent",
       "logo": "https://images.squarespace-cdn.com/content/v1/600f75472fdc3d6dff8d0b87/ae1d32d9-5a8c-4262-a3d4-147e9f7556bc/Elastic.png",
       "categories": [
+        "edge",
         "Logs",
         "Tools"
-      ],
-      "ports": [
-        "80/tcp",
-        "443/tcp",
-        "514/udp",
-        "514/tcp",
-        "6514/tcp"
-      ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
-        {
-          "container": "/data",
-          "bind": "/opt/data/elastic-agent"
-        },
-        {
-          "container": "/usr/share/elastic-agent/state"
-        },
-				{
-					"bind": "/var/run/docker.sock",
-					"container": "/var/run/docker.sock",
-          "readonly": true
-				},
-				{
-					"bind": "/var/lib/docker/containers",
-					"container": "/var/lib/docker/containers",
-          "readonly": true
-				}
       ],
       "env": [
         {
@@ -497,62 +601,32 @@
           "default": "CHANGE_ME"
         }
       ],
-      "labels": [
-        {
-          "name": "traefik.enable",
-          "value": "true"
-        },
-        {
-          "name": "traefik.http.routers.elastic_agent.rule",
-          "value": "Host(`elastic-agent.localhost`)"
-        },
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
-        }
-      ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
       "id": 10000,
-      "type": 1,
-      "image": "ollama/ollama:latest",
+      "type": 3,
       "name": "ollama",
       "title": "Ollama",
       "description": "Ollama",
       "logo": "https://avatars.githubusercontent.com/u/151674099",
       "categories": [
+        "edge",
         "AI"
       ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
-        {
-          "container": "/root/.ollama",
-          "bind": "/home/ollama"
-        }
-      ],
+      "repository": {
+        "url": "https://github.com//colin-stubbs/portainer-templates",
+        "stackfile": "stacks/ollama.yml"
+      },
       "env": [
         {
           "name": "OLLAMA_MAX_LOADED_MODELS",
           "label": "OLLAMA_MAX_LOADED_MODELS",
           "default": "1"
-        }
-      ],
-      "ports": [
-        "11434/tcp"
-      ],
-      "labels": [
-        {
-          "name": "traefik.enable",
-          "value": "true"
         },
         {
-          "name": "traefik.http.routers.ollama.rule",
-          "value": "Host(`ollama.localhost`)"
-        },
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
+          "name": "HSA_OVERRIDE_GFX_VERSION",
+          "label": "HSA_OVERRIDE_GFX_VERSION"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -564,13 +638,13 @@
       "title": "Ollama (ROCM)",
       "description": "Ollama with ROCM for AMD GPU's",
       "logo": "https://avatars.githubusercontent.com/u/151674099",
-      "platform": "linux",
       "categories": [
+        "edge",
         "AI"
       ],
       "repository": {
         "url": "https://github.com//colin-stubbs/portainer-templates",
-        "stackfile": "stacks/ollama-rocm/docker-compose.yml"
+        "stackfile": "stacks/ollama-rocm.yml"
       },
       "env": [
         {
@@ -580,68 +654,7 @@
         },
         {
           "name": "HSA_OVERRIDE_GFX_VERSION",
-          "label": "HSA_OVERRIDE_GFX_VERSION",
-          "default": ""
-        }
-      ],
-      "labels": [
-        {
-          "name": "traefik.enable",
-          "value": "true"
-        },
-        {
-          "name": "traefik.http.routers.ollama.rule",
-          "value": "Host(`ollama.localhost`)"
-        },
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
-        }
-      ],
-      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
-    },
-    {
-      "id": 10002,
-      "type": 1,
-      "image": "wallabag/wallabag:latest",
-      "name": "wallabag",
-      "title": "wallabag",
-      "description": "wallabag⁠ is a self hostable application for saving web pages. Unlike other services, wallabag is free (as in freedom) and open source.",
-      "logo": "https://www.gravatar.com/avatar/5ec91100620f8632bdc665e5facb4d0c",
-      "categories": [
-        "Web"
-      ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
-        {
-          "container": "/var/www/wallabag/data"
-        },
-        {
-          "container": "/var/www/wallabag/web/assets/images"
-        }
-      ],
-      "env": [
-        {
-          "name": "SYMFONY__ENV__DOMAIN_NAME",
-          "label": "SYMFONY__ENV__DOMAIN_NAME",
-          "default": "http://wallabag.localhost"
-        }
-      ],
-      "ports": [
-        "80/tcp"
-      ],
-      "labels": [
-        {
-          "name": "traefik.enable",
-          "value": "true"
-        },
-        {
-          "name": "traefik.http.routers.wallabag.rule",
-          "value": "Host(`wallabag.localhost`)"
-        },
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
+          "label": "HSA_OVERRIDE_GFX_VERSION"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -727,6 +740,16 @@
           "label": "NETWORK",
           "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
           "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "open-webui"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
         },
         {
           "name": "OLLAMA_BASE_URL",

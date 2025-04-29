@@ -1,0 +1,24 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - /home/ollama/.ollama:/root/.ollama
+    networks:
+      network:
+    environment:
+      - OLLAMA_MAX_LOADED_MODELS=${OLLAMA_MAX_LOADED_MODELS:-1}
+      - HSA_OVERRIDE_GFX_VERSION=${HSA_OVERRIDE_GFX_VERSION:-}
+    healthcheck:
+      test: timeout 5 bash -c "</dev/tcp/localhost/11434"
+      interval: 10s
+      timeout: 30s
+      retries: 5
+      start_period: 15s
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"

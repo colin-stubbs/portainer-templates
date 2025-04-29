@@ -1,0 +1,36 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  cyberchef:
+    image: docker.elastic.co/elastic-agent/elastic-agent:latest
+    hostname: ${HOSTNAME:-elastic-agent}
+    domainname: ${DOMAINNAME:-localhost}
+    environment:
+      - FLEET_ENROLL=${FLEET_ENROLL:-1}
+      - FLEET_URL=${FLEET_URL:-CHANGE_ME}
+      - FLEET_ENROLLMENT_TOKEN=${FLEET_ENROLLMENT_TOKEN:-CHANGE_ME}
+    restart: always
+    volumes:
+      - /opt/data/elastic-agent:/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - elastic_agent:/usr/share/elastic-agent/state
+    networks:
+      network:
+    healthcheck:
+      test: "elastic-agent status"
+      timeout: 2s
+      start_period: 360s
+      retries: 180
+      interval: 5s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.elastic_agent.rule=Host(`elastic-agent.localhost`)"
+      - "traefik.http.services.elastic_agent.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=false"
+
+volumes:
+  elastic_agent:

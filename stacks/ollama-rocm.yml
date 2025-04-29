@@ -1,3 +1,8 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
 services:
   ollama:
     image: ollama/ollama:rocm
@@ -9,8 +14,8 @@ services:
     volumes:
       - /opt/amdgpu:/opt/amdgpu:ro
       - /home/ollama/.ollama:/root/.ollama
-    ports:
-      - 11434/tcp
+    networks:
+      network:
     environment:
       - OLLAMA_MAX_LOADED_MODELS=${OLLAMA_MAX_LOADED_MODELS:-1}
       - HSA_OVERRIDE_GFX_VERSION=${HSA_OVERRIDE_GFX_VERSION:-}
@@ -21,7 +26,5 @@ services:
       retries: 5
       start_period: 15s
     restart: unless-stopped
-    deploy:
-      labels:
-        traefik.enable: "true"
-        traefik.http.routers.ollama.rule: "ollama.localhost"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"

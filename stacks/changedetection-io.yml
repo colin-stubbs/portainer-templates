@@ -1,0 +1,29 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  changedetection-io:
+    image: ghcr.io/dgtlmoon/changedetection.io:latest
+    hostname: ${HOSTNAME:-changedetection-io}
+    domainname: ${DOMAINNAME:-localhost}
+    environment:
+      - PORT=${PORT:-80}
+      - LOGGER_LEVEL=${LOGGER_LEVEL:-INFO}
+      - HIDE_REFERER=${HIDE_REFERER:-true}
+      - DISABLE_VERSION_CHECK=${DISABLE_VERSION_CHECK:-true}
+      - TZ=${TZ:-Australia/Brisbane}
+    restart: always
+    volumes:
+      - changedetection_io:/datastore
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.changedetection_io.rule=Host(`changedetection-io.localhost`)"
+      - "traefik.http.services.changedetection_io.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  changedetection_io:

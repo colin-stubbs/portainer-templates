@@ -1,0 +1,25 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    hostname: ${HOSTNAME:-homepage}
+    domainname: ${DOMAINNAME:-localhost}
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS:-homepage.localhost}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/data/portainer/config/homepage:/app/config
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homepage.rule=Host(`homepage.localhost`)"
+      - "traefik.http.services.homepage.loadbalancer.server.port=3000"
+      - "com.centurylinklabs.watchtower.enable=true"

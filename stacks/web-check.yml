@@ -14,5 +14,5 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.web_check.rule=Host(`web-check.localhost`)"
-      - "traefik.http.services.web_check.loadbalancer.server.port=5377"
+      - "traefik.http.services.web_check.loadbalancer.server.port=3000"
       - "com.centurylinklabs.watchtower.enable=true"

@@ -238,6 +238,10 @@
       "categories": [
         "Database"
       ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/postgres.yml"
+      },
       "env": [
         {
           "name": "NETWORK",
@@ -490,16 +494,6 @@
           "name": "DOMAINNAME",
           "label": "DOMAINNAME",
           "default": "localhost"
-        },
-        {
-          "name": "PGID",
-          "label": "PGID",
-          "default": "1000"
-        },
-        {
-          "name": "PUID",
-          "label": "PUID",
-          "default": "1000"
         },
         {
           "name": "HOMEPAGE_ALLOWED_HOSTS",

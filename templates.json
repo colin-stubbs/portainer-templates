@@ -165,6 +165,12 @@
           "default": "true"
         },
         {
+          "name": "TRAEFIK_PROVIDERS_DOCKER_EXPOSEDBYDEFAULT",
+          "label": "TRAEFIK_PROVIDERS_DOCKER_EXPOSEDBYDEFAULT",
+          "description": "Expose containers by default. If set traefik.enable=true should be set as a label on the container.",
+          "default": "false"
+        },
+        {
           "name": "TRAEFIK_API_INSECURE",
           "label": "TRAEFIK_API_INSECURE",
           "description": "Activate API directly on the entryPoint named traefik.",

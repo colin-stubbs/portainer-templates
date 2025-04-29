@@ -326,63 +326,41 @@
     },
     {
       "id": 5004,
-      "type": 1,
-      "image": "ghcr.io/gchq/cyberchef:latest",
+      "type": 3,
       "name": "cyberchef",
       "title": "CyberChef",
       "description": "A Cyber Swiss Army Knife",
-      "categories": ["edge","Web","Tools"],
+      "categories": [
+        "edge",
+        "Web",
+        "Productivity",
+        "Tools"
+      ],
       "logo": "https://avatars.githubusercontent.com/u/15800240",
-      "restart_policy": "unless-stopped",
-      "ports": [
-        "80/tcp"
-      ],
-      "labels": [
-        {
-          "name": "traefik.enable",
-          "value": "true"
-        },
-        {
-          "name": "traefik.http.routers.cyberchef.rule",
-          "value": "Host(`cyberchef.localhost`)"
-        },
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
-        }
-      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/cyberchef.yml"
+      },
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
       "id": 5005,
-      "type": 1,
-      "image": "excalidraw/excalidraw:latest",
+      "type": 3,
       "name": "excalidraw",
       "title": "Excalidraw",
       "description": "Virtual whiteboard for sketching hand-drawn like diagrams. Collaborative and end-to-end encrypted.",
       "logo": "https://github.com/excalidraw/excalidraw/raw/master/public/og-image-sm.png",
       "categories": [
+        "edge",
+        "Web",
         "Productivity",
+        "Tools",
         "Drawing"
       ],
-      "restart_policy": "unless-stopped",
-      "ports": [
-        "80/tcp"
-      ],
-      "labels": [
-        {
-          "name": "traefik.enable",
-          "value": "true"
-        },
-        {
-          "name": "traefik.http.routers.excalidraw.rule",
-          "value": "Host(`excalidraw.localhost`)"
-        },
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
-        }
-      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/excalidraw.yml"
+      },
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {

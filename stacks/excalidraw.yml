@@ -1,0 +1,18 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  searxng:
+    image: excalidraw/excalidraw:latest
+    hostname: ${HOSTNAME:-excalidraw}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: always
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.excalidraw.rule=Host(`excalidraw.localhost`)"
+      - "traefik.http.services.excalidraw.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"

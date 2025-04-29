@@ -4,15 +4,15 @@ networks:
     external: true
 
 services:
-  cyberchef:
-    image: ghcr.io/gchq/cyberchef:latest
-    hostname: ${HOSTNAME:-cyberchef}
+  web-check:
+    image: lissy93/web-check:latest
+    hostname: ${HOSTNAME:-web-check}
     domainname: ${DOMAINNAME:-localhost}
     restart: always
     networks:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.cyberchef.rule=Host(`cyberchef.localhost`)"
-      - "traefik.http.services.cyberchef.loadbalancer.server.port=80"
+      - "traefik.http.routers.web_check.rule=Host(`web-check.localhost`)"
+      - "traefik.http.services.web_check.loadbalancer.server.port=5377"
       - "com.centurylinklabs.watchtower.enable=true"

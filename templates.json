@@ -365,36 +365,23 @@
     },
     {
       "id": 5006,
-      "type": 1,
+      "type": 3,
       "image": "lissy93/web-check:latest",
       "name": "web-check",
       "title": "Web Check",
       "description": "Web Check give you a comprehensive, on-demand open source intelligence for any website",
       "logo": "https://camo.githubusercontent.com/e081ebebf2ef1dbe9ecffa081063db7c9f696e5913d75699f7d2968a186d0d72/68747470733a2f2f692e6962622e636f2f7131675a4e32702f7765622d636865636b2d6c6f676f2e706e67",
       "categories": [
+        "edge",
         "Tools",
         "Web",
         "Security",
         "OSINT"
       ],
-      "ports": [
-        "5377/tcp"
-      ],
-      "restart_policy": "unless-stopped",
-      "labels": [
-        {
-          "name": "traefik.enable",
-          "value": "true"
-        },
-        {
-          "name": "traefik.http.routers.web_check.rule",
-          "value": "Host(`web-check.localhost`)"
-        },
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
-        }
-      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/web-check.yml"
+      },
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {

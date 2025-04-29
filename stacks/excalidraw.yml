@@ -4,7 +4,7 @@ networks:
     external: true
 
 services:
-  searxng:
+  excalidraw:
     image: excalidraw/excalidraw:latest
     hostname: ${HOSTNAME:-excalidraw}
     domainname: ${DOMAINNAME:-localhost}

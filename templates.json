@@ -205,20 +205,14 @@
 		},
     {
       "id": 5,
-      "type": 1,
-      "image": "postgres:latest",
-      "name": "postgres",
-      "title": "PostgreSQL",
+      "type": 3,
+      "name": "postgres-pgadmin",
+      "title": "PostgreSQL+pgAdmin",
       "description": "PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.",
+      "note": "PostgreSQL database server plus a pgAdmin4 web admin interface.",
       "logo": "https://www.postgresql.org/media/img/about/press/elephant.png",
       "categories": [
         "Database"
-      ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
-        {
-          "container": "/var/lib/postgresql/data"
-        }
       ],
       "env": [
         {
@@ -245,15 +239,26 @@
           "name": "POSTGRES_PORT",
           "label": "POSTGRES_PORT",
           "default": "5432"
-        }
-      ],
-      "ports": [
-        "5432/tcp"
-      ],
-      "labels": [
+        },
         {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
+          "name": "PGADMIN_DEFAULT_EMAIL",
+          "label": "PGADMIN_DEFAULT_EMAIL",
+          "default": "CHANGE@ME.tld"
+        },
+        {
+          "name": "PGADMIN_DEFAULT_PASSWORD",
+          "label": "PGADMIN_DEFAULT_PASSWORD",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "PGADMIN_DISABLE_POSTFIX",
+          "label": "PGADMIN_DISABLE_POSTFIX",
+          "default": "True"
+        },
+        {
+          "name": "PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION",
+          "label": "PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION",
+          "default": "True"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

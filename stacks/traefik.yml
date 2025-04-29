@@ -21,6 +21,8 @@ services:
       - TRAEFIK_API=${TRAEFIK_API:-false}
       - TRAEFIK_API_DASHBOARD=${TRAEFIK_API_DASHBOARD:-false}
       - TRAEFIK_API_INSECURE=${TRAEFIK_API_INSECURE:-false}
+      - TRAEFIK_ACCESSLOG=${TRAEFIK_ACCESSLOG:-true}
+      - TRAEFIK_ACCESSLOG_ADDINTERNALS=${TRAEFIK_ACCESSLOG_ADDINTERNALS:-true}
     restart: always
     networks:
       network:

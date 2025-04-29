@@ -187,6 +187,18 @@
           "label": "TRAEFIK_API_DASHBOARD",
           "description": "Activate dashboard via API.",
           "default": "false"
+        },
+        {
+          "name": "TRAEFIK_ACCESSLOG",
+          "label": "TRAEFIK_ACCESSLOG",
+          "description": "Enable access logging.",
+          "default": "false"
+        },
+        {
+          "name": "TRAEFIK_ACCESSLOG_ADDINTERNALS",
+          "label": "TRAEFIK_ACCESSLOG_ADDINTERNALS",
+          "description": "Enables access log for internal services (ping, dashboard, etc...).",
+          "default": "false"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

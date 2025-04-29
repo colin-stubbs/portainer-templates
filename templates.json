@@ -584,6 +584,11 @@
       },
       "env": [
         {
+          "name": "IMAGE",
+          "label": "IMAGE",
+          "default": "docker.elastic.co/elastic-agent/elastic-agent:8.18.0"
+        },
+        {
           "name": "FLEET_ENROLL",
           "label": "FLEET_ENROLL",
           "default": "1"

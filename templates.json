@@ -387,37 +387,19 @@
     {
       "id": 5007,
       "type": 1,
-      "image": "louislam/uptime-kuma:latest",
       "name": "uptime-kuma",
       "title": "Uptime Kuma",
       "description": "It is a self-hosted monitoring tool like Uptime Robot",
       "logo": "https://images.opencollective.com/uptime-kuma/29c5113/logo/256.png",
       "categories": [
-        "Taskserver"
+        "Tools",
+        "Web",
+        "Monitoring"
       ],
-      "ports": [
-        "3001/tcp"
-      ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
-        {
-          "container": "/app/data"
-        }
-      ],
-      "labels": [
-        {
-          "name": "traefik.enable",
-          "value": "true"
-        },
-        {
-          "name": "traefik.http.routers.uptime_kuma.rule",
-          "value": "Host(`uptime-kuma.localhost`)"
-        },
-        {
-          "name": "com.centurylinklabs.watchtower.enable",
-          "value": "true"
-        }
-      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/uptime-kuma.yml"
+      },
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {

@@ -578,6 +578,10 @@
         "Logs",
         "Tools"
       ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/elastic-agent.yml"
+      },
       "env": [
         {
           "name": "FLEET_ENROLL",
@@ -689,6 +693,21 @@
           "default": "localhost"
         },
         {
+          "name": "SEARXNG_HOSTNAME",
+          "label": "SEARXNG_HOSTNAME",
+          "default": "searxng.localhost"
+        },
+        {
+          "name": "SEARXNG_BASE_URL",
+          "label": "SEARXNG_BASE_URL",
+          "default": "https://searxng.localhost/"
+        },
+        {
+          "name": "SEARXNG_URL",
+          "label": "SEARXNG_URL",
+          "default": "/"
+        },
+        {
           "name": "SEARXNG_SECRET",
           "label": "SEARXNG_SECRET",
           "description": "Crucial for secure operation and should be a randomly generated, unique string.",
@@ -705,9 +724,14 @@
           "default": "80"
         },
         {
-          "name": "SEARXNG_URL",
-          "label": "SEARXNG_URL",
-          "default": "/"
+          "name": "UWSGI_WORKERS",
+          "label": "UWSGI_WORKERS",
+          "default": "4"
+        },
+        {
+          "name": "UWSGI_THREADS",
+          "label": "UWSGI_THREADS",
+          "default": "4"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

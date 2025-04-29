@@ -11,10 +11,26 @@ services:
     volumes:
       - /opt/data/portainer/config/searxng:/etc/searxng
     environment:
-      - SEARXNG_SECRET=${SEARXNG_SECRET:-secret}
-      - SEARXNG_BIND_ADDRESS=${SEARXNG_BIND_ADDRESS:-0.0.0.0}
-      - SEARXNG_PORT=${SEARXNG_PORT:-80}
+      - SEARXNG_HOSTNAME=${HOSTNAME:-searxng.localhost}
+      - SEARXNG_BASE_URL=https://${SEARXNG_HOSTNAME:-searxng.localhost}/
       - SEARXNG_URL=${SEARXNG_URL:-/}
+      - SEARXNG_SECRET=${SEARXNG_SECRET:-CHANGE_ME}
+      - SEARXNG_BIND_ADDRESS=${SEARXNG_BIND_ADDRESS:-[::]}
+      - SEARXNG_PORT=${SEARXNG_PORT:-80}
+      - UWSGI_WORKERS=${SEARXNG_UWSGI_WORKERS:-4}
+      - UWSGI_THREADS=${SEARXNG_UWSGI_THREADS:-4}
+      - BIND_ADDRESS=${SEARXNG_BIND_ADDRESS:-[::]}:${SEARXNG_PORT:-80}
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
     restart: always
     networks:
       network:

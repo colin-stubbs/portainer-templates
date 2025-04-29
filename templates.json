@@ -709,6 +709,7 @@
       "note": "TBC",
       "logo": "https://avatars.githubusercontent.com/u/80454229",
       "categories": [
+        "edge",
         "Web",
         "Search"
       ],
@@ -721,45 +722,38 @@
           "name": "NETWORK",
           "label": "NETWORK",
           "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
-          "default": "localnet",
-          "preset": true
+          "default": "localnet"
         },
         {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
-          "default": "searxng",
-          "preset": true
+          "default": "searxng"
         },
         {
           "name": "DOMAINNAME",
           "label": "DOMAINNAME",
-          "default": "localhost",
-          "preset": true
+          "default": "localhost"
         },
         {
           "name": "SEARXNG_SECRET",
           "label": "SEARXNG_SECRET",
           "description": "Crucial for secure operation and should be a randomly generated, unique string.",
-          "default": "s3c537!",
-          "preset": true
+          "default": "CHANGE_ME"
         },
         {
           "name": "SEARXNG_BIND_ADDRESS",
           "label": "SEARXNG_BIND_ADDRESS",
-          "default": "0.0.0.0",
-          "preset": true
+          "default": "0.0.0.0"
         },
         {
           "name": "SEARXNG_PORT",
           "label": "SEARXNG_PORT",
-          "default": "8080",
-          "preset": true
+          "default": "80"
         },
         {
           "name": "SEARXNG_URL",
           "label": "SEARXNG_URL",
-          "default": "/",
-          "preset": true
+          "default": "/"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -785,68 +779,57 @@
           "name": "NETWORK",
           "label": "NETWORK",
           "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
-          "default": "localnet",
-          "preset": true
+          "default": "localnet"
         },
         {
           "name": "OLLAMA_BASE_URL",
           "label": "OLLAMA_BASE_URL",
-          "default": "http://host.docker.internal:11434",
-          "preset": true
+          "default": "http://host.docker.internal:11434"
         },
         {
           "name": "ENABLE_RAG_WEB_SEARCH",
           "label": "ENABLE_RAG_WEB_SEARCH",
-          "default": "true",
-          "preset": true
+          "default": "true"
         },
         {
           "name": "RAG_WEB_SEARCH_ENGINE",
           "label": "RAG_WEB_SEARCH_ENGINE",
-          "default": "searxng",
-          "preset": true
+          "default": "searxng"
         },
         {
           "name": "RAG_WEB_SEARCH_RESULT_COUNT",
           "label": "RAG_WEB_SEARCH_RESULT_COUNT",
-          "default": "3",
-          "preset": true
+          "default": "3"
         },
         {
           "name": "RAG_WEB_SEARCH_CONCURRENT_REQUEST",
           "label": "RAG_WEB_SEARCH_CONCURRENT_REQUEST",
-          "default": "10",
-          "preset": true
+          "default": "10"
         },
         {
           "name": "SEARXNG_QUERY_URL",
           "label": "SEARXNG_QUERY_URL",
-          "default": "http://searxng:8080/search?q=<query>",
-          "preset": true
+          "default": "http://searxng/search?q=<query>"
         },
         {
           "name": "OAUTH_MERGE_ACCOUNTS_BY_EMAIL",
           "label": "OAUTH_MERGE_ACCOUNTS_BY_EMAIL",
-          "default": "false",
-          "preset": true
+          "default": "false"
         },
         {
           "name": "WEBUI_SECRET_KEY",
           "label": "WEBUI_SECRET_KEY",
-          "default": "secret",
-          "preset": true
+          "default": "CHANGE_ME"
         },
         {
           "name": "USE_CUDA_DOCKER",
           "label": "USE_CUDA_DOCKER",
-          "default": "false",
-          "preset": true
+          "default": "false"
         },
         {
           "name": "DATABASE_URL",
           "label": "DATABASE_URL",
-          "default": "postgresql://postgres:P@55w0rd@postgres:5432/postgres",
-          "preset": true
+          "default": "postgresql://postgres:CHANGE_ME@postgres:5432/postgres"
         }
       ],
       "maintainer": "https://github.com/colin-stubbs/portainer-templates/"

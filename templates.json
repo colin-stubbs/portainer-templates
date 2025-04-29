@@ -139,6 +139,7 @@
 			"description": "Cloud-Native Networking Stack That Just Works.",
 			"image": "traefik:latest",
 			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/traefik.png",
+      "note": "Configure environment variables as per <a href=\"https://doc.traefik.io/traefik/reference/static-configuration/env/\">https://doc.traefik.io/traefik/reference/static-configuration/env/</a>.",
 			"categories": [
         "edge",
         "Web",
@@ -156,6 +157,30 @@
           "label": "NETWORK",
           "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
           "default": "localnet"
+        },
+        {
+          "name": "TRAEFIK_PROVIDERS_DOCKER",
+          "label": "TRAEFIK_PROVIDERS_DOCKER",
+          "description": "Enable Docker backend with default settings.",
+          "default": "true"
+        },
+        {
+          "name": "TRAEFIK_API_INSECURE",
+          "label": "TRAEFIK_API_INSECURE",
+          "description": "Activate API directly on the entryPoint named traefik.",
+          "default": "false"
+        },
+        {
+          "name": "TRAEFIK_API",
+          "label": "TRAEFIK_API",
+          "description": "Activate API.",
+          "default": "false"
+        },
+        {
+          "name": "TRAEFIK_API_DASHBOARD",
+          "label": "TRAEFIK_API_DASHBOARD",
+          "description": "Activate dashboard via API.",
+          "default": "false"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

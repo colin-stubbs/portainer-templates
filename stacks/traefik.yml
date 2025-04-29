@@ -8,18 +8,25 @@ services:
     image: traefik:latest
     hostname: ${HOSTNAME:-traefik}
     domainname: ${DOMAINNAME:-localhost}
-    command: "'--api.insecure=true' '--providers.docker'"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "80/tcp"
-      - "443/tcp"
-      - "8080/tcp"
+      - "80:80/tcp"
+      - "443:443/tcp"
+      - "8080:8080/tcp"
+      - "8443:8443/tcp"
+    environment:
+      - TRAEFIK_PROVIDERS_DOCKER=${TRAEFIK_PROVIDERS_DOCKER:-true}
+      - TRAEFIK_API=${TRAEFIK_API:-false}
+      - TRAEFIK_API_DASHBOARD=${TRAEFIK_API_DASHBOARD:-false}
+      - TRAEFIK_API_INSECURE=${TRAEFIK_API_INSECURE:-false}
     restart: always
     networks:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.open_webui.rule=Host(`traefik.localhost`)"
-      - "traefik.http.services.traefik.loadbalancer.server.port=8080"
+      - "traefik.http.routers.api.rule=Host(`traefik.localhost`)"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.api.middlewares=api"
+      - "traefik.http.middlewares.api.basicauth.users=admin:$apr1$RV0rTsSy$eJR8jnlH1gzdXsVaKFrcO."
       - "com.centurylinklabs.watchtower.enable=true"

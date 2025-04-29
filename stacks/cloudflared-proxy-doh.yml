@@ -11,8 +11,8 @@ services:
       - TUNNEL_DNS_ADDRESS=${TUNNEL_DNS_ADDRESS:-0.0.0.0}
       - TUNNEL_DNS_PORT=${TUNNEL_DNS_PORT:-53}
     ports:
-      - "53/udp"
-      - "53/tcp"
+      - "53:53/udp"
+      - "53:53/tcp"
     restart: always
     networks:
       network:

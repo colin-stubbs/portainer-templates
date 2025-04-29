@@ -10,24 +10,43 @@ services:
     domainname: ${DOMAINNAME:-localhost}
     environment:
       - TZ=${TIMEZONE:-Australia/Brisbane}
-      - POSTGRES_DB=${POSTGRES_DB:-postgress}
-      - POSTGRES_USER=${POSTGRES_USER:-postgress}
+      - POSTGRES_DB=${POSTGRES_DB:-postgres}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-P@55w0rd}
       - POSTGRES_PORT=${POSTGRES_PORT:-5432}
     healthcheck:
-      test: ['CMD-SHELL', "sh -c 'pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-P@55w0rd}'"]
+      test: ['CMD-SHELL', "sh -c 'pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_PASSWORD:-P@55w0rd}'"]
       interval: 10s
       timeout: 3s
       retries: 3
     restart: always
     volumes:
       - postgres:/var/lib/postgresql/data:rw
-    ports:
-      - "5432/tcp"
     networks:
       network:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
+  pgadmin:
+    image: dpage/pgadmin4:${PG_MAJOR:-latest}
+    hostname: ${HOSTNAME:-pgadmin}
+    domainname: ${DOMAINNAME:-localhost}
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-CHANGE@ME.tld}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-pg4dm1n}
+      - PGADMIN_DISABLE_POSTFIX=${PGADMIN_DISABLE_POSTFIX:-True}
+      - PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION=${PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION:-True}
+    restart: always
+    volumes:
+      - pgadmin:/var/lib/pgadmin:rw
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pgadmin.rule=Host(`pgadmin.localhost`)"
+      - "traefik.http.services.pgadmin.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"
+
 volumes:
   postgres:
+  pgadmin:

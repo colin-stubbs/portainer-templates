@@ -26,8 +26,8 @@ services:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.api.rule=Host(`traefik.localhost`)"
-      - "traefik.http.routers.api.service=api@internal"
-      - "traefik.http.routers.api.middlewares=auth"
-      - "traefik.http.middlewares.auth.basicauth.users=admin:$apr1$RV0rTsSy$eJR8jnlH1gzdXsVaKFrcO."
+      - "traefik.http.routers.traefik_api.rule=Host(`traefik.localhost`)"
+      - "traefik.http.routers.traefik_api.service=api@internal"
+      - "traefik.http.routers.traefik_api.middlewares=traefik_api"
+      - "traefik.http.middlewares.traefik_api.basicauth.users=admin:$$apr1$$RV0rTsSy$$eJR8jnlH1gzdXsVaKFrcO."
       - "com.centurylinklabs.watchtower.enable=true"

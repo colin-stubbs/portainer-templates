@@ -8,8 +8,6 @@ services:
     image: ghcr.io/open-webui/open-webui:main
     hostname: ${HOSTNAME:-open-webui}
     domainname: ${DOMAINNAME:-localhost}
-    ports:
-      - "8080/tcp"
     extra_hosts:
       - host.docker.internal:host-gateway
     environment:
@@ -39,6 +37,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.open_webui.rule=Host(`open-webui.localhost`)"
+      - "traefik.http.services.open_webui.loadbalancer.server.port=8080"
       - "com.centurylinklabs.watchtower.enable=true"
 
 volumes:

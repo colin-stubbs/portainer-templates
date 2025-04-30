@@ -435,7 +435,7 @@
       "name": "adminer",
       "title": "Adminer",
       "description": "Graphical web admin interface for various databases including MySQL/MariaDB, PostgreSQL, SQLite, SimpleDB, Elasticsearch and others.",
-      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/adminer.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/adminer.svg",
       "categories": [
         "Database",
         "Web",

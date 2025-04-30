@@ -260,10 +260,10 @@
     {
       "id": 5,
       "type": 3,
-      "name": "postgres-pgadmin",
-      "title": "PostgreSQL+pgAdmin",
+      "name": "postgres",
+      "title": "PostgreSQL",
       "description": "PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.",
-      "note": "PostgreSQL database server plus a pgAdmin4 web admin interface.",
+      "note": "TBC",
       "logo": "https://www.postgresql.org/media/img/about/press/elephant.png",
       "categories": [
         "Database"
@@ -278,6 +278,16 @@
           "label": "NETWORK",
           "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
           "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "postgres"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
         },
         {
           "name": "TZ",
@@ -303,6 +313,43 @@
           "name": "POSTGRES_PORT",
           "label": "POSTGRES_PORT",
           "default": "5432"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 5,
+      "type": 3,
+      "name": "pgadmin",
+      "title": "PostgreSQL Admin",
+      "description": "pgAdmin4 web admin interface.",
+      "note": "TBC",
+      "logo": "https://www.postgresql.org/media/img/about/press/elephant.png",
+      "categories": [
+        "Database",
+        "Web",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/pgadmin.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "pgadmin"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
         },
         {
           "name": "PGADMIN_DEFAULT_EMAIL",

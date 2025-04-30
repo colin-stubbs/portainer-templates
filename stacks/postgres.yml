@@ -27,26 +27,5 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
-  pgadmin:
-    image: dpage/pgadmin4:${PG_MAJOR:-latest}
-    hostname: ${HOSTNAME:-pgadmin}
-    domainname: ${DOMAINNAME:-localhost}
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-CHANGE@ME.tld}
-      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-CHANGE_ME}
-      - PGADMIN_DISABLE_POSTFIX=${PGADMIN_DISABLE_POSTFIX:-True}
-      - PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION=${PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION:-True}
-    restart: always
-    volumes:
-      - pgadmin:/var/lib/pgadmin:rw
-    networks:
-      network:
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.pgadmin.rule=Host(`pgadmin.localhost`)"
-      - "traefik.http.services.pgadmin.loadbalancer.server.port=80"
-      - "com.centurylinklabs.watchtower.enable=true"
-
 volumes:
   postgres:
-  pgadmin:

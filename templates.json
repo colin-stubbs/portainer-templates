@@ -572,13 +572,13 @@
       "name": "cyberchef",
       "title": "CyberChef",
       "description": "A Cyber Swiss Army Knife",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/gchq.png",
       "categories": [
         "edge",
         "Web",
         "Productivity",
         "Tools"
       ],
-      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/gchq.jpeg",
       "repository": {
         "url": "https://github.com/colin-stubbs/portainer-templates/",
         "stackfile": "stacks/cyberchef.yml"

@@ -1,0 +1,20 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  elasticvue:
+    image: cars10/elasticvue:latest
+    hostname: ${HOSTNAME:-elasticvue}
+    domainname: ${DOMAINNAME:-localhost}
+    environment:
+      - ELASTICVUE_CLUSTERS=${ELASTICVUE_CLUSTERS:-[\{"name":"local","uri":"https://elasticsearch.localhost","username":"elastic","password":"changeme"\}]}
+    restart: always
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.elasticvue.rule=Host(`elasticvue.localhost`)"
+      - "traefik.http.services.elasticvue.loadbalancer.server.port=8080"
+      - "com.centurylinklabs.watchtower.enable=true"

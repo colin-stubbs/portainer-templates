@@ -637,6 +637,55 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
+      "id": 5010,
+      "type": 3,
+      "name": "elasticsearch",
+      "title": "Elasticsearch",
+      "description": "Elasticsearch single stand-alone server",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/elasticsearch.png",
+      "categories": [
+        "Database",
+        "Search",
+        "Storage"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/elasticsearch.yml"
+      },
+      "env": [
+        {
+          "name": "IMAGE",
+          "label": "IMAGE",
+          "default": "docker.elastic.co/elasticsearch/elasticsearch-wolfi:8.18.0"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 5011,
+      "type": 3,
+      "name": "elastivue",
+      "title": "Elasticvue",
+      "description": "The elasticsearch GUI that you deserve.",
+      "logo": "https://elasticvue.com/_next/static/media/blue_96.63a47b36.png",
+      "categories": [
+        "Database",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/elasticvue.yml"
+      },
+      "env": [
+        {
+          "name": "ELASTICVUE_CLUSTERS",
+          "label": "ELASTICVUE_CLUSTERS",
+          "default": "[{\"name\":\"local\",\"uri\":\"https://elasticsearch.localhost\",\"username\":\"elastic\",\"password\":\"changeme\"}]"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
       "id": 10000,
       "type": 3,
       "name": "ollama",

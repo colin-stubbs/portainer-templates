@@ -78,6 +78,36 @@
           "label": "WATCHTOWER_ROLLING_RESTART",
           "description": "Restart one image at time instead of stopping and starting all at once.",
           "default": "true"
+        },
+        {
+          "name": "WATCHTOWER_NO_STARTUP_MESSAGE",
+          "label": "WATCHTOWER_NO_STARTUP_MESSAGE",
+          "description": "Do not send a message after watchtower started. Otherwise there will be an info-level notification.",
+          "default": "true"
+        },
+        {
+          "name": "WATCHTOWER_NOTIFICATIONS_LEVEL",
+          "label": "WATCHTOWER_NOTIFICATIONS_LEVEL",
+          "description": "Controls the log level which is used for the notifications. If omitted, the default log level is info. Possible values are: panic, fatal, error, warn, info, debug or trace.",
+          "default": "info"
+        },
+        {
+          "name": "WATCHTOWER_NOTIFICATION_REPORT",
+          "label": "WATCHTOWER_NOTIFICATION_REPORT",
+          "description": "Use the session report as the notification template data.",
+          "default": "true"
+        },
+        {
+          "name": "WATCHTOWER_NOTIFICATION_URL",
+          "label": "WATCHTOWER_NOTIFICATION_URL",
+          "description": "The shoutrrr service URL to be used. This option can also reference a file, in which case the contents of the file are used.",
+          "default": ""
+        },
+        {
+          "name": "WATCHTOWER_NOTIFICATION_TEMPLATE",
+          "label": "WATCHTOWER_NOTIFICATION_TEMPLATE",
+          "description": "The template used for notifications.",
+          "default": "\n{{- if .Report -}}\n    {{- with .Report -}}\n  {{len .Scanned}} Scanned, {{len .Updated}} Updated, {{len .Failed}} Failed\n        {{- range .Updated}}\n  - {{.Name}} ({{.ImageName}}): {{.CurrentImageID.ShortID}} updated to {{.LatestImageID.ShortID}}\n        {{- end -}}\n        {{- range .Fresh}}\n  - {{.Name}} ({{.ImageName}}): {{.State}}\n      {{- end -}}\n      {{- range .Skipped}}\n  - {{.Name}} ({{.ImageName}}): {{.State}}: {{.Error}}\n      {{- end -}}\n      {{- range .Failed}}\n  - {{.Name}} ({{.ImageName}}): {{.State}}: {{.Error}}\n      {{- end -}}\n    {{- end -}}\n  {{- else -}}\n    {{range .Entries -}}{{.Message}}{{\"\n\"}}{{- end -}}\n  {{- end -}}\n"
         }
       ]
     },

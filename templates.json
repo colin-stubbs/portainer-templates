@@ -435,6 +435,7 @@
       "name": "adminer",
       "title": "Adminer",
       "description": "Graphical web admin interface for various databases including MySQL/MariaDB, PostgreSQL, SQLite, SimpleDB, Elasticsearch and others.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/adminer.png",
       "categories": [
         "Database",
         "Web",
@@ -483,6 +484,7 @@
       "name": "opcs",
       "title": "1Password Connect Server",
       "description": "Securely access your 1Password items and vaults in your company's apps and cloud infrastructure using a private REST API",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/1password.png",
       "categories": [
         "Security",
         "Web",

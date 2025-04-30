@@ -1,0 +1,29 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  mariadb:
+    image: mariadb:${MARIADB_VERSION:-latest}
+    hostname: ${HOSTNAME:-mariadb}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: always
+    volumes:
+      - mariadb_data:/var/lib/mysql:Z
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD:-CHANGE_ME}
+      - MARIADB_DATABASE=${MARIADB_DATABASE:-mariadb}
+      - MARIADB_USER=${MARIADB_USER:-CHANGE_ME}
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD:-CHANGE_ME}
+    networks:
+      network:
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin --user=${MARIADB_USER:-CHANGE_ME} --password=${MARIADB_PASSWORD:-CHANGE_ME} ping | grep 'is alive'"]
+      start_period: 30s
+      interval: 30s
+      timeout: 8s
+      retries: 5
+
+volumes:
+  mariadb_data:

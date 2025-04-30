@@ -1,0 +1,40 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  opcs-api:
+    image: 1password/connect-api:latest
+    hostname: ${HOSTNAME:-opcs-api}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: always
+    volumes:
+      - "/opt/data/portainer/config/opcs/1password-credentials.json:/home/opuser/.op/1password-credentials.json"
+      - "opcs-data:/home/opuser/.op/data"
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.opcs_api.rule=Host(`opcs-api.localhost`)"
+      - "traefik.http.services.opcs_api.loadbalancer.server.port=8080"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  opcs-sync:
+    image: 1password/connect-sync:latest
+    hostname: ${HOSTNAME:-opcs-sync}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: always
+    volumes:
+      - "/opt/data/portainer/config/opcs/1password-credentials.json:/home/opuser/.op/1password-credentials.json"
+      - "opcs-data:/home/opuser/.op/data"
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.opcs_sync.rule=Host(`opcs-sync.localhost`)"
+      - "traefik.http.services.opcs_sync.loadbalancer.server.port=8080"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  opcs-data:

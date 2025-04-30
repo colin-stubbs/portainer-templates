@@ -478,6 +478,42 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
+      "id": 8,
+      "type": 3,
+      "name": "opcs",
+      "title": "1Password Connect Server",
+      "description": "Securely access your 1Password items and vaults in your company's apps and cloud infrastructure using a private REST API",
+      "categories": [
+        "Security",
+        "Web",
+        "Tools",
+        "API"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/opcs.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "adminer"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
       "id": 5000,
       "type": 3,
       "name": "homepage",

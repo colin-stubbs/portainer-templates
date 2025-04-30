@@ -5,7 +5,7 @@ networks:
 
 services:
   cyberchef:
-    image: ${IMAGE:-docker.elastic.co/elastic-agent/elastic-agent:8.18.0}
+    image: ${IMAGE:-docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:8.18.0}
     hostname: ${HOSTNAME:-elastic-agent}
     domainname: ${DOMAINNAME:-localhost}
     environment:

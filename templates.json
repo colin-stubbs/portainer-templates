@@ -586,7 +586,7 @@
         {
           "name": "IMAGE",
           "label": "IMAGE",
-          "default": "docker.elastic.co/elastic-agent/elastic-agent:8.18.0"
+          "default": "docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:8.18.0"
         },
         {
           "name": "FLEET_ENROLL",

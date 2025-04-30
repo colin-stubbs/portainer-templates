@@ -375,6 +375,54 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
+      "id": 6,
+      "type": 3,
+      "name": "adminer",
+      "title": "Adminer",
+      "description": "Graphical web admin interface for various databases including MySQL/MariaDB, PostgreSQL, SQLite, SimpleDB, Elasticsearch and others.",
+      "categories": [
+        "Database",
+        "Web",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/adminer.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "adminer"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "ADMINER_PLUGINS",
+          "label": "ADMINER_PLUGINS"
+        },
+        {
+          "name": "ADMINER_DESIGN",
+          "label": "ADMINER_DESIGN",
+          "default": "adminer-dark"
+        },
+        {
+          "name": "ADMINER_DEFAULT_SERVER",
+          "label": "ADMINER_DEFAULT_SERVER"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
       "id": 5000,
       "type": 3,
       "name": "homepage",

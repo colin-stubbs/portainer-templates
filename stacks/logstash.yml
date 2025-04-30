@@ -1,0 +1,46 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  logstash:
+    image: ${IMAGE:-docker.elastic.co/logstash/logstash-wolfi:8.18.0}
+    hostname: ${HOSTNAME:-logstash}
+    domainname: ${DOMAINNAME:-localhost}
+    environment:
+      - PIPELINE_ECS__COMPATIBILITY=${PIPELINE_ECS__COMPATIBILITY:-v8}
+      - CONFIG_RELOAD_AUTOMATIC=${CONFIG_RELOAD_AUTOMATIC:-true}
+      - CONFIG_RELOAD_INTERVAL=${CONFIG_RELOAD_INTERVAL:-30s}
+      - QUEUE_TYPE=${QUEUE_TYPE:-persisted}
+      - QUEUE_PATH=${QUEUE_PATH:-/usr/share/logstash/data/queue}
+      - QUEUE_MAX__EVENTS=${QUEUE_MAX_EVENTS:-5000}
+      - QUEUE_MAX__BYTES=${QUEUE_MAX_BYTES:-1024mb}
+      - QUEUE_DRAIN=${QUEUE_DRAIN:-true}
+      - QUEUE_DRAIN_TIMEOUT=${QUEUE_DRAIN_TIMEOUT:-30s}
+      - API_AUTH_TYPE=${API_AUTH_TYPE:-basic}
+      - API_AUTH_BASIC_USERNAME=${API_AUTH_BASIC_USERNAME:-admin}
+      - API_AUTH_BASIC_PASSWORD=${API_AUTH_BASIC_PASSWORD:-CHANGE_ME}
+      - API_HTTP_PORT=${API_HTTP_PORT:-9600}
+      - LOG_FORMAT=${LOG_FORMAT:-json}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - XPACK_MANAGEMENT_ENABLED=${XPACK_MANAGEMENT_ENABLED:-false}
+      - XPACK_MANAGEMENT_ELASTICSEARCH_HOSTS=${XPACK_MANAGEMENT_ELASTICSEARCH_HOSTS:-http://localhost:9200/}
+      - XPACK_MANAGEMENT_ELASTICSEARCH_USERNAME=${XPACK_MANAGEMENT_ELASTICSEARCH_USERNAME:-logstash_admin_user}
+      - XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD=${XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD:-t0p.s3cr3t}
+      - XPACK_MANAGEMENT_LOGSTASH_POLL_INTERVAL=${XPACK_MANAGEMENT_LOGSTASH_POLL_INTERVAL:-30s}
+      - XPACK_MANAGEMENT_PIPELINE_ID=${XPACK_MANAGEMENT_PIPELINE_ID:-["apache", "cloudwatch_logs"]}
+    restart: always
+    volumes:
+      - /opt/data/portainer/config/logstash/pipeline:/usr/share/logstash/pipeline
+      - logstash_data:/usr/share/logstash/data
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.logstash_api.rule=Host(`logstash-api.localhost`)"
+      - "traefik.http.services.logstash_api.loadbalancer.server.port=9600"
+      - "com.centurylinklabs.watchtower.enable=false"
+
+volumes:
+  logstash_data:

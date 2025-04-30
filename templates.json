@@ -8,7 +8,7 @@
       "title": "Watchtower",
       "description": "Automatically update running Docker containers",
       "note": "TBC",
-      "logo": "https://mediadepot.github.io/templates/img/watchtower-logo.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/watchtower.png",
       "categories": ["edge","System","Tools"],
       "repository": {
         "url": "https://github.com/colin-stubbs/portainer-templates/",
@@ -121,7 +121,7 @@
         "Cloud",
         "Network"
       ],
-      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/Cloudflare_Logo.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/cloudflare.png",
       "repository": {
         "url": "https://github.com/colin-stubbs/portainer-templates/",
         "stackfile": "stacks/cloudflared-tunnel.yml"
@@ -148,7 +148,7 @@
       "title": "cloudflared-proxy-doh",
       "description": "cloudflared DNS over HTTPS proxy server",
       "categories": ["edge","Cloud","Network","DNS"],
-      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/Cloudflare_Logo.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/cloudflare.png",
       "repository": {
         "url": "https://github.com/colin-stubbs/portainer-templates/",
         "stackfile": "stacks/cloudflared-proxy-doh.yml"
@@ -182,7 +182,7 @@
 			"title": "Traefik",
 			"description": "Cloud-Native Networking Stack That Just Works.",
 			"image": "traefik:latest",
-			"logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/traefik.png",
+			"logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/traefik.png",
       "note": "Configure environment variables as per <a href=\"https://doc.traefik.io/traefik/reference/static-configuration/env/\">https://doc.traefik.io/traefik/reference/static-configuration/env/</a>.",
 			"categories": [
         "edge",
@@ -264,7 +264,7 @@
       "title": "PostgreSQL",
       "description": "PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.",
       "note": "TBC",
-      "logo": "https://www.postgresql.org/media/img/about/press/elephant.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/postgres.png",
       "categories": [
         "Database"
       ],
@@ -324,7 +324,7 @@
       "title": "PostgreSQL Admin",
       "description": "pgAdmin4 web admin interface.",
       "note": "TBC",
-      "logo": "https://www.postgresql.org/media/img/about/press/elephant.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/postgres.png",
       "categories": [
         "Database",
         "Web",
@@ -381,7 +381,7 @@
       "title": "MariaDB",
       "description": "MariaDB",
       "note": "TBC",
-      "logo": "https://mariadb.com/wp-content/uploads/2019/11/mariadb-logo-vertical_blue.svg",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/mariadb.svg",
       "categories": [
         "Database"
       ],
@@ -519,7 +519,7 @@
       "name": "homepage",
       "title": "Homepage",
       "description": "A modern (fully static, fast), secure (fully proxied), highly customizable application dashboard with integrations for more than 25 services and translations for over 15 languages. Easily configured via YAML files (or discovery via docker labels).",
-      "logo": "https://mediadepot.github.io/templates/img/homepage.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/homepage.png",
       "categories": [
         "Tools",
         "Network",
@@ -576,7 +576,7 @@
         "Productivity",
         "Tools"
       ],
-      "logo": "https://avatars.githubusercontent.com/u/15800240",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/gchq.jpeg",
       "repository": {
         "url": "https://github.com/colin-stubbs/portainer-templates/",
         "stackfile": "stacks/cyberchef.yml"
@@ -607,7 +607,7 @@
       "name": "excalidraw",
       "title": "Excalidraw",
       "description": "Virtual whiteboard for sketching hand-drawn like diagrams. Collaborative and end-to-end encrypted.",
-      "logo": "https://github.com/excalidraw/excalidraw/raw/master/public/og-image-sm.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/excalidraw.png",
       "categories": [
         "edge",
         "Web",
@@ -646,7 +646,7 @@
       "name": "web-check",
       "title": "Web Check",
       "description": "Web Check give you a comprehensive, on-demand open source intelligence for any website",
-      "logo": "https://camo.githubusercontent.com/e081ebebf2ef1dbe9ecffa081063db7c9f696e5913d75699f7d2968a186d0d72/68747470733a2f2f692e6962622e636f2f7131675a4e32702f7765622d636865636b2d6c6f676f2e706e67",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/web-check.png",
       "categories": [
         "edge",
         "Tools",
@@ -684,7 +684,7 @@
       "name": "uptime-kuma",
       "title": "Uptime Kuma",
       "description": "It is a self-hosted monitoring tool like Uptime Robot",
-      "logo": "https://images.opencollective.com/uptime-kuma/29c5113/logo/256.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/uptime-kuma.png",
       "categories": [
         "Tools",
         "Web",
@@ -726,7 +726,7 @@
       "name": "changedetection-io",
       "title": "ChangeDetection.io",
       "description": "changedetection.io - The best and simplest self-hosted open source website change detection monitoring and notification service. An alternative to Visualping, Watchtower",
-      "logo": "https://mediadepot.github.io/templates/img/changedetection.jpg",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/changedetection-io.jpeg",
       "categories": [
         "Network",
         "Web",
@@ -788,7 +788,7 @@
       "name": "elastic-agent",
       "title": "Elastic Agent",
       "description": "Elastic agent",
-      "logo": "https://images.squarespace-cdn.com/content/v1/600f75472fdc3d6dff8d0b87/ae1d32d9-5a8c-4262-a3d4-147e9f7556bc/Elastic.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/elastic-agent.png",
       "categories": [
         "edge",
         "Logs",
@@ -828,7 +828,7 @@
       "name": "elasticsearch",
       "title": "Elasticsearch",
       "description": "Elasticsearch single stand-alone server",
-      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/elasticsearch.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/elasticsearch.png",
       "categories": [
         "Database",
         "Search",
@@ -886,10 +886,155 @@
     {
       "id": 5011,
       "type": 3,
+      "name": "logstash",
+      "title": "Logstash",
+      "description": "Logstash",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/logstash.png",
+      "categories": [
+        "Logs",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/logstash.yml"
+      },
+      "env": [
+        {
+          "name": "IMAGE",
+          "label": "IMAGE",
+          "default": "docker.elastic.co/logstash/logstash-wolfi:8.18.0"
+        },
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "logstash"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "PIPELINE_ECS__COMPATIBILITY",
+          "label": "PIPELINE_ECS__COMPATIBILITY",
+          "default": "v8"
+        },
+        {
+          "name": "CONFIG_RELOAD_AUTOMATIC",
+          "label": "CONFIG_RELOAD_AUTOMATIC",
+          "default": "true"
+        },
+        {
+          "name": "CONFIG_RELOAD_INTERVAL",
+          "label": "CONFIG_RELOAD_INTERVAL",
+          "default": "30s"
+        },
+        {
+          "name": "QUEUE_TYPE",
+          "label": "QUEUE_TYPE",
+          "default": "persisted"
+        },
+        {
+          "name": "QUEUE_PATH",
+          "label": "QUEUE_PATH",
+          "default": "/usr/share/logstash/data/queue"
+        },
+        {
+          "name": "QUEUE_MAX__EVENTS",
+          "label": "QUEUE_MAX__EVENTS",
+          "default": "5000"
+        },
+        {
+          "name": "QUEUE_MAX__BYTES",
+          "label": "QUEUE_MAX__BYTES",
+          "default": "1024mb"
+        },
+        {
+          "name": "QUEUE_DRAIN",
+          "label": "QUEUE_DRAIN",
+          "default": "true"
+        },
+        {
+          "name": "QUEUE_DRAIN_TIMEOUT",
+          "label": "QUEUE_DRAIN_TIMEOUT",
+          "default": "30s"
+        },
+        {
+          "name": "API_AUTH_TYPE",
+          "label": "API_AUTH_TYPE",
+          "default": "basic"
+        },
+        {
+          "name": "API_AUTH_BASIC_USERNAME",
+          "label": "API_AUTH_BASIC_USERNAME",
+          "default": "admin"
+        },
+        {
+          "name": "API_AUTH_BASIC_PASSWORD",
+          "label": "API_AUTH_BASIC_PASSWORD",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "API_HTTP_PORT",
+          "label": "API_HTTP_PORT",
+          "default": "9600"
+        },
+        {
+          "name": "LOG_FORMAT",
+          "label": "LOG_FORMAT",
+          "default": "json"
+        },
+        {
+          "name": "LOG_LEVEL",
+          "label": "LOG_LEVEL",
+          "default": "info"
+        },
+        {
+          "name": "XPACK_MANAGEMENT_ENABLED",
+          "label": "XPACK_MANAGEMENT_ENABLED",
+          "default": "false"
+        },
+        {
+          "name": "XPACK_MANAGEMENT_ELASTICSEARCH_HOSTS",
+          "label": "XPACK_MANAGEMENT_ELASTICSEARCH_HOSTS",
+          "default": "http://localhost:9200/"
+        },
+        {
+          "name": "XPACK_MANAGEMENT_ELASTICSEARCH_USERNAME",
+          "label": "XPACK_MANAGEMENT_ELASTICSEARCH_USERNAME",
+          "default": "logstash_admin_user"
+        },
+        {
+          "name": "XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD",
+          "label": "XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD",
+          "default": "t0p.s3cr3t"
+        },
+        {
+          "name": "XPACK_MANAGEMENT_LOGSTASH_POLL_INTERVAL",
+          "label": "XPACK_MANAGEMENT_LOGSTASH_POLL_INTERVAL",
+          "default": "30s"
+        },
+        {
+          "name": "XPACK_MANAGEMENT_PIPELINE_ID",
+          "label": "XPACK_MANAGEMENT_PIPELINE_ID",
+          "default": "[\"apache\", \"cloudwatch_logs\"]"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 5012,
+      "type": 3,
       "name": "elastivue",
       "title": "Elasticvue",
       "description": "The elasticsearch GUI that you deserve.",
-      "logo": "https://elasticvue.com/_next/static/media/blue_96.63a47b36.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/elasticvue.png",
       "categories": [
         "Database",
         "Tools"
@@ -929,7 +1074,7 @@
       "name": "ollama",
       "title": "Ollama",
       "description": "Ollama",
-      "logo": "https://avatars.githubusercontent.com/u/151674099",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/ollama.png",
       "categories": [
         "edge",
         "AI"
@@ -957,7 +1102,7 @@
       "name": "ollama-rocm",
       "title": "Ollama (ROCM)",
       "description": "Ollama with ROCM for AMD GPU's",
-      "logo": "https://avatars.githubusercontent.com/u/151674099",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/ollama.png",
       "categories": [
         "edge",
         "AI"
@@ -987,7 +1132,7 @@
       "title": "SearXNG",
       "description": "SearXNG is a free internet metasearch engine which aggregates results from various search services and databases. Users are neither tracked nor profiled.",
       "note": "TBC",
-      "logo": "https://avatars.githubusercontent.com/u/80454229",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/searxng.png",
       "categories": [
         "edge",
         "Web",
@@ -1065,7 +1210,7 @@
       "title": "Open WebUI",
       "description": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline. It supports various LLM runners like Ollama and OpenAI-compatible APIs, with built-in inference engine for RAG, making it a powerful AI deployment solution.",
       "note": "TBC",
-      "logo": "https://avatars.githubusercontent.com/u/158137808",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/open-webui.png",
       "categories": [
         "Web",
         "AI"
@@ -1151,7 +1296,7 @@
       "title": "GoPhish",
       "description": "Open-Source Phishing Toolkit",
       "note": "TBC",
-      "logo": "https://avatars.githubusercontent.com/u/16602581",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/gophish.png",
       "categories": [
         "Web",
         "Email",

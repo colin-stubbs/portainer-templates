@@ -704,6 +704,42 @@
           "name": "IMAGE",
           "label": "IMAGE",
           "default": "docker.elastic.co/elasticsearch/elasticsearch-wolfi:8.18.0"
+        },
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "elasticsearch"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "ES_JAVA_OPTS",
+          "label": "ES_JAVA_OPTS",
+          "default": "-Xms512m -Xmx512m"
+        },
+        {
+          "name": "ELASTIC_USERNAME",
+          "label": "ELASTIC_USERNAME",
+          "default": "elastic"
+        },
+        {
+          "name": "ELASTIC_PASSWORD",
+          "label": "ELASTIC_PASSWORD",
+          "default": "changeme"
+        },
+        {
+          "name": "CORS_ALLOW_ORIGIN",
+          "label": "CORS_ALLOW_ORIGIN",
+          "default": "http://elasticvue.localhost"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -724,6 +760,22 @@
         "stackfile": "stacks/elasticvue.yml"
       },
       "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "elasticvue"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
         {
           "name": "ELASTICVUE_CLUSTERS",
           "label": "ELASTICVUE_CLUSTERS",

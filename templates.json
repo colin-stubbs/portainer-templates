@@ -952,6 +952,108 @@
         }
       ],
       "maintainer": "https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10005,
+      "type": 3,
+      "name": "gophish",
+      "title": "GoPhish",
+      "description": "Open-Source Phishing Toolkit",
+      "note": "TBC",
+      "logo": "https://avatars.githubusercontent.com/u/16602581",
+      "categories": [
+        "Web",
+        "Email",
+        "Security"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/gophish.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "gophish"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "GOPHISH_INITIAL_ADMIN_PASSWORD",
+          "label": "GOPHISH_INITIAL_ADMIN_PASSWORD",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "ADMIN_LISTEN_URL",
+          "label": "ADMIN_LISTEN_URL",
+          "default": "0.0.0.0:3333"
+        },
+        {
+          "name": "ADMIN_USE_TLS",
+          "label": "ADMIN_USE_TLS",
+          "default": "false"
+        },
+        {
+          "name": "ADMIN_CERT_PATH",
+          "label": "ADMIN_CERT_PATH",
+          "default": "gophish_admin.crt"
+        },
+        {
+          "name": "ADMIN_KEY_PATH",
+          "label": "ADMIN_KEY_PATH",
+          "default": "gophish_admin.key"
+        },
+        {
+          "name": "ADMIN_TRUSTED_ORIGINS",
+          "label": "ADMIN_TRUSTED_ORIGINS",
+          "default": "http://gophish-admin.localhost"
+        },
+        {
+          "name": "PHISH_LISTEN_URL",
+          "label": "PHISH_LISTEN_URL",
+          "default": "0.0.0.0:80"
+        },
+        {
+          "name": "PHISH_USE_TLS",
+          "label": "PHISH_USE_TLS",
+          "default": "false"
+        },
+        {
+          "name": "PHISH_CERT_PATH",
+          "label": "PHISH_CERT_PATH",
+          "default": "example.crt"
+        },
+        {
+          "name": "PHISH_KEY_PATH",
+          "label": "PHISH_KEY_PATH",
+          "default": "example.key"
+        },
+        {
+          "name": "CONTACT_ADDRESS",
+          "label": "CONTACT_ADDRESS",
+          "default": "CHANGE@ME.tld"
+        },
+        {
+          "name": "DB_NAME",
+          "label": "DB_NAME",
+          "default": "sqlite3"
+        },
+        {
+          "name": "DB_FILE_PATH",
+          "label": "DB_FILE_PATH",
+          "default": "gophish.db"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

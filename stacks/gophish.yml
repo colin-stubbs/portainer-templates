@@ -1,0 +1,33 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  gophish:
+    image: gophish/gophish:latest
+    restart: always
+    ports:
+      - "80/tcp"
+    environment:
+      - GOPHISH_INITIAL_ADMIN_PASSWORD=${GOPHISH_INITIAL_ADMIN_PASSWORD:-CHANGE_ME}
+      - ADMIN_LISTEN_URL=${ADMIN_LISTEN_URL:-0.0.0.0:3333}
+      - ADMIN_USE_TLS=${ADMIN_USE_TLS:-false}
+      - ADMIN_CERT_PATH=${ADMIN_CERT_PATH:-gophish_admin.crt}
+      - ADMIN_KEY_PATH=${ADMIN_KEY_PATH:-gophish_admin.key}
+      - ADMIN_TRUSTED_ORIGINS=${ADMIN_TRUSTED_ORIGINS:-http://gophish-admin.localhost}
+      - PHISH_LISTEN_URL=${PHISH_LISTEN_URL:-0.0.0.0:80}
+      - PHISH_USE_TLS=${PHISH_USE_TLS:-false}
+      - PHISH_CERT_PATH=${PHISH_CERT_PATH:-example.crt}
+      - PHISH_KEY_PATH=${PHISH_KEY_PATH:-example.key}
+      - CONTACT_ADDRESS=${CONTACT_ADDRESS:-CHANGE@ME.tld}
+      - DB_NAME=${DB_NAME:-sqlite3}
+      - DB_FILE_PATH=${DB_FILE_PATH:-gophish.db}
+
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gophish_admin.rule=Host(`gophish-admin.localhost`)"
+      - "traefik.http.services.gophish_admin.loadbalancer.server.port=3333"
+      - "com.centurylinklabs.watchtower.enable=true"

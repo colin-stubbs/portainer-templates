@@ -609,7 +609,7 @@
       "name": "excalidraw",
       "title": "Excalidraw",
       "description": "Virtual whiteboard for sketching hand-drawn like diagrams. Collaborative and end-to-end encrypted.",
-      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/excalidraw.png",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/excalidraw.svg",
       "categories": [
         "edge",
         "Web",

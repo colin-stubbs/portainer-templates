@@ -1,0 +1,27 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  nessus:
+    image: tenable/nessus:latest-ubuntu
+    hostname: ${HOSTNAME:-nessus}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: always
+    environment:
+      - USERNAME=${USERNAME:-admin}
+      - PASSWORD=${PASSWORD:-CHANGE_ME}
+      - ACTIVATION_CODE=${ACTIVATION_CODE:-}
+      - TZ=${TZ:-Australia/Brisbane}
+    ports:
+      - "8834/tcp"
+    networks:
+      network:
+    labels:
+# Need to use a middleware that will support HTTPS to untrusted/self-signed server cert?
+#      - "traefik.enable=true"
+#      - "traefik.http.routers.nessus.rule=Host(`nessus.localhost`)"
+#      - "traefik.http.services.nessus.loadbalancer.server.port=8834"
+#      - "traefik.http.services.nessus.loadbalancer.server.scheme=https"
+      - "com.centurylinklabs.watchtower.enable=true"

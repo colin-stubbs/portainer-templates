@@ -12,7 +12,7 @@ services:
       - ADMINER_PLUGINS=${ADMINER_PLUGINS:-}
       - ADMINER_DESIGN=${ADMINER_DESIGN:-adminer-dark}
       - ADMINER_DEFAULT_SERVER=${ADMINER_DEFAULT_SERVER:-}
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:

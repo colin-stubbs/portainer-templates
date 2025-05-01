@@ -14,7 +14,7 @@ services:
       - HIDE_REFERER=${HIDE_REFERER:-true}
       - DISABLE_VERSION_CHECK=${DISABLE_VERSION_CHECK:-true}
       - TZ=${TZ:-Australia/Brisbane}
-    restart: always
+    restart: unless-stopped
     volumes:
       - changedetection_io:/datastore
     networks:

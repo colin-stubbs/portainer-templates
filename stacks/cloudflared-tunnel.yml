@@ -9,7 +9,7 @@ services:
     command: tunnel run
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN:-CHANGE_ME}
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:

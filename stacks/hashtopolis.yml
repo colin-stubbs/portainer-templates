@@ -1,0 +1,60 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  hashtopolis-backend:
+    image: hashtopolis/backend:latest
+    restart: unless-stopped
+    volumes:
+      - hashtopolis:/usr/local/share/hashtopolis:Z
+    environment:
+      HASHTOPOLIS_DB_USER: ${MYSQL_USER:-hashtopolis}
+      HASHTOPOLIS_DB_PASS: ${MYSQL_PASSWORD:-CHANGE_ME}
+      HASHTOPOLIS_DB_HOST: ${HASHTOPOLIS_DB_HOST:-hashtopolis-db}
+      HASHTOPOLIS_DB_DATABASE: ${MYSQL_DATABASE:-hashtopolis}
+      HASHTOPOLIS_ADMIN_USER: ${HASHTOPOLIS_ADMIN_USER:-admin}
+      HASHTOPOLIS_ADMIN_PASSWORD: ${HASHTOPOLIS_ADMIN_PASSWORD:-CHANGE_ME}
+      HASHTOPOLIS_APIV2_ENABLE: ${HASHTOPOLIS_APIV2_ENABLE:-1}
+    networks:
+      network:
+    depends_on:
+      - hashtopolis-db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.hashtopolis_backend.rule=Host(`hashtopolis-backend.localhost`)"
+      - "traefik.http.services.hashtopolis_backend.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  hashtopolis-db:
+    image: mysql:8.0
+    restart: unless-stopped
+    volumes:
+      - hashtopolis-db:/var/lib/mysql
+    networks:
+      network:
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASS:-CHANGE_ME}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-hashtopolis}
+      MYSQL_USER: ${MYSQL_USER:-hashtopolis}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-CHANGE_ME}
+
+  hashtopolis-frontend:
+    image: hashtopolis/frontend:latest
+    environment:
+      HASHTOPOLIS_BACKEND_URL: ${HASHTOPOLIS_BACKEND_URL:-http://hashtopolis-backend.localhost/api/v2}
+    networks:
+      network:
+    restart: unless-stopped
+    depends_on: 
+      - hashtopolis-backend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.hashtopolis.rule=Host(`hashtopolis.localhost`)"
+      - "traefik.http.services.hashtopolis.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  hashtopolis-db:
+  hashtopolis:

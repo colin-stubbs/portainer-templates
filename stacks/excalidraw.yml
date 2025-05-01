@@ -8,7 +8,7 @@ services:
     image: excalidraw/excalidraw:latest
     hostname: ${HOSTNAME:-excalidraw}
     domainname: ${DOMAINNAME:-localhost}
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:

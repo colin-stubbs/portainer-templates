@@ -13,7 +13,7 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-CHANGE_ME}
       - PGADMIN_DISABLE_POSTFIX=${PGADMIN_DISABLE_POSTFIX:-True}
       - PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION=${PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION:-True}
-    restart: always
+    restart: unless-stopped
     volumes:
       - pgadmin:/var/lib/pgadmin:rw
     networks:

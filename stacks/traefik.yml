@@ -21,7 +21,7 @@ services:
       - TRAEFIK_API_INSECURE=${TRAEFIK_API_INSECURE:-false}
       - TRAEFIK_ACCESSLOG=${TRAEFIK_ACCESSLOG:-true}
       - TRAEFIK_ACCESSLOG_ADDINTERNALS=${TRAEFIK_ACCESSLOG_ADDINTERNALS:-true}
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:

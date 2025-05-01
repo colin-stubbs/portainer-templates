@@ -8,7 +8,7 @@ services:
     image: 1password/connect-api:latest
     hostname: ${HOSTNAME:-opcs-api}
     domainname: ${DOMAINNAME:-localhost}
-    restart: always
+    restart: unless-stopped
     volumes:
       - "/opt/data/portainer/config/opcs/1password-credentials.json:/home/opuser/.op/1password-credentials.json"
       - "opcs-data:/home/opuser/.op/data"
@@ -24,7 +24,7 @@ services:
     image: 1password/connect-sync:latest
     hostname: ${HOSTNAME:-opcs-sync}
     domainname: ${DOMAINNAME:-localhost}
-    restart: always
+    restart: unless-stopped
     volumes:
       - "/opt/data/portainer/config/opcs/1password-credentials.json:/home/opuser/.op/1password-credentials.json"
       - "opcs-data:/home/opuser/.op/data"

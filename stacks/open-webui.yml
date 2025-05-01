@@ -29,7 +29,7 @@ services:
       ## Database
       - DATABASE_URL=${DATABASE_URL:-postgresql://postgres:P@55w0rd@postgres:5432/postgres}
 
-    restart: always
+    restart: unless-stopped
     volumes:
       - open_webui:/app/backend/data
     networks:

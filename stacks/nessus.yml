@@ -8,7 +8,7 @@ services:
     image: tenable/nessus:latest-ubuntu
     hostname: ${HOSTNAME:-nessus}
     domainname: ${DOMAINNAME:-localhost}
-    restart: always
+    restart: unless-stopped
     environment:
       - USERNAME=${USERNAME:-admin}
       - PASSWORD=${PASSWORD:-CHANGE_ME}

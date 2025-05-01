@@ -8,7 +8,7 @@ services:
     image: mariadb:${MARIADB_VERSION:-latest}
     hostname: ${HOSTNAME:-mariadb}
     domainname: ${DOMAINNAME:-localhost}
-    restart: always
+    restart: unless-stopped
     volumes:
       - mariadb_data:/var/lib/mysql:Z
     environment:

@@ -12,7 +12,7 @@ services:
       - FLEET_ENROLL=${FLEET_ENROLL:-1}
       - FLEET_URL=${FLEET_URL:-CHANGE_ME}
       - FLEET_ENROLLMENT_TOKEN=${FLEET_ENROLLMENT_TOKEN:-CHANGE_ME}
-    restart: always
+    restart: unless-stopped
     volumes:
       - /opt/data/elastic-agent:/data
       - /var/run/docker.sock:/var/run/docker.sock:ro

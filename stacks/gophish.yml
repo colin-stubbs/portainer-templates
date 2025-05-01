@@ -6,7 +6,9 @@ networks:
 services:
   gophish:
     image: gophish/gophish:latest
-    restart: always
+    hostname: ${HOSTNAME:-gophish}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: unless-stopped
     environment:
       - GOPHISH_INITIAL_ADMIN_PASSWORD=${GOPHISH_INITIAL_ADMIN_PASSWORD:-CHANGE_ME}
       - ADMIN_LISTEN_URL=${ADMIN_LISTEN_URL:-0.0.0.0:3333}

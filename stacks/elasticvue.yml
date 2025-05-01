@@ -10,7 +10,7 @@ services:
     domainname: ${DOMAINNAME:-localhost}
     environment:
       - ELASTICVUE_CLUSTERS=${ELASTICVUE_CLUSTERS:-[\{"name":"local","uri":"https://elasticsearch.localhost","username":"elastic","password":"changeme"\}]}
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:

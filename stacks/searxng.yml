@@ -31,7 +31,7 @@ services:
       options:
         max-size: "1m"
         max-file: "1"
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:

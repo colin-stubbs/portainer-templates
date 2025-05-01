@@ -12,7 +12,7 @@ services:
       - HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS:-homepage.localhost}
       - PUID=${PUID:-1000}
       - PGID=${PGID:-1000}
-    restart: always
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /opt/data/portainer/config/homepage:/app/config

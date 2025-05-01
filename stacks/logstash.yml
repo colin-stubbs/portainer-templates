@@ -30,7 +30,7 @@ services:
       - XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD=${XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD:-t0p.s3cr3t}
       - XPACK_MANAGEMENT_LOGSTASH_POLL_INTERVAL=${XPACK_MANAGEMENT_LOGSTASH_POLL_INTERVAL:-30s}
       - XPACK_MANAGEMENT_PIPELINE_ID=${XPACK_MANAGEMENT_PIPELINE_ID:-["apache", "cloudwatch_logs"]}
-    restart: always
+    restart: unless-stopped
     volumes:
       - /opt/data/portainer/config/logstash/pipeline:/usr/share/logstash/pipeline
       - logstash_data:/usr/share/logstash/data

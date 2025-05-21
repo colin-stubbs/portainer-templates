@@ -1392,6 +1392,54 @@
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10006,
+      "type": 3,
+      "name": "opencanary",
+      "title": "OpenCanary",
+      "description": "OpenCanary is a multi-protocol network honeypot. It's primary use-case is to catch hackers after they've breached non-public networks. It has extremely low resource requirements and can be tweaked, modified, and extended.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/opencanary.png",
+      "categories": [
+        "Network",
+        "Security",
+        "Honeypot"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/opencanary.yml"
+      },
+      "env": [
+        {
+          "name": "OPENCANARY_IMAGE",
+          "label": "OPENCANARY_IMAGE",
+          "description": "thinkst/opencanary:stable, thinkst/opencanary:latest (latest may be unstable), or a custom image path:tag",
+          "default": "thinkst/opencanary:stable"
+        },
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "opencanary"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "EXAMPLE_ENV_VAR",
+          "label": "EXAMPLE_ENV_VAR",
+          "description": "OpenCanary config file supports $ENV_VAR usage, you'll need to pass them thru similar to the below if you need them.",
+          "default": "example"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

@@ -1,0 +1,63 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  opencanary:
+    image: ${OPENCANARY_IMAGE:-thinkst/opencanary:latest}
+    restart: unless-stopped
+    hostname: ${HOSTNAME:-opencanary}
+    domainname: ${DOMAINNAME:-localhost}
+    volumes:
+      - /opt/data/portainer/config/opencanary/opencanary.conf:/root/.opencanary.conf
+      # Use something like the below if running Samba,
+      # - /var/log/samba-audit.log:/var/log/samba-audit.log
+    environment:
+      # OpenCanary config file supports $ENV_VAR usage, you'll need to pass them thru similar to the below if you need them.
+      - EXAMPLE_ENV_VAR=${EXAMPLE_ENV_VAR:-example}
+    # Use direct host networking if desired,
+    # network_mode: "host"
+    networks:
+      network:
+    ports:
+      # Comment/un-comment the port lines below to disable/enable the services you are using
+      # FTP
+      - "21:21/tcp"
+      # SSH
+      - "22:22/tcp"
+      # Telnet
+      - "23:23/tcp"
+      # TFTP
+      - "69:69/udp"
+      # HTTP
+      - "80:80/tcp"
+      # HTTPS
+      - "443:443/tcp"
+      # NTP
+      - "123:123/udp"
+      # SNMP UDP-only
+      - "161:161/udp"
+      # MSSQL
+      - "1433:1433/tcp"
+      # MYSQL
+      - "3306:3306/tcp"
+      # RDP
+      - "3389:3389/tcp"
+      # VNC
+      - "5000:5000/tcp"
+      # SIP
+      - "5060:5060/udp"
+      # LLMNR
+      - "5355:5355/udp"
+      # REDIS
+      - "6379:6379/tcp"
+      # TCP Banner
+      - "8001:8001/tcp"
+      # HTTP Proxy
+      - "3128:8080/tcp"
+      # Git
+      - "9418:9418/tcp"
+    labels:
+      - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=true"

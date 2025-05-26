@@ -35,7 +35,7 @@ services:
     networks:
       network:
     healthcheck:
-      test: ['CMD-SHELL', "wget --quiet --tries=1 --spider http://localhost:${SEARXNG_PORT:-80}/healthz || exit 1'"]
+      test: ['CMD-SHELL', "wget --quiet --tries=1 --spider http://localhost:${SEARXNG_PORT:-80}/healthz || exit 1"]
       interval: 10s
       timeout: 3s
       retries: 3

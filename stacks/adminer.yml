@@ -9,7 +9,7 @@ services:
     hostname: ${HOSTNAME:-adminer}
     domainname: ${DOMAINNAME:-localhost}
     environment:
-      - ADMINER_PLUGINS=${ADMINER_PLUGINS:-}
+      - ADMINER_PLUGINS=${ADMINER_PLUGINS:-dark-switcher edit-calendar login-ssl}
       - ADMINER_DESIGN=${ADMINER_DESIGN:-adminer-dark}
       - ADMINER_DEFAULT_SERVER=${ADMINER_DEFAULT_SERVER:-}
     restart: unless-stopped

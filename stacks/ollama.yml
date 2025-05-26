@@ -6,6 +6,8 @@ networks:
 services:
   ollama:
     image: ollama/ollama:latest
+    hostname: ${HOSTNAME:-ollama}
+    domainname: ${DOMAINNAME:-localhost}
     volumes:
       - /home/ollama/.ollama:/root/.ollama
     networks:

@@ -6,6 +6,8 @@ networks:
 services:
   ollama:
     image: ollama/ollama:rocm
+    hostname: ${HOSTNAME:-ollama}
+    domainname: ${DOMAINNAME:-localhost}
     devices:
       - /dev/kfd:/dev/kfd
       - /dev/dri:/dev/dri

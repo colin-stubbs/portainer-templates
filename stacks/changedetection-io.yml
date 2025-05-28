@@ -14,6 +14,8 @@ services:
       - HIDE_REFERER=${HIDE_REFERER:-true}
       - DISABLE_VERSION_CHECK=${DISABLE_VERSION_CHECK:-true}
       - TZ=${TZ:-Australia/Brisbane}
+      - BASE_URL=${BASE_URL:-https://your-changedetection-io.tld}
+      - PLAYWRIGHT_DRIVER_URL=${PLAYWRIGHT_DRIVER_URL:-ws://browserless-chromium:3000?token=CHANGE_ME}
     restart: unless-stopped
     volumes:
       - changedetection_io:/datastore

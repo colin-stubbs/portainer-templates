@@ -4,8 +4,10 @@ networks:
     external: true
 
 services:
-  watchtower:
+  cloudflared-tunnel:
     image: cloudflare/cloudflared:latest
+    hostname: ${HOSTNAME:-cloudflared-tunnel}
+    domainname: ${DOMAINNAME:-localhost}
     command: tunnel run
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN:-CHANGE_ME}

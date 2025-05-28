@@ -4,8 +4,10 @@ networks:
     external: true
 
 services:
-  watchtower:
+  cloudflared-proxy-doh:
     image: cloudflare/cloudflared:latest
+    hostname: ${HOSTNAME:-cloudflared-proxy-doh}
+    domainname: ${DOMAINNAME:-localhost}
     command: proxy-dns
     environment:
       - TUNNEL_DNS_ADDRESS=${TUNNEL_DNS_ADDRESS:-0.0.0.0}

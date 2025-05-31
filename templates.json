@@ -38,6 +38,12 @@
           "default": "Australia/Brisbane"
         },
         {
+          "name": "DOCKER_CONFIG",
+          "label": "DOCKER_CONFIG",
+          "description": "Where to look for watchtower config",
+          "default": "/config"
+        },
+        {
           "name": "WATCHTOWER_CLEANUP",
           "label": "WATCHTOWER_CLEANUP",
           "description": "Removes old images after updating.",

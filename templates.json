@@ -549,7 +549,7 @@
         {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
-          "default": "adminer"
+          "default": "opcs"
         },
         {
           "name": "DOMAINNAME",
@@ -590,7 +590,7 @@
         {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
-          "default": "adminer"
+          "default": "redis"
         },
         {
           "name": "DOMAINNAME",
@@ -634,7 +634,7 @@
         {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
-          "default": "adminer"
+          "default": "rabbitmq"
         },
         {
           "name": "DOMAINNAME",
@@ -689,7 +689,7 @@
         {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
-          "default": "adminer"
+          "default": "minio"
         },
         {
           "name": "DOMAINNAME",

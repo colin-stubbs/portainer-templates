@@ -1774,6 +1774,208 @@
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10010,
+      "type": 3,
+      "name": "opencti",
+      "title": "OpenCTI",
+      "description": "OpenCTI is an open source platform allowing organizations to manage their cyber threat intelligence knowledge and observables.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/opencti.png",
+      "categories": [
+        "Security",
+        "CTI",
+        "Threat Intelligence"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/opencti.yml"
+      },
+      "env": [
+        {
+          "name": "OPENCTI_VERSION",
+          "label": "OPENCTI_VERSION",
+          "default": "6.6.14"
+        },
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "opencti"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "OPENCTI_ADMIN_EMAIL",
+          "label": "OPENCTI_ADMIN_EMAIL",
+          "default": "your.email@your.domain"
+        },
+        {
+          "name": "OPENCTI_ADMIN_PASSWORD",
+          "label": "OPENCTI_ADMIN_PASSWORD",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "OPENCTI_ADMIN_TOKEN",  
+          "label": "OPENCTI_ADMIN_TOKEN",
+          "default": "GENERATE_UUIDv4"
+        },
+        {
+          "name": "OPENCTI_BASE_URL",
+          "label": "OPENCTI_BASE_URL",
+          "default": "http://opencti.localhost"
+        },
+        {
+          "name": "OPENCTI_PORT",
+          "label": "OPENCTI_PORT",
+          "default": "80"
+        },
+        {
+          "name": "ELASTICSEARCH_URL",
+          "label": "ELASTICSEARCH_URL",
+          "default": "http://elasticsearch:9200"
+        },
+        {
+          "name": "ELASTICSEARCH_USERNAME",
+          "label": "ELASTICSEARCH_USERNAME",
+          "default": "elastic"
+        },
+        {
+          "name": "ELASTICSEARCH_PASSWORD",
+          "label": "ELASTICSEARCH_PASSWORD",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "ELASTICSEARCH_NUMBER_OF_REPLICAS",
+          "label": "ELASTICSEARCH_NUMBER_OF_REPLICAS",
+          "default": "0"
+        },
+        {
+          "name": "ELASTICSEARCH_SSL_REJECT_UNAUTHORIZED",
+          "label": "ELASTICSEARCH_SSL_REJECT_UNAUTHORIZED",
+          "default": "true"
+        },
+        {
+          "name": "MINIO_ENDPOINT",
+          "label": "MINIO_ENDPOINT",
+          "default": "minio"
+        },
+        {
+          "name": "MINIO_PORT",
+          "label": "MINIO_PORT",
+          "default": "9000"
+        },
+        {
+          "name": "MINIO_USE_SSL",
+          "label": "MINIO_USE_SSL",
+          "default": "false"
+        },
+        {
+          "name": "MINIO_ACCESS_KEY",
+          "label": "MINIO_ACCESS_KEY",
+          "default": "admin"
+        },
+        {
+          "name": "MINIO_SECRET_KEY",
+          "label": "MINIO_SECRET_KEY",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "RABBITMQ_HOSTNAME",
+          "label": "RABBITMQ_HOSTNAME",
+          "default": "rabbitmq"
+        },
+        {
+          "name": "RABBITMQ_PORT",
+          "label": "RABBITMQ_PORT",
+          "default": "5672"
+        },
+        {
+          "name": "RABBITMQ_PORT_MANAGEMENT",
+          "label": "RABBITMQ_PORT_MANAGEMENT",
+          "default": "15672"
+        },
+        {
+          "name": "RABBITMQ_MANAGEMENT_SSL",
+          "label": "RABBITMQ_MANAGEMENT_SSL",
+          "default": "false"
+        },
+        {
+          "name": "RABBITMQ_USERNAME",
+          "label": "RABBITMQ_USERNAME",
+          "default": "admin"
+        },
+        {
+          "name": "RABBITMQ_PASSWORD",
+          "label": "RABBITMQ_PASSWORD",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "REDIS_HOSTNAME",
+          "label": "REDIS_HOSTNAME",
+          "default": "redis"
+        },
+        {
+          "name": "REDIS_PORT",
+          "label": "REDIS_PORT",
+          "default": "6379"
+        },
+        {
+          "name": "REDIS_USERNAME",
+          "label": "REDIS_USERNAME",
+          "default": "admin"
+        },
+        {
+          "name": "REDIS_PASSWORD",
+          "label": "REDIS_PASSWORD",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "SMTP_HOSTNAME",
+          "label": "SMTP_HOSTNAME",
+          "default": "smtp.sendgrid.net"
+        },
+        {
+          "name": "SMTP_PORT",
+          "label": "SMTP_PORT",
+          "default": "465"
+        },
+        {
+          "name": "SMTP_USE_SSL",
+          "label": "SMTP_USE_SSL",
+          "default": "true"
+        },
+        {
+          "name": "SMTP_USERNAME",
+          "label": "SMTP_USERNAME",
+          "default": "apikey"
+        },
+        {
+          "name": "SMTP_PASSWORD",
+          "label": "SMTP_PASSWORD",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "SMTP_REJECT_UNAUTHORIZED",
+          "label": "SMTP_REJECT_UNAUTHORIZED",
+          "default": "true"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

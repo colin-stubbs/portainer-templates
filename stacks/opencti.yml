@@ -1,0 +1,228 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  opencti:
+    image: docker.io/opencti/platform:${OPENCTI_VERSION:-6.6.14}
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - APP__ADMIN__EMAIL=${OPENCTI_ADMIN_EMAIL:-admin@localhost}
+      - APP__ADMIN__PASSWORD=${OPENCTI_ADMIN_PASSWORD:-CHANGE_ME}
+      - APP__ADMIN__TOKEN=${OPENCTI_ADMIN_TOKEN:-CHANGE_ME}
+      - APP__APP_LOGS__LOGS_LEVEL=${OPENCTI_LOG_LEVEL:-error}
+      - APP__BASE_URL=${OPENCTI_BASE_URL:-http://opencti.localhost}
+      - APP__HEALTH_ACCESS_KEY=${OPENCTI_HEALTH_ACCESS_KEY:-CHANGE_ME}
+      - APP__PORT=${OPENCTI_PORT:-80}
+      - ELASTICSEARCH__URL=${ELASTICSEARCH_URL:-http://elasticsearch:9200}
+      - ELASTICSEARCH__USERNAME=${ELASTICSEARCH_USERNAME:-elastic}
+      - ELASTICSEARCH__PASSWORD=${ELASTICSEARCH_PASSWORD:-CHANGE_ME}
+      # - ELASTICSEARCH__API_KEY=${ELASTICSEARCH__API_KEY:-CHANGE_ME}
+      - ELASTICSEARCH__NUMBER_OF_REPLICAS=${ELASTICSEARCH_NUMBER_OF_REPLICAS:-0}
+      - ELASTICSEARCH__SSL__REJECT_UNAUTHORIZED=${ELASTICSEARCH__SSL__REJECT_UNAUTHORIZED:-true}
+      - MINIO__ENDPOINT=${MINIO_ENDPOINT:-minio}
+      - MINIO__PORT=${MINIO_PORT:-9000}
+      - MINIO__USE_SSL=${MINIO_USE_SSL:-false}
+      - MINIO__ACCESS_KEY=${MINIO_ACCESS_KEY:-admin}
+      - MINIO__SECRET_KEY=${MINIO_SECRET_KEY:-CHANGE_ME}
+      - RABBITMQ__HOSTNAME=${RABBITMQ_HOSTNAME:-rabbitmq}
+      - RABBITMQ__PORT=${RABBITMQ_PORT:-5672}
+      - RABBITMQ__PORT_MANAGEMENT=${RABBITMQ_PORT_MANAGEMENT:-15672}
+      - RABBITMQ__MANAGEMENT_SSL=${RABBITMQ_MANAGEMENT_SSL:-false}
+      - RABBITMQ__USERNAME=${RABBITMQ_USERNAME:-admin}
+      - RABBITMQ__PASSWORD=${RABBITMQ_PASSWORD:-CHANGE_ME}
+      - REDIS__HOSTNAME=${REDIS_HOSTNAME:-redis}
+      - REDIS__PORT=${REDIS_PORT:-6379}
+#      - REDIS__USERNAME=${REDIS__USERNAME:-admin}
+#      - REDIS__PASSWORD=${REDIS__PASSWORD:-CHANGE_ME}
+      - SMTP__HOSTNAME=${SMTP_HOSTNAME:-smtp.sendgrid.net}
+      - SMTP__PORT=${SMTP_PORT:-465}
+      - SMTP__USE_SSL=${SMTP_USE_SSL:-true}
+      - SMTP__USERNAME=${SMTP_USERNAME:-apikey}
+      - SMTP__PASSWORD=${SMTP_PASSWORD:-CHANGE_ME}
+      - SMTP__REJECT_UNAUTHORIZED=${SMTP_REJECT_UNAUTHORIZED:-true}
+    restart: always
+    networks:
+      network:
+    healthcheck:
+      test:  ["CMD", "wget", "-qO-", "http://opencti:${OPENCTI_PORT:-80}/health?health_access_key=${OPENCTI_HEALTH_ACCESS_KEY:-CHANGE_ME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.opencti.rule=Host(`opencti.localhost`)"
+      - "traefik.http.services.opencti.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  worker:
+    image: docker.io/opencti/worker:${OPENCTI_VERSION:-6.6.14}
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - OPENCTI_URL=${OPENCTI_URL:-http://opencti}
+      - OPENCTI_TOKEN=${OPENCTI_ADMIN_TOKEN:-CHANGE_ME}
+      - WORKER_LOG_LEVEL=${WORKER_LOG_LEVEL:-info}
+    depends_on:
+      opencti:
+        condition: service_healthy
+    deploy:
+      mode: replicated
+      replicas: 3
+    restart: always
+    networks:
+      network:
+
+  connector-export-file-stix:
+    image: docker.io/opencti/connector-export-file-stix:${OPENCTI_VERSION:-6.6.14}
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - OPENCTI_URL=${OPENCTI_URL:-http://opencti}
+      - OPENCTI_TOKEN=${OPENCTI_ADMIN_TOKEN:-CHANGE_ME}
+      - CONNECTOR_ID=${CONNECTOR_EXPORT_FILE_STIX_ID} # Valid UUIDv4
+      - CONNECTOR_TYPE=INTERNAL_EXPORT_FILE
+      - CONNECTOR_NAME=ExportFileStix2
+      - CONNECTOR_SCOPE=application/json
+      - CONNECTOR_LOG_LEVEL=${CONNECTOR_LOG_LEVEL:-info}
+    restart: always
+    networks:
+      network:
+    depends_on:
+      opencti:
+        condition: service_healthy
+  connector-export-file-csv:
+    image: docker.io/opencti/connector-export-file-csv:${OPENCTI_VERSION:-6.6.14}
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - OPENCTI_URL=${OPENCTI_URL:-http://opencti}
+      - OPENCTI_TOKEN=${OPENCTI_ADMIN_TOKEN:-CHANGE_ME}
+      - CONNECTOR_ID=${CONNECTOR_EXPORT_FILE_CSV_ID} # Valid UUIDv4
+      - CONNECTOR_TYPE=INTERNAL_EXPORT_FILE
+      - CONNECTOR_NAME=ExportFileCsv
+      - CONNECTOR_SCOPE=text/csv
+      - CONNECTOR_LOG_LEVEL=${CONNECTOR_LOG_LEVEL:-info}
+    restart: always
+    networks:
+      network:
+    depends_on:
+      opencti:
+        condition: service_healthy
+  connector-export-file-txt:
+    image: docker.io/opencti/connector-export-file-txt:${OPENCTI_VERSION:-6.6.14}
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - OPENCTI_URL=${OPENCTI_URL:-http://opencti}
+      - OPENCTI_TOKEN=${OPENCTI_ADMIN_TOKEN:-CHANGE_ME}
+      - CONNECTOR_ID=${CONNECTOR_EXPORT_FILE_TXT_ID} # Valid UUIDv4
+      - CONNECTOR_TYPE=INTERNAL_EXPORT_FILE
+      - CONNECTOR_NAME=ExportFileTxt
+      - CONNECTOR_SCOPE=text/plain
+      - CONNECTOR_LOG_LEVEL=${CONNECTOR_LOG_LEVEL:-info}
+    restart: always
+    networks:
+      network:
+    depends_on:
+      opencti:
+        condition: service_healthy
+  connector-import-file-stix:
+    image: docker.io/opencti/connector-import-file-stix:${OPENCTI_VERSION:-6.6.14}
+    environment:
+      - OPENCTI_URL=${OPENCTI_URL:-http://opencti}
+      - OPENCTI_TOKEN=${OPENCTI_ADMIN_TOKEN:-CHANGE_ME}
+      - CONNECTOR_ID=${CONNECTOR_IMPORT_FILE_STIX_ID} # Valid UUIDv4
+      - CONNECTOR_TYPE=INTERNAL_IMPORT_FILE
+      - CONNECTOR_NAME=ImportFileStix
+      - CONNECTOR_VALIDATE_BEFORE_IMPORT=true # Validate any bundle before import
+      - CONNECTOR_SCOPE=application/json,text/xml
+      - CONNECTOR_AUTO=true # Enable/disable auto-import of file
+      - CONNECTOR_LOG_LEVEL=${CONNECTOR_LOG_LEVEL:-info}
+    restart: always
+    networks:
+      network:
+    depends_on:
+      opencti:
+        condition: service_healthy
+  connector-import-document:
+    image: docker.io/opencti/connector-import-document:${OPENCTI_VERSION:-6.6.14}
+    environment:
+      - OPENCTI_URL=${OPENCTI_URL:-http://opencti}
+      - OPENCTI_TOKEN=${OPENCTI_ADMIN_TOKEN:-CHANGE_ME}
+      - CONNECTOR_ID=${CONNECTOR_IMPORT_DOCUMENT_ID} # Valid UUIDv4
+      - CONNECTOR_TYPE=INTERNAL_IMPORT_FILE
+      - CONNECTOR_NAME=ImportDocument
+      - CONNECTOR_VALIDATE_BEFORE_IMPORT=true # Validate any bundle before import
+      - CONNECTOR_SCOPE=application/pdf,text/plain,text/html
+      - CONNECTOR_AUTO=true # Enable/disable auto-import of file
+      - CONNECTOR_ONLY_CONTEXTUAL=false # Only extract data related to an entity (a report, a threat actor, etc.)
+      - CONNECTOR_CONFIDENCE_LEVEL=15 # From 0 (Unknown) to 100 (Fully trusted)
+      - CONNECTOR_LOG_LEVEL=${CONNECTOR_LOG_LEVEL:-info}
+      - IMPORT_DOCUMENT_CREATE_INDICATOR=true
+    restart: always
+    networks:
+      network:
+    depends_on:
+      opencti:
+        condition: service_healthy
+  connector-analysis:
+    image: docker.io/opencti/connector-import-document:${OPENCTI_VERSION:-6.6.14}
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - OPENCTI_URL=${OPENCTI_URL:-http://opencti}
+      - OPENCTI_TOKEN=${OPENCTI_ADMIN_TOKEN:-CHANGE_ME}
+      - CONNECTOR_ID=${CONNECTOR_ANALYSIS_ID} # Valid UUIDv4
+      - CONNECTOR_TYPE=INTERNAL_ANALYSIS
+      - CONNECTOR_NAME=ImportDocumentAnalysis
+      - CONNECTOR_VALIDATE_BEFORE_IMPORT=false # Validate any bundle before import
+      - CONNECTOR_SCOPE=application/pdf,text/plain,text/html
+      - CONNECTOR_AUTO=true # Enable/disable auto-import of file
+      - CONNECTOR_ONLY_CONTEXTUAL=false # Only extract data related to an entity (a report, a threat actor, etc.)
+      - CONNECTOR_CONFIDENCE_LEVEL=15 # From 0 (Unknown) to 100 (Fully trusted)
+      - CONNECTOR_LOG_LEVEL=${CONNECTOR_LOG_LEVEL:-info}
+    restart: always
+    networks:
+      network:
+    depends_on:
+      opencti:
+        condition: service_healthy
+  connector-abuse-ssl:
+    image: docker.io/opencti/connector-abuse-ssl:${OPENCTI_VERSION:-6.6.14}
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - OPENCTI_URL=${OPENCTI_URL:-http://opencti}
+      - OPENCTI_TOKEN=${OPENCTI_ADMIN_TOKEN:-CHANGE_ME}
+      - CONNECTOR_ID=${CONNECTOR_ABUSE_SSL_ID} # Valid UUIDv4
+      - CONNECTOR_TYPE=EXTERNAL_IMPORT
+      - "CONNECTOR_NAME=Abuse.ch SSL Blacklist"
+      - CONNECTOR_SCOPE=abusessl
+      - CONNECTOR_CONFIDENCE_LEVEL=70
+      - CONNECTOR_UPDATE_EXISTING_DATA=false
+      - CONNECTOR_LOG_LEVEL=error
+      - ABUSESSL_URL=https://sslbl.abuse.ch/blacklist/sslipblacklist.csv
+      - ABUSESSL_INTERVAL=360 # Time to wait in minutes between subsequent requests
+    restart: always
+    networks:
+      network:
+    depends_on:
+      opencti:
+        condition: service_healthy
+  connector-cisa-known-exploited-vulnerabilities:
+    image: docker.io/opencti/connector-cisa-known-exploited-vulnerabilities:${OPENCTI_VERSION:-6.6.14}
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - OPENCTI_URL=${OPENCTI_URL:-http://opencti}
+      - OPENCTI_TOKEN=${OPENCTI_ADMIN_TOKEN:-CHANGE_ME}
+      - CONNECTOR_ID=${CONNECTOR_CISA_KNOWN_EXPLOITED_VULNERABILITIES_ID} # Valid UUIDv4
+      - "CONNECTOR_NAME=CISA Known Exploited Vulnerabilities"
+      - CONNECTOR_SCOPE=cisa
+      - CONNECTOR_RUN_AND_TERMINATE=false
+      - CONNECTOR_LOG_LEVEL=error
+      - CONNECTOR_DURATION_PERIOD=P2D
+      - CISA_CATALOG_URL=https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+      - CISA_CREATE_INFRASTRUCTURES=false
+      - CISA_TLP=TLP:CLEAR
+    restart: always
+    networks:
+      network:
+    depends_on:
+      opencti:
+        condition: service_healthy

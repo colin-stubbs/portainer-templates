@@ -42,7 +42,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.elasticsearch.rule=Host(`elasticsearch.localhost`)"
       - "traefik.http.services.elasticsearch.loadbalancer.server.port=9200"
-      - "traefik.http.services.elasticsearch.loadbalancer.server.scheme=https"
       - "com.centurylinklabs.watchtower.enable=true"
 
 volumes:

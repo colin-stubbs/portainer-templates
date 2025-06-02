@@ -582,6 +582,11 @@
       },
       "env": [
         {
+          "name": "IMAGE",
+          "label": "IMAGE",
+          "default": "redis:7-alpine"
+        },
+        {
           "name": "NETWORK",
           "label": "NETWORK",
           "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
@@ -601,11 +606,6 @@
           "name": "TZ",
           "label": "TZ",
           "default": "Australia/Brisbane"
-        },
-        {
-          "name": "REDIS_VERSION",
-          "label": "REDIS_VERSION",
-          "default": "7-alpine"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
@@ -626,6 +626,11 @@
       },
       "env": [
         {
+          "name": "IMAGE",
+          "label": "IMAGE",
+          "default": "rabbitmq:4.1-management-alpine"
+        },
+        {
           "name": "NETWORK",
           "label": "NETWORK",
           "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
@@ -645,11 +650,6 @@
           "name": "TZ",
           "label": "TZ",
           "default": "Australia/Brisbane"
-        },
-        {
-          "name": "RABBITMQ_VERSION",
-          "label": "RABBITMQ_VERSION",
-          "default": "4.1-management-alpine"
         },
         {
           "name": "RABBITMQ_DEFAULT_USER",
@@ -681,6 +681,11 @@
       },
       "env": [
         {
+          "name": "IMAGE",
+          "label": "IMAGE",
+          "default": "minio/minio:latest"
+        },
+        {
           "name": "NETWORK",
           "label": "NETWORK",
           "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
@@ -700,11 +705,6 @@
           "name": "TZ",
           "label": "TZ",
           "default": "Australia/Brisbane"
-        },
-        {
-          "name": "MINIO_VERSION",
-          "label": "MINIO_VERSION",
-          "default": "latest"
         },
         {
           "name": "MINIO_ROOT_USER",

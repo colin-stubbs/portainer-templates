@@ -1,0 +1,27 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  squid:
+    image: ubuntu/squid:latest
+    hostname: ${HOSTNAME:-squid}
+    domainname: ${DOMAINNAME:-localhost}
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+    restart: unless-stopped
+    volumes:
+      - /opt/data/portainer/config/squid/squid.conf:/etc/squid/squid.conf:ro
+      - /opt/data/logs/squid:/var/log/squid:rw
+      - squid_cache:/var/spool/squid:rw
+    networks:
+      network:
+#    ports:
+#      - "3128:3128/tcp"
+    labels:
+      - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  squid_cache:

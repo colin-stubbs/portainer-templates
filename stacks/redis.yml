@@ -1,0 +1,25 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  redis:
+    image: redis:${REDIS_VERSION:-7-alpine}
+    restart: always
+    networks:
+      network:
+    volumes:
+      - redisdata:/data
+#      - /opt/data/portainer/config/redis/redis.conf:/usr/local/etc/redis/redis.conf
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    labels:
+      - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  redisdata:

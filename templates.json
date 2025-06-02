@@ -1870,6 +1870,11 @@
           "default": "true"
         },
         {
+          "name": "ELASTICSEARCH__SSL__REJECT_UNAUTHORIZED",
+          "label": "ELASTICSEARCH__SSL__REJECT_UNAUTHORIZED",
+          "default": "true"
+        },
+        {
           "name": "MINIO_ENDPOINT",
           "label": "MINIO_ENDPOINT",
           "default": "minio"

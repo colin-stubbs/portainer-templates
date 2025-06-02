@@ -1,0 +1,39 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  minio:
+    image: minio/minio:${MINIO_VERSION:-latest} # Use "minio/minio:${RELEASE_VERSION}-cpuv1" to troubleshoot compatibility issues with CPU
+    volumes:
+      - minio_data:/data
+#    ports:
+#      - "9000:9000"
+#      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-admin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-CHANGE_ME}
+      MINIO_BROWSER_REDIRECT_URL: ${MINIO_BROWSER_REDIRECT_URL:-http://minio-console.localhost}
+      MINIO_SERVER_URL: ${MINIO_SERVER_URL:-http://localhost:9000}
+    command: server /data --console-address ":9001"
+    restart: always
+    networks:
+      network:
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.minio_api.rule=Host(`minio-api.localhost`)"
+      - "traefik.http.routers.minio_api.service=minio_api"
+      - "traefik.http.services.minio_api.loadbalancer.server.port=9000"
+      - "traefik.http.routers.minio_console.rule=Host(`minio-console.localhost`)"
+      - "traefik.http.routers.minio_console.service=minio_console"
+      - "traefik.http.services.minio_console.loadbalancer.server.port=9001"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  minio_data:

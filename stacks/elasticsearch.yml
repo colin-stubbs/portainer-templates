@@ -13,17 +13,26 @@ services:
       - node.name=elasticsearch
       - cluster.name=es-docker
       - bootstrap.memory_lock=true
-      - ES_JAVA_OPTS=${ES_JAVA_OPTS:--Xms512m -Xmx512m}
       - discovery.type=single-node
+      - logger.org.elasticsearch.discovery="ERROR"
       - http.cors.enabled=true
       - http.cors.allow-origin=${CORS_ALLOW_ORIGIN:-http://elasticvue.localhost}
       - http.cors.allow-headers=X-Requested-With,Content-Type,Content-Length,Authorization
+      - ES_JAVA_OPTS=${ES_JAVA_OPTS:--Xms512m -Xmx512m}
       - ELASTIC_USERNAME=${ELASTIC_USERNAME:-elastic}
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:-changeme}
     ulimits:
       memlock:
         soft: -1
         hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    healthcheck:
+      test: curl -s http://elasticsearch:9200 >/dev/null || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 50
     volumes:
       - esdata:/usr/share/elasticsearch/data
     networks:

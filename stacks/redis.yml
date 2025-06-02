@@ -6,7 +6,13 @@ networks:
 services:
   redis:
     image: redis:${REDIS_VERSION:-7-alpine}
+    hostname: ${HOSTNAME:-redis}
+    domainname: ${DOMAINNAME:-localhost}
     restart: always
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+#    ports:
+#      - "6379:6379"
     networks:
       network:
     volumes:

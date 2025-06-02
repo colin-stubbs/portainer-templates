@@ -9,6 +9,8 @@ services:
     hostname: ${HOSTNAME:-web-check}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
     networks:
       network:
     labels:

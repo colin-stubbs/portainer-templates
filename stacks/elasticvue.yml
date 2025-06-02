@@ -9,6 +9,7 @@ services:
     hostname: ${HOSTNAME:-elasticvue}
     domainname: ${DOMAINNAME:-localhost}
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
       - ELASTICVUE_CLUSTERS=${ELASTICVUE_CLUSTERS:-[\{"name":"local","uri":"https://elasticsearch.localhost","username":"elastic","password":"changeme"\}]}
     restart: unless-stopped
     networks:

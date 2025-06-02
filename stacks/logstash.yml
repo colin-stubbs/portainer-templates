@@ -9,6 +9,7 @@ services:
     hostname: ${HOSTNAME:-logstash}
     domainname: ${DOMAINNAME:-localhost}
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
       - PIPELINE_ECS__COMPATIBILITY=${PIPELINE_ECS__COMPATIBILITY:-v8}
       - CONFIG_RELOAD_AUTOMATIC=${CONFIG_RELOAD_AUTOMATIC:-true}
       - CONFIG_RELOAD_INTERVAL=${CONFIG_RELOAD_INTERVAL:-30s}

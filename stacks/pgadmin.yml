@@ -9,6 +9,7 @@ services:
     hostname: ${HOSTNAME:-pgadmin}
     domainname: ${DOMAINNAME:-localhost}
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-CHANGE@ME.tld}
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-CHANGE_ME}
       - PGADMIN_DISABLE_POSTFIX=${PGADMIN_DISABLE_POSTFIX:-True}

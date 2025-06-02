@@ -9,6 +9,7 @@ services:
     hostname: ${HOSTNAME:-elastic-agent}
     domainname: ${DOMAINNAME:-localhost}
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
       - FLEET_ENROLL=${FLEET_ENROLL:-1}
       - FLEET_URL=${FLEET_URL:-CHANGE_ME}
       - FLEET_ENROLLMENT_TOKEN=${FLEET_ENROLLMENT_TOKEN:-CHANGE_ME}

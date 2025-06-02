@@ -9,7 +9,7 @@ services:
     hostname: ${HOSTNAME:-postgres}
     domainname: ${DOMAINNAME:-localhost}
     environment:
-      - TZ=${TIMEZONE:-Australia/Brisbane}
+      - TZ=${TZ:-Australia/Brisbane}
       - POSTGRES_DB=${POSTGRES_DB:-postgres}
       - POSTGRES_USER=${POSTGRES_USER:-postgres}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-CHANGE_ME}

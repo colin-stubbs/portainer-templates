@@ -9,6 +9,8 @@ services:
     hostname: ${HOSTNAME:-opcs-api}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
     volumes:
       - "/opt/data/portainer/config/opcs/1password-credentials.json:/home/opuser/.op/1password-credentials.json"
       - "opcs-data:/home/opuser/.op/data"
@@ -25,6 +27,8 @@ services:
     hostname: ${HOSTNAME:-opcs-sync}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
     volumes:
       - "/opt/data/portainer/config/opcs/1password-credentials.json:/home/opuser/.op/1password-credentials.json"
       - "opcs-data:/home/opuser/.op/data"

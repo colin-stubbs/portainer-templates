@@ -11,6 +11,7 @@ services:
     volumes:
       - /opt/data/portainer/config/searxng:/etc/searxng
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
       - SEARXNG_HOSTNAME=${HOSTNAME:-searxng.localhost}
       - SEARXNG_BASE_URL=https://${SEARXNG_HOSTNAME:-searxng.localhost}/
       - SEARXNG_URL=${SEARXNG_URL:-/}

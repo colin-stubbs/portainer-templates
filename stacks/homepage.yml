@@ -9,6 +9,7 @@ services:
     hostname: ${HOSTNAME:-homepage}
     domainname: ${DOMAINNAME:-localhost}
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
       - HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS:-homepage.localhost}
       - PUID=${PUID:-1000}
       - PGID=${PGID:-1000}

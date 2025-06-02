@@ -21,6 +21,7 @@ services:
       - ES_JAVA_OPTS=${ES_JAVA_OPTS:--Xms512m -Xmx512m}
       - ELASTIC_USERNAME=${ELASTIC_USERNAME:-elastic}
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:-changeme}
+      - TZ=${TZ:-Australia/Brisbane}
     ulimits:
       memlock:
         soft: -1

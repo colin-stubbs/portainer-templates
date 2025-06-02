@@ -12,6 +12,7 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql:Z
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
       - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD:-CHANGE_ME}
       - MARIADB_DATABASE=${MARIADB_DATABASE:-mariadb}
       - MARIADB_USER=${MARIADB_USER:-CHANGE_ME}

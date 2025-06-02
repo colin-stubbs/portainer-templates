@@ -14,6 +14,7 @@ services:
       - "80:80/tcp"
       - "443:443/tcp"
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
       - TRAEFIK_PROVIDERS_DOCKER=${TRAEFIK_PROVIDERS_DOCKER:-true}
       - TRAEFIK_PROVIDERS_DOCKER_EXPOSEDBYDEFAULT=${TRAEFIK_PROVIDERS_DOCKER_EXPOSEDBYDEFAULT:-false}
       - TRAEFIK_API=${TRAEFIK_API:-false}

@@ -19,6 +19,7 @@ services:
     networks:
       network:
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
       - OLLAMA_MAX_LOADED_MODELS=${OLLAMA_MAX_LOADED_MODELS:-1}
       - HSA_OVERRIDE_GFX_VERSION=${HSA_OVERRIDE_GFX_VERSION:-}
     healthcheck:

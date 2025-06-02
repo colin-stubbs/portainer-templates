@@ -14,6 +14,7 @@ services:
       # Use something like the below if running Samba,
       # - /var/log/samba-audit.log:/var/log/samba-audit.log
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
       # OpenCanary config file supports $ENV_VAR usage, you'll need to pass them thru similar to the below if you need them.
       - EXAMPLE_ENV_VAR=${EXAMPLE_ENV_VAR:-example}
     # Use direct host networking if desired,

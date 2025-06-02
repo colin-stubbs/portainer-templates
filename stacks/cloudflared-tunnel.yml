@@ -10,6 +10,7 @@ services:
     domainname: ${DOMAINNAME:-localhost}
     command: tunnel run
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
       - TUNNEL_TOKEN=${TUNNEL_TOKEN:-CHANGE_ME}
     restart: unless-stopped
     networks:

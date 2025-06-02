@@ -5,11 +5,15 @@ networks:
 
 services:
   elasticsearch:
-    image: ${IMAGE:-docker.elastic.co/elasticsearch/elasticsearch-wolfi:8.18.0}
+    image: ${IMAGE:-docker.elastic.co/elasticsearch/elasticsearch-wolfi:9.0.1}
     hostname: ${HOSTNAME:-elasticsearch}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - ES_JAVA_OPTS=${ES_JAVA_OPTS:--Xms512m -Xmx512m}
+      - ELASTIC_USERNAME=${ELASTIC_USERNAME:-elastic}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:-CHANGE_ME}
       - node.name=elasticsearch
       - cluster.name=es-docker
       - bootstrap.memory_lock=true
@@ -18,10 +22,6 @@ services:
       - http.cors.enabled=true
       - http.cors.allow-origin=${CORS_ALLOW_ORIGIN:-http://elasticvue.localhost}
       - http.cors.allow-headers=X-Requested-With,Content-Type,Content-Length,Authorization
-      - ES_JAVA_OPTS=${ES_JAVA_OPTS:--Xms512m -Xmx512m}
-      - ELASTIC_USERNAME=${ELASTIC_USERNAME:-elastic}
-      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:-changeme}
-      - TZ=${TZ:-Australia/Brisbane}
     ulimits:
       memlock:
         soft: -1
@@ -42,6 +42,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.elasticsearch.rule=Host(`elasticsearch.localhost`)"
       - "traefik.http.services.elasticsearch.loadbalancer.server.port=9200"
+      - "traefik.http.services.elasticsearch.loadbalancer.server.scheme=https"
       - "com.centurylinklabs.watchtower.enable=true"
 
 volumes:

@@ -19,6 +19,8 @@ services:
       - bootstrap.memory_lock=true
       - discovery.type=single-node
       - logger.org.elasticsearch.discovery="ERROR"
+      - xpack.ml.enabled=true
+      - xpack.security.enabled=true
       - http.cors.enabled=true
       - http.cors.allow-origin=${CORS_ALLOW_ORIGIN:-http://elasticvue.localhost}
       - http.cors.allow-headers=X-Requested-With,Content-Type,Content-Length,Authorization
@@ -30,7 +32,7 @@ services:
         soft: 65536
         hard: 65536
     healthcheck:
-      test: curl --insecure --silent https://elasticsearch:9200 >/dev/null || exit 1
+      test: curl --insecure --silent --user "${ELASTIC_USERNAME}:${ELASTIC_PASSWORD}" https://localhost:9200 1>/dev/null 2>&1 || exit 1
       interval: 30s
       timeout: 10s
       retries: 50

@@ -1117,7 +1117,7 @@
         {
           "name": "ES_JAVA_OPTS",
           "label": "ES_JAVA_OPTS",
-          "default": "-Xms512m -Xmx512m"
+          "default": "-Xms1g -Xmx1g -Des.failure_store_feature_flag_enabled=true"
         },
         {
           "name": "ELASTIC_USERNAME",
@@ -1973,6 +1973,51 @@
           "name": "SMTP_REJECT_UNAUTHORIZED",
           "label": "SMTP_REJECT_UNAUTHORIZED",
           "default": "true"
+        },
+        {
+          "name": "CONNECTOR_ANALYSIS_ID",
+          "label": "CONNECTOR_ANALYSIS_ID",
+          "default": "GENERATE_UUIDv4"
+        },
+        {
+          "name": "CONNECTOR_EXPORT_FILE_CSV_ID",
+          "label": "CONNECTOR_EXPORT_FILE_CSV_ID",
+          "default": "GENERATE_UUIDv4"
+        },
+        {
+          "name": "CONNECTOR_EXPORT_FILE_STIX_ID",
+          "label": "CONNECTOR_EXPORT_FILE_STIX_ID",
+          "default": "GENERATE_UUIDv4"
+        },
+        {
+          "name": "CONNECTOR_EXPORT_FILE_TXT_ID",
+          "label": "CONNECTOR_EXPORT_FILE_TXT_ID",
+          "default": "GENERATE_UUIDv4"
+        },
+        {
+          "name": "CONNECTOR_HISTORY_ID",
+          "label": "CONNECTOR_HISTORY_ID",
+          "default": "GENERATE_UUIDv4"
+        },
+        {
+          "name": "CONNECTOR_IMPORT_DOCUMENT_ID",
+          "label": "CONNECTOR_IMPORT_DOCUMENT_ID",
+          "default": "GENERATE_UUIDv4"
+        },
+        {
+          "name": "CONNECTOR_IMPORT_FILE_STIX_ID",
+          "label": "CONNECTOR_IMPORT_FILE_STIX_ID",
+          "default": "GENERATE_UUIDv4"
+        },
+        {
+          "name": "CONNECTOR_ABUSE_SSL_ID",
+          "label": "CONNECTOR_ABUSE_SSL_ID",
+          "default": "GENERATE_UUIDv4"
+        },
+        {
+          "name": "CONNECTOR_CISA_KNOWN_EXPLOITED_VULNERABILITIES_ID",
+          "label": "CONNECTOR_CISA_KNOWN_EXPLOITED_VULNERABILITIES_ID",
+          "default": "GENERATE_UUIDv4"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

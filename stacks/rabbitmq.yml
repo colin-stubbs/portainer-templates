@@ -1,0 +1,29 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  rabbitmq:
+    image: rabbitmq:${RABBITMQ_VERSION:-4.1-management-alpine}
+    environment:
+      # Refer to: https://www.rabbitmq.com/docs/configure#supported-environment-variables
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER:-admin}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS:-CHANGE_ME}
+    volumes:
+#      - /opt/data/portainer/config/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - amqpdata:/var/lib/rabbitmq
+    restart: always
+    networks:
+      network:
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    labels:
+      - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  amqpdata:

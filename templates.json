@@ -1817,6 +1817,106 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
+      "id": 10007,
+      "type": 3,
+      "name": "canarytokens",
+      "title": "Canary Tokens",
+      "description": "Canarytokens helps track activity and actions on your network.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/canarytokens.png",
+      "categories": [
+        "edge",
+        "Network",
+        "Security",
+        "Honeypot",
+        "Honey Tokens"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/canarytokens.yml"
+      },
+      "env": [
+
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "opencanary"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "CANARY_ALERT_EMAIL_FROM_ADDRESS",
+          "label": "CANARY_ALERT_EMAIL_FROM_ADDRESS",
+          "default": "do-not-reply@your.domain.tld"
+        },
+        {
+          "name": "CANARY_ALERT_EMAIL_FROM_DISPLAY",
+          "label": "CANARY_ALERT_EMAIL_FROM_DISPLAY",
+          "default": "Canary Tokens"
+        },
+        {
+          "name": "CANARY_ALERT_EMAIL_SUBJECT",
+          "label": "CANARY_ALERT_EMAIL_SUBJECT",
+          "default": "Canary Token Triggered"
+        },
+        {
+          "name": "CANARY_DOMAINS",
+          "label": "CANARY_DOMAINS",
+          "default": "canarytokens.localhost"
+        },
+        {
+          "name": "CANARY_NXDOMAINS",
+          "label": "CANARY_NXDOMAINS",
+          "default": "nx.127.0.0.1,nx.localhost"
+        },
+        {
+          "name": "CANARY_PUBLIC_DOMAIN",
+          "label": "CANARY_PUBLIC_DOMAIN",
+          "default": "canarytokens-admin.localhost"
+        },
+        {
+          "name": "CANARY_PUBLIC_IP",
+          "label": "CANARY_PUBLIC_IP",
+          "default": "127.0.0.1"
+        },
+        {
+          "name": "CANARY_SENDGRID_API_KEY",
+          "label": "CANARY_SENDGRID_API_KEY",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "CANARY_SENDGRID_SANDBOX_MODE",
+          "label": "CANARY_SENDGRID_SANDBOX_MODE",
+          "default": "True"
+        },
+        {
+          "name": "CANARY_WEB_IMAGE_UPLOAD_PATH",
+          "label": "CANARY_WEB_IMAGE_UPLOAD_PATH",
+          "default": "/uploads"
+        },
+        {
+          "name": "CANARY_WG_PRIVATE_KEY_SEED",
+          "label": "CANARY_WG_PRIVATE_KEY_SEED",
+          "default": "vk/GD+frlhve/hDTTSUvqpQ/WsQtioKAri0Rt5mg7dw="
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
       "id": 10010,
       "type": 3,
       "name": "opencti",

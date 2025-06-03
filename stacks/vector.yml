@@ -1,0 +1,24 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  vector:
+    image: timberio/vector:latest-alpine
+    hostname: ${HOSTNAME:-vector}
+    domainname: ${DOMAINNAME:-localhost}
+    #ports:
+    #  - "8686:8686"
+    #  - "80:80"
+    #  - "6514:6514"
+    volumes:
+      - /opt/data/portainer/config/vector/vector.toml:/etc/vector/vector.toml
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vector_api.rule=Host(`vector-api.localhost`)"
+      - "traefik.http.routers.vector_api.service=vector_api"
+      - "traefik.http.services.vector_api.loadbalancer.server.port=8686"
+      - "com.centurylinklabs.watchtower.enable=true"

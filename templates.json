@@ -1376,6 +1376,48 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
+      "id": 5013,
+      "type": 3,
+      "name": "vector",
+      "title": "Vector",
+      "description": "Vector is a high-performance, log-native data router.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/vector.png",
+      "categories": [
+        "Logs",
+        "Tools",
+        "Data Router"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/vector.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "vector"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
       "id": 10000,
       "type": 3,
       "name": "ollama",

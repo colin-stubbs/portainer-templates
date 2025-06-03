@@ -1559,6 +1559,47 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
+      "id": 10002,
+      "type": 3,
+      "name": "gpustack-rocm",
+      "title": "GPUStack (ROCM)",
+      "description": "GPUStack is an open-source GPU cluster manager for running AI models.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/gpustack.png",
+      "categories": [
+        "edge",
+        "AI"
+      ],
+      "repository": {
+        "url": "https://github.com//colin-stubbs/portainer-templates",
+        "stackfile": "stacks/gpustack-rocm.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "gpustack"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
       "id": 10003,
       "type": 3,
       "image": "searxng/searxng:latest",

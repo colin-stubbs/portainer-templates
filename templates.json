@@ -1782,8 +1782,8 @@
         {
           "name": "OPENCANARY_IMAGE",
           "label": "OPENCANARY_IMAGE",
-          "description": "thinkst/opencanary:stable, thinkst/opencanary:latest (latest may be unstable), or a custom image path:tag",
-          "default": "thinkst/opencanary:stable"
+          "description": "docker.io/thinkst/opencanary:latest, or a custom image path:tag",
+          "default": "docker.io/thinkst/opencanary:latest"
         },
         {
           "name": "NETWORK",

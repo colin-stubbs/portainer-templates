@@ -1,0 +1,27 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  fluentd:
+    image: docker.io/fluent/fluentd:edge-debian
+    hostname: ${HOSTNAME:-fluentd}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+    volumes:
+      - fluentd_logs:/fluentd/log
+    #  - /opt/data/portainer/config/fluentd:/fluentd/etc
+    networks:
+      network:
+    #ports:
+    #  - "24224:24224/tcp"
+    #  - "24224:24224/udp"
+    labels:
+      - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  fluentd_logs:

@@ -1418,6 +1418,47 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
+      "id": 5014,
+      "type": 3,
+      "name": "fluentd",
+      "title": "Fluentd",
+      "description": "Fluentd is a data collector for unified logging layer.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/fluentd.png",
+      "categories": [
+        "Logs",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/fluentd.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "fluentd"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
       "id": 10000,
       "type": 3,
       "name": "ollama",
@@ -1887,7 +1928,7 @@
         {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
-          "default": "opencanary"
+          "default": "canarytokens"
         },
         {
           "name": "DOMAINNAME",

@@ -1,0 +1,29 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  beelzebub:
+    image: docker.io/m4r10/beelzebub:latest
+    hostname: ${HOSTNAME:-beelzebub}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - EXAMPLE_ENV_VAR=${EXAMPLE_ENV_VAR:-example}
+    #ports: 
+    #  - "22:22"
+    #  - "80:80"
+    #  - "2112:2112"   # Prometheus openmetric, Not a honeypot, rather for stats about the honeypot. DON'T EXPOSE THIS!
+    volumes:
+      - "/opt/data/portainer/config/beelzebub:/configurations"
+      - "/opt/data/logs/beelzebub:/logs"
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.beelzebub_http.rule=Host(`beelzebub.localhost`)"
+      - "traefik.http.routers.beelzebub_http.service=beelzebub_http"
+      - "traefik.http.services.beelzebub_http.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"

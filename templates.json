@@ -2000,6 +2000,56 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
+      "id": 10008,
+      "type": 3,
+      "name": "beelzebub",
+      "title": "Beelzebub",
+      "description": "Beelzebub is an advanced honeypot framework designed to provide a highly secure environment for detecting and analyzing cyber attacks.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/beelzebub.png",
+      "categories": [
+        "edge",
+        "Network",
+        "Security",
+        "Honeypot",
+        "LLM"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/beelzebub.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "beelzebub"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "EXAMPLE_ENV_VAR",
+          "label": "EXAMPLE_ENV_VAR",
+          "description": "Beelzebub config file supports $ENV_VAR usage, you'll need to pass them thru similar to the below if you need them.",
+          "default": "example"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
       "id": 10010,
       "type": 3,
       "name": "opencti",

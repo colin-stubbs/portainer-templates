@@ -2336,6 +2336,209 @@
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10011,
+      "type": 3,
+      "name": "hoppscotch-aio",
+      "title": "Hoppscotch (AIO)",
+      "description": "Hoppscotch is an open source API platform for API development and testing that allows you to test, document, and share your API with others.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/hoppscotch.png",
+      "categories": [
+        "We",
+        "API",
+        "Development",
+        "Testing"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/hoppscotch-aio.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "opencti"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "DATABASE_URL",
+          "label": "DATABASE_URL",
+          "default": "postgresql://hoppscotch:CHANGE_ME@postgres:5432/hoppscotch"
+        },
+        {
+          "name": "JWT_SECRET",
+          "label": "JWT_SECRET",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "TOKEN_SALT_COMPLEXITY",
+          "label": "TOKEN_SALT_COMPLEXITY",
+          "default": "10"
+        },
+        {
+          "name": "MAGIC_LINK_TOKEN_VALIDITY",
+          "label": "MAGIC_LINK_TOKEN_VALIDITY",
+          "default": "3"
+        },
+        {
+          "name": "REFRESH_TOKEN_VALIDITY",
+          "label": "REFRESH_TOKEN_VALIDITY",
+          "default": "604800000"
+        },
+        {
+          "name": "ACCESS_TOKEN_VALIDITY",
+          "label": "ACCESS_TOKEN_VALIDITY",
+          "default": "86400000"
+        },
+        {
+          "name": "SESSION_SECRET",
+          "label": "SESSION_SECRET",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "ALLOW_SECURE_COOKIES",
+          "label": "ALLOW_SECURE_COOKIES",
+          "default": "false"
+        },
+        {
+          "name": "DATA_ENCRYPTION_KEY",
+          "label": "DATA_ENCRYPTION_KEY",
+          "default": "CHANGE_ME!CHANGE_ME!CHANGE_ME!@#"
+        },
+        {
+          "name": "REDIRECT_URL",
+          "label": "REDIRECT_URL",
+          "default": "http://hoppscotch.localhost"
+        },
+        {
+          "name": "WHITELISTED_ORIGINS",
+          "label": "WHITELISTED_ORIGINS",
+          "default": "http://hoppscotch.localhost,app://hoppscotch.localhost,app://localhost_3200"
+        },
+        {
+          "name": "VITE_ALLOWED_AUTH_PROVIDERS",
+          "label": "VITE_ALLOWED_AUTH_PROVIDERS",
+          "default": "EMAIL"
+        },
+        {
+          "name": "MAILER_SMTP_ENABLE",
+          "label": "MAILER_SMTP_ENABLE",
+          "default": "true"
+        },
+        {
+          "name": "MAILER_USE_CUSTOM_CONFIGS",
+          "label": "MAILER_USE_CUSTOM_CONFIGS",
+          "default": "true"
+        },
+        {
+          "name": "MAILER_ADDRESS_FROM",
+          "label": "MAILER_ADDRESS_FROM",
+          "default": "from@example.com"
+        },
+        {
+          "name": "MAILER_SMTP_HOST",
+          "label": "MAILER_SMTP_HOST",
+          "default": "smtp.sendgrid.net"
+        },
+        {
+          "name": "MAILER_SMTP_PORT",
+          "label": "MAILER_SMTP_PORT",
+          "default": "465"
+        },
+        {
+          "name": "MAILER_SMTP_SECURE",
+          "label": "MAILER_SMTP_SECURE",
+          "default": "true"
+        },
+        {
+          "name": "MAILER_SMTP_USER",
+          "label": "MAILER_SMTP_USER",
+          "default": "apikey"
+        },
+        {
+          "name": "MAILER_SMTP_PASSWORD",
+          "label": "MAILER_SMTP_PASSWORD",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "MAILER_TLS_REJECT_UNAUTHORIZED",
+          "label": "MAILER_TLS_REJECT_UNAUTHORIZED",
+          "default": "true"
+        },
+        {
+          "name": "RATE_LIMIT_TTL",
+          "label": "RATE_LIMIT_TTL",
+          "default": "60"
+        },
+        {
+          "name": "RATE_LIMIT_MAX",
+          "label": "RATE_LIMIT_MAX",
+          "default": "256"
+        },
+        {
+          "name": "VITE_BASE_URL",
+          "label": "VITE_BASE_URL",
+          "default": "http://hoppscotch.localhost"
+        },
+        {
+          "name": "VITE_SHORTCODE_BASE_URL",
+          "label": "VITE_SHORTCODE_BASE_URL",
+          "default": "http://hoppscotch.localhost"
+        },
+        {
+          "name": "VITE_ADMIN_URL",
+          "label": "VITE_ADMIN_URL",
+          "default": "http://hoppscotch.localhost/admin"
+        },
+        {
+          "name": "VITE_BACKEND_GQL_URL",
+          "label": "VITE_BACKEND_GQL_URL",
+          "default": "http://hoppscotch.localhost/backend/graphql"
+        },
+        {
+          "name": "VITE_BACKEND_WS_URL",
+          "label": "VITE_BACKEND_WS_URL",
+          "default": "wss://hoppscotch.localhost/backend/graphql"
+        },
+        {
+          "name": "VITE_BACKEND_API_URL",
+          "label": "VITE_BACKEND_API_URL",
+          "default": "http://hoppscotch.localhost/backend/v1"
+        },
+        {
+          "name": "VITE_APP_TOS_LINK",
+          "label": "VITE_APP_TOS_LINK",
+          "default": "https://docs.hoppscotch.io/support/terms"
+        },
+        {
+          "name": "VITE_APP_PRIVACY_POLICY_LINK",
+          "label": "VITE_APP_PRIVACY_POLICY_LINK",
+          "default": "https://docs.hoppscotch.io/support/privacy"
+        },
+        {
+          "name": "ENABLE_SUBPATH_BASED_ACCESS",
+          "label": "ENABLE_SUBPATH_BASED_ACCESS",
+          "default": "true"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

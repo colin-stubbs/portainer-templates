@@ -1,0 +1,26 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  meilisearch:
+    image: getmeili/meilisearch:latest
+    restart: always
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY:-CHANGE_ME-CHANGE_ME-CHANGE_ME-CHANGE_ME-CHANGE_ME}
+    volumes:
+      - meili_data:/meili_data
+    networks:
+      network:
+    #ports:
+    #  - 7700:7700
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.meilisearch.rule=Host(`${HOSTNAME:-meilisearch}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.meilisearch.loadbalancer.server.port=7700"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  meili_data:

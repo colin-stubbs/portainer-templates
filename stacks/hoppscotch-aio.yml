@@ -6,6 +6,8 @@ networks:
 services:
   hoppscotch:
     image: docker.io/hoppscotch/hoppscotch:latest
+    # NOTE: use the following to create the initial database schema, or upgrade/migrate it, when necessary.
+    # entrypoint: ["/bin/sh", "-c", "pnpm dlx prisma migrate deploy"]
     hostname: ${HOSTNAME:-hoppscotch}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped

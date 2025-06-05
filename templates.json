@@ -2649,13 +2649,13 @@
           "default": "true"
         },
         {
-          "name": "NEXT_PUBLIC_EMAIL_FROM",
-          "label": "NEXT_PUBLIC_EMAIL_FROM",
+          "name": "EMAIL_FROM",
+          "label": "EMAIL_FROM",
           "default": "do-not-reply@linkwarden.CHANGE_ME"
         },
         {
-          "name": "NEXT_PUBLIC_EMAIL_HOST",
-          "label": "NEXT_PUBLIC_EMAIL_HOST",
+          "name": "EMAIL_SERVER",
+          "label": "EMAIL_SERVER",
           "default": "smtps://apikey:CHANGE_ME@smtp.sendgrid.net:465"
         },
         {

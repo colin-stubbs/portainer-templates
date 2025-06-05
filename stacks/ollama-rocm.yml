@@ -31,6 +31,6 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ollama.rule=Host(`ollama.localhost`)"
+      - "traefik.http.routers.ollama.rule=Host(`${HOSTNAME:-ollama}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.ollama.loadbalancer.server.port=11434"
       - "com.centurylinklabs.watchtower.enable=true"

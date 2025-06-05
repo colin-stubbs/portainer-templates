@@ -21,7 +21,7 @@ services:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.uptime_kuma.rule=Host(`uptime-kuma.localhost`)"
+      - "traefik.http.routers.uptime_kuma.rule=Host(`${HOSTNAME:-uptime-kuma}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.uptime_kuma.loadbalancer.server.port=80"
       - "com.centurylinklabs.watchtower.enable=true"
 

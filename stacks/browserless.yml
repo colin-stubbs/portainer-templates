@@ -17,6 +17,6 @@ services:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.browserless_chromium.rule=Host(`browserless-chromium.localhost`)"
+      - "traefik.http.routers.browserless_chromium.rule=Host(`${HOSTNAME:-browserless-chromium}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.browserless_chromium.loadbalancer.server.port=3000"
       - "com.centurylinklabs.watchtower.enable=true"

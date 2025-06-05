@@ -52,7 +52,7 @@ services:
       retries: 20
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.opencti.rule=Host(`opencti.localhost`)"
+      - "traefik.http.routers.opencti.rule=Host(`${HOSTNAME:-opencti}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.opencti.loadbalancer.server.port=80"
       - "com.centurylinklabs.watchtower.enable=true"
 

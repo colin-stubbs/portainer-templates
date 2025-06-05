@@ -27,7 +27,7 @@ services:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik_api.rule=Host(`traefik.localhost`)"
+      - "traefik.http.routers.traefik_api.rule=Host(`${HOSTNAME:-traefik}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.routers.traefik_api.service=api@internal"
       - "traefik.http.routers.traefik_api.middlewares=traefik_api"
       - "traefik.http.middlewares.traefik_api.basicauth.users=admin:$$apr1$$RV0rTsSy$$eJR8jnlH1gzdXsVaKFrcO."

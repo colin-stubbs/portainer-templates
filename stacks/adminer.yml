@@ -18,6 +18,6 @@ services:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.adminer.rule=Host(`adminer.localhost`)"
+      - "traefik.http.routers.adminer.rule=Host(`${HOSTNAME:-adminer}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.adminer.loadbalancer.server.port=8080"
       - "com.centurylinklabs.watchtower.enable=true"

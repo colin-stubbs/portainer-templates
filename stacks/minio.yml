@@ -28,10 +28,10 @@ services:
       retries: 3
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.minio_api.rule=Host(`minio-api.localhost`)"
+      - "traefik.http.routers.minio_api.rule=Host(`minio-api.${DOMAINNAME:-localhost}`)"
       - "traefik.http.routers.minio_api.service=minio_api"
       - "traefik.http.services.minio_api.loadbalancer.server.port=9000"
-      - "traefik.http.routers.minio_console.rule=Host(`minio-console.localhost`)"
+      - "traefik.http.routers.minio_console.rule=Host(`minio-console.${DOMAINNAME:-localhost}`)"
       - "traefik.http.routers.minio_console.service=minio_console"
       - "traefik.http.services.minio_console.loadbalancer.server.port=9001"
       - "com.centurylinklabs.watchtower.enable=true"

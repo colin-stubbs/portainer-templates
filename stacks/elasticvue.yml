@@ -16,6 +16,6 @@ services:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.elasticvue.rule=Host(`elasticvue.localhost`)"
+      - "traefik.http.routers.elasticvue.rule=Host(`${HOSTNAME:-elasticvue}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.elasticvue.loadbalancer.server.port=8080"
       - "com.centurylinklabs.watchtower.enable=true"

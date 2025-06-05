@@ -11,16 +11,19 @@ services:
     restart: unless-stopped
     environment:
       - TZ=${TZ:-Australia/Brisbane}
-      - ES_JAVA_OPTS=${ES_JAVA_OPTS:--Xms512m -Xmx512m}
+      - ES_JAVA_OPTS=${ES_JAVA_OPTS:--Xms1g -Xmx1g -Des.failure_store_feature_flag_enabled=true}
       - ELASTIC_USERNAME=${ELASTIC_USERNAME:-elastic}
-      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:-CHANGE_ME}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:-changeme}
       - node.name=elasticsearch
       - cluster.name=es-docker
       - bootstrap.memory_lock=true
       - discovery.type=single-node
       - logger.org.elasticsearch.discovery="ERROR"
+      - xpack.license.self_generated.type=trial
       - xpack.ml.enabled=true
       - xpack.security.enabled=true
+      - xpack.security.authc.api_key.enabled=true
+      - xpack.security.enrollment.enabled=true
       - http.cors.enabled=true
       - http.cors.allow-origin=${CORS_ALLOW_ORIGIN:-http://elasticvue.localhost}
       - http.cors.allow-headers=X-Requested-With,Content-Type,Content-Length,Authorization
@@ -32,7 +35,7 @@ services:
         soft: 65536
         hard: 65536
     healthcheck:
-      test: curl --insecure --silent --user "${ELASTIC_USERNAME}:${ELASTIC_PASSWORD}" https://localhost:9200 1>/dev/null 2>&1 || exit 1
+      test: curl --insecure --silent --user "${ELASTIC_USERNAME}:${ELASTIC_PASSWORD}" https://localhost:9200/_cat/health | cut -f4 -d' ' | grep -E '(green|yellow)' 1>/dev/null 2>&1 || exit 1
       interval: 30s
       timeout: 10s
       retries: 50
@@ -42,7 +45,7 @@ services:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.elasticsearch.rule=Host(`elasticsearch.localhost`)"
+      - "traefik.http.routers.elasticsearch.rule=Host(`${HOSTNAME:-elasticsearch}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.elasticsearch.loadbalancer.server.port=9200"
       - "com.centurylinklabs.watchtower.enable=true"
 

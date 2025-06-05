@@ -39,7 +39,7 @@ services:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.logstash_api.rule=Host(`logstash-api.localhost`)"
+      - "traefik.http.routers.logstash_api.rule=Host(`logstash-api.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.logstash_api.loadbalancer.server.port=9600"
       - "com.centurylinklabs.watchtower.enable=false"
 

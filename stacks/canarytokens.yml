@@ -127,7 +127,7 @@ services:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.canarytokens_switchboard.rule=Host(`canarytokens.localhost`)"
+      - "traefik.http.routers.canarytokens_switchboard.rule=Host(`${HOSTNAME:-canarytokens}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.canarytokens_switchboard.loadbalancer.server.port=8083"
       - "com.centurylinklabs.watchtower.enable=true"
 

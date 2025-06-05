@@ -6,12 +6,14 @@ networks:
 services:
   meilisearch:
     image: getmeili/meilisearch:latest
-    restart: always
+    hostname: ${HOSTNAME:-meilisearch}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: unless-stopped
     environment:
       - TZ=${TZ:-Australia/Brisbane}
       - MEILI_MASTER_KEY=${MEILI_MASTER_KEY:-CHANGE_ME-CHANGE_ME-CHANGE_ME-CHANGE_ME-CHANGE_ME}
     volumes:
-      - meili_data:/meili_data
+      - meilisearch_data:/meili_data
     networks:
       network:
     #ports:
@@ -23,4 +25,4 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
 volumes:
-  meili_data:
+  meilisearch_data:

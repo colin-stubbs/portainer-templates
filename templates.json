@@ -2345,7 +2345,7 @@
       "description": "Hoppscotch is an open source API platform for API development and testing that allows you to test, document, and share your API with others.",
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/hoppscotch.png",
       "categories": [
-        "We",
+        "Web",
         "API",
         "Development",
         "Testing"
@@ -2536,6 +2536,53 @@
           "name": "ENABLE_SUBPATH_BASED_ACCESS",
           "label": "ENABLE_SUBPATH_BASED_ACCESS",
           "default": "true"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10012,
+      "type": 3,
+      "name": "meilisearch",
+      "title": "Meilisearch",
+      "description": "Meilisearch is a fast, modern, and powerful search engine that allows you to build search experiences.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/meilisearch.png",
+      "categories": [
+        "Web",
+        "Search",
+        "API"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/meilisearch.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "meilisearch"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "MEILI_MASTER_KEY",
+          "label": "MEILI_MASTER_KEY",
+          "default": "CHANGE_ME-CHANGE_ME-CHANGE_ME-CHANGE_ME-CHANGE_ME"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

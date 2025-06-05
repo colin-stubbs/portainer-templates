@@ -2587,5 +2587,114 @@
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
+    {
+      "id": 10013,
+      "type": 3,
+      "name": "linkwarden",
+      "title": "Linkwarden",
+      "description": "Linkwarden is a self-hosted bookmark manager that allows you to manage your bookmarks, notes, and more.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/linkwarden.png",
+      "categories": [
+        "Web",
+        "Search",
+        "Bookmarks",
+        "Tools",
+        "API"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/linkwarden.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "linkwarden"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "DATABASE_URL",
+          "label": "DATABASE_URL",
+          "default": "postgresql://linkwarden:CHANGE_ME@postgres:5432/linkwarden"
+        },
+        {
+          "name": "NEXTAUTH_URL",
+          "label": "NEXTAUTH_URL",
+          "default": "http://linkwarden.localhost/api/v1/auth"
+        },
+        {
+          "name": "NEXTAUTH_SECRET",
+          "label": "NEXTAUTH_SECRET",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "NEXT_PUBLIC_EMAIL_PROVIDER",
+          "label": "NEXT_PUBLIC_EMAIL_PROVIDER",
+          "default": "true"
+        },
+        {
+          "name": "NEXT_PUBLIC_EMAIL_FROM",
+          "label": "NEXT_PUBLIC_EMAIL_FROM",
+          "default": "do-not-reply@linkwarden.CHANGE_ME"
+        },
+        {
+          "name": "NEXT_PUBLIC_EMAIL_HOST",
+          "label": "NEXT_PUBLIC_EMAIL_HOST",
+          "default": "smtps://apikey:CHANGE_ME@smtp.sendgrid.net:465"
+        },
+        {
+          "name": "NEXT_PUBLIC_DISABLE_REGISTRATION",
+          "label": "NEXT_PUBLIC_DISABLE_REGISTRATION",
+          "default": "false"
+        },
+        {
+          "name": "NEXT_PUBLIC_CREDENTIALS_ENABLED",
+          "label": "NEXT_PUBLIC_CREDENTIALS_ENABLED",
+          "default": "true"
+        },
+        {
+          "name": "DISABLE_NEW_SSO_USERS",
+          "label": "DISABLE_NEW_SSO_USERS",
+          "default": "true"
+        },
+        {
+          "name": "NEXT_PUBLIC_OLLAMA_ENDPOINT_URL",
+          "label": "NEXT_PUBLIC_OLLAMA_ENDPOINT_URL",
+          "default": "http://ollama:11434"
+        },
+        {
+          "name": "OLLAMA_MODEL",
+          "label": "OLLAMA_MODEL",
+          "default": "phi3:mini-4k"
+        },
+        {
+          "name": "MEILI_HOST",
+          "label": "MEILI_HOST",
+          "default": "http://meilisearch:7700"
+        },
+        {
+          "name": "MEILI_MASTER_KEY",
+          "label": "MEILI_MASTER_KEY",
+          "default": "CHANGE_ME-CHANGE_ME-CHANGE_ME-CHANGE_ME-CHANGE_ME"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    }
   ]
 }

@@ -12,12 +12,13 @@ services:
     networks:
       network:
     ports:
-      - "80:80"
-      - "443:443"
+      - "80:80/tcp"
+      - "443:443/tcp"
       - "443:443/udp"
+      # - "2019:2019/tcp"
     volumes:
-      - /opt/data/portainer/config/caddy:/etc/caddy
-      - /opt/data/portainer/config/caddy/srv:/srv
+      - /opt/data/portainer/config/caddy:/etc/caddy:ro
+      - /opt/data/portainer/config/caddy/srv:/srv:ro
       - caddy_data:/data
       - caddy_config:/config
     environment:

@@ -8,13 +8,25 @@ services:
     image: traefik:latest
     hostname: ${HOSTNAME:-traefik}
     domainname: ${DOMAINNAME:-localhost}
+    #command:
+    #  #- "--log.level=DEBUG"
+    #  - "--api.insecure=true"
+    #  - "--providers.docker=true"
+    #  - "--providers.docker.exposedbydefault=false"
+    #  - "--entryPoints.web.address=:80"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      # - /opt/data/portainer/config/traefik:/etc/traefik:ro
     ports:
       - "80:80/tcp"
+      - "81:81/tcp"
       - "443:443/tcp"
+      - "443:443/udp"
     environment:
       - TZ=${TZ:-Australia/Brisbane}
+      # - TRAEFIK_PROVIDERS_FILE_FILENAME=${TRAEFIK_PROVIDERS_FILE_FILENAME:-/etc/traefik/traefik.yml}
+      - TRAEFIK_PROVIDERS_FILE_DIRECTORY=${TRAEFIK_PROVIDERS_FILE_DIRECTORY:-/etc/traefik/conf.d}
+      - TRAEFIK_PROVIDERS_FILE_WATCH=${TRAEFIK_PROVIDERS_FILE_WATCH:-true}
       - TRAEFIK_PROVIDERS_DOCKER=${TRAEFIK_PROVIDERS_DOCKER:-true}
       - TRAEFIK_PROVIDERS_DOCKER_EXPOSEDBYDEFAULT=${TRAEFIK_PROVIDERS_DOCKER_EXPOSEDBYDEFAULT:-false}
       - TRAEFIK_API=${TRAEFIK_API:-false}
@@ -27,6 +39,8 @@ services:
       network:
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.traefik_ping.rule=Host(`${HOSTNAME:-traefik}.${DOMAINNAME:-localhost}`) && Path(`/ping`)"
+      - "traefik.http.routers.traefik_ping.service=ping@internal"
       - "traefik.http.routers.traefik_api.rule=Host(`${HOSTNAME:-traefik}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.routers.traefik_api.service=api@internal"
       - "traefik.http.routers.traefik_api.middlewares=traefik_api"

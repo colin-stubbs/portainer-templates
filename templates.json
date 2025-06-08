@@ -342,7 +342,7 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
-      "id": 5,
+      "id": 6,
       "type": 3,
       "name": "pgadmin",
       "title": "PostgreSQL Admin",
@@ -405,7 +405,7 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
-      "id": 6,
+      "id": 7,
       "type": 3,
       "name": "mariadb",
       "title": "MariaDB",
@@ -466,7 +466,7 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
-      "id": 7,
+      "id": 8,
       "type": 3,
       "name": "adminer",
       "title": "Adminer",
@@ -523,7 +523,7 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
-      "id": 8,
+      "id": 9,
       "type": 3,
       "name": "opcs",
       "title": "1Password Connect Server",
@@ -566,7 +566,7 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
-      "id": 9,
+      "id": 10,
       "type": 3,
       "name": "redis",
       "title": "Redis",
@@ -611,7 +611,7 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
-      "id": 10,
+      "id": 11,
       "type": 3,
       "name": "rabbitmq",
       "title": "RabbitMQ",
@@ -665,7 +665,7 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
-      "id": 11,
+      "id": 12,
       "type": 3,
       "name": "minio",
       "title": "MinIO",
@@ -730,7 +730,7 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
-      "id": 12,
+      "id": 13,
       "type": 3,
       "name": "squid",
       "title": "Squid",
@@ -770,6 +770,51 @@
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
+
+		{
+      "id": 14,
+      "type": 3,
+			"name": "caddy",
+			"title": "Caddy",
+			"description": "Caddy is a modern, easy-to-use web server with automatic HTTPS.",
+			"logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/caddy.png",
+			"categories": [
+        "edge",
+        "Web",
+				"Proxy",
+				"Security",
+				"Tools"
+			],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/caddy.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "caddy"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+		},
     {
       "id": 5000,
       "type": 3,
@@ -2656,7 +2701,7 @@
         {
           "name": "EMAIL_SERVER",
           "label": "EMAIL_SERVER",
-          "default": "smtps://apikey:CHANGE_ME@smtp.sendgrid.net:465"
+          "default": "smtp://apikey:CHANGE_ME@smtp.sendgrid.net:587"
         },
         {
           "name": "NEXT_PUBLIC_DISABLE_REGISTRATION",

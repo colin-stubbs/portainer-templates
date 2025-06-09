@@ -815,7 +815,7 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
 		},
 		{
-      "id": 14,
+      "id": 15,
       "type": 3,
 			"name": "browserless-chromium",
 			"title": "Browserless Chromium",

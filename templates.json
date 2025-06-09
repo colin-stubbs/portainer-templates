@@ -1042,6 +1042,21 @@
           "label": "TZ",
           "description": "Timezone",
           "default": "Australia/Brisbane"
+        },
+        {
+          "name": "UPTIME_KUMA_HOST",
+          "label": "UPTIME_KUMA_HOST",
+          "default": "::"
+        },
+        {
+          "name": "UPTIME_KUMA_PORT",
+          "label": "UPTIME_KUMA_PORT",
+          "default": "80"
+        },
+        {
+          "name": "UPTIME_KUMA_WS_ORIGIN_CHECK",
+          "label": "UPTIME_KUMA_WS_ORIGIN_CHECK",
+          "default": "cors-like"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

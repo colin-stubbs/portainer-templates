@@ -770,7 +770,6 @@
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
-
 		{
       "id": 14,
       "type": 3,
@@ -811,6 +810,59 @@
           "label": "TZ",
           "description": "Timezone",
           "default": "Australia/Brisbane"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+		},
+		{
+      "id": 14,
+      "type": 3,
+			"name": "browserless-chromium",
+			"title": "Browserless Chromium",
+			"description": "Browserless Chromium is a headless browser that can be used to render web pages.",
+			"logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/browserless.svg",
+			"categories": [
+        "edge",
+        "Web",
+				"Proxy",
+				"Tools"
+			],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/browserless-chromium.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "browserless-chromium"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "CONCURRENT",
+          "label": "CONCURRENT",
+          "default": "10"
+        },
+        {
+          "name": "TOKEN",
+          "label": "TOKEN",
+          "default": "CHANGE_ME"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

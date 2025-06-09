@@ -9,9 +9,9 @@ services:
     hostname: ${HOSTNAME:-browserless-chromium}
     domainname: ${DOMAINNAME:-localhost}
     environment:
+      - TZ=${TZ:-Australia/Brisbane}
       - CONCURRENT=${CONCURRENT:-10}
       - TOKEN=${TOKEN:-CHANGE_ME}
-      - TZ=${TZ:-Australia/Brisbane}
     restart: unless-stopped
     networks:
       network:

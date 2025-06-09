@@ -9,7 +9,7 @@ services:
     hostname: ${HOSTNAME:-ollama}
     domainname: ${DOMAINNAME:-localhost}
     volumes:
-      - /home/ollama/.ollama:/root/.ollama
+      - ollama_data:/root/.ollama
     networks:
       network:
     environment:
@@ -28,3 +28,6 @@ services:
       - "traefik.http.routers.ollama.rule=Host(`${HOSTNAME:-ollama}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.ollama.loadbalancer.server.port=11434"
       - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  ollama_data:

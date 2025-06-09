@@ -24,7 +24,10 @@ services:
       - CONTACT_ADDRESS=${CONTACT_ADDRESS:-CHANGE@ME.tld}
       - DB_NAME=${DB_NAME:-sqlite3}
       - DB_FILE_PATH=${DB_FILE_PATH:-gophish.db}
-
+      #- DB_NAME=mysql
+      #- DB_FILE_PATH=username:password@(host:port)/database?charset=utf8&parseTime=True&loc=UTC
+    volumes:
+      - /opt/data/portainer/config/gophish/config.json:/opt/gophish/config.json:ro
     networks:
       network:
     labels:

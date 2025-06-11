@@ -1,3 +1,42 @@
+x-shared-env: &shared-env
+  CANARY_ALERT_EMAIL_FROM_ADDRESS: ${CANARY_ALERT_EMAIL_FROM_ADDRESS:-do-not-reply@your.domain.tld}
+  CANARY_ALERT_EMAIL_FROM_DISPLAY: ${CANARY_ALERT_EMAIL_FROM_DISPLAY:-Canary Tokens}
+  CANARY_ALERT_EMAIL_SUBJECT: ${CANARY_ALERT_EMAIL_SUBJECT:-Canary Token Triggered}
+  CANARY_DOMAINS: ${CANARY_DOMAINS:-localhost,127.0.0.1}
+  CANARY_FORCE_HTTPS: ${CANARY_FORCE_HTTPS:-False}
+  CANARY_FRONTEND_LOG_COUNT: ${CANARY_FRONTEND_LOG_COUNT:-10}
+  CANARY_FRONTEND_LOG_SIZE: ${CANARY_FRONTEND_LOG_SIZE:-10485760}
+  # CANARY_GOOGLE_API_KEY: ${CANARY_GOOGLE_API_KEY:-} 
+  # CANARY_IPINFO_API_KEY: ${CANARY_IPINFO_API_KEY:-}
+  # CANARY_MAILGUN_API_KEY: ${CANARY_MAILGUN_API_KEY:-}
+  # CANARY_MAILGUN_DOMAIN_NAME: ${CANARY_MAILGUN_DOMAIN_NAME:-}
+  # CANARY_MANDRILL_API_KEY: ${CANARY_MANDRILL_API_KEY:-}
+  CANARY_MAX_ALERTS_PER_MINUTE: ${CANARY_MAX_ALERTS_PER_MINUTE:-1000}
+  CANARY_MAX_UPLOAD_SIZE: ${CANARY_MAX_UPLOAD_SIZE:-10485760}
+  CANARY_NXDOMAINS: ${CANARY_NXDOMAINS:-nx.127.0.0.1,nx.localhost}
+  CANARY_PUBLIC_DOMAIN: ${CANARY_PUBLIC_DOMAIN:-canarytokens.localhost}
+  CANARY_PUBLIC_IP: ${CANARY_PUBLIC_IP:-127.0.0.1}
+  CANARY_REAL_IP_HEADER: ${CANARY_REAL_IP_HEADER:-x-real-ip}
+  CANARY_REDIS_DB: ${CANARY_REDIS_DB:-0}
+  CANARY_REDIS_HOST: ${CANARY_REDIS_HOST:-redis}
+  CANARY_REDIS_PORT: ${CANARY_REDIS_PORT:-6379}
+  CANARY_SENDGRID_API_KEY: ${CANARY_SENDGRID_API_KEY:-CHANGE_ME}
+  CANARY_SENDGRID_SANDBOX_MODE: ${CANARY_SENDGRID_SANDBOX_MODE:-True}
+  # CANARY_SENTRY_DSN: ${CANARY_SENTRY_DSN:-}
+  # CANARY_SENTRY_ENABLE: ${CANARY_SENTRY_ENABLE:-False}
+  # CANARY_SENTRY_ENVIRONMENT: ${CANARY_SENTRY_ENVIRONMENT:-local}
+  # CANARY_SMTP_PASSWORD: ${CANARY_SMTP_PASSWORD:-}
+  # CANARY_SMTP_PORT: ${CANARY_SMTP_PORT:-}
+  # CANARY_SMTP_SERVER: ${CANARY_SMTP_SERVER:-}
+  # CANARY_SMTP_USERNAME: ${CANARY_SMTP_USERNAME:-}
+  CANARY_SWITCHBOARD_LOG_COUNT: ${CANARY_SWITCHBOARD_LOG_COUNT:-20}
+  CANARY_SWITCHBOARD_LOG_SIZE: ${CANARY_SWITCHBOARD_LOG_SIZE:-500000000}
+  CANARY_SWITCHBOARD_SCHEME: ${CANARY_SWITCHBOARD_SCHEME:-http}
+  CANARY_TOKEN_RETURN: ${CANARY_TOKEN_RETURN:-gif}
+  CANARY_USING_NGINX: ${CANARY_USING_NGINX:-False}
+  CANARY_WEB_IMAGE_UPLOAD_PATH: ${CANARY_WEB_IMAGE_UPLOAD_PATH:-/uploads}
+  CANARY_WG_PRIVATE_KEY_SEED: ${CANARY_WG_PRIVATE_KEY_SEED:-vk/GD+frlhve/hDTTSUvqpQ/WsQtioKAri0Rt5mg7dw=}
+  # ERROR_LOG_WEBHOOK: ${ERROR_LOG_WEBHOOK:-}
 
 networks:
   network:
@@ -10,126 +49,52 @@ services:
     command: bash -c "cd frontend; env | grep ^CANARY_ > ../frontend/frontend.env; cp ../frontend/frontend.env ../switchboard/switchboard.env; poetry run python -m uvicorn app:app --host 0.0.0.0 --port 8082"
     restart: unless-stopped
     environment:
-      TZ: ${TZ:-Australia/Brisbane}
-
-      CANARY_ALERT_EMAIL_FROM_ADDRESS: ${CANARY_ALERT_EMAIL_FROM_ADDRESS:-do-not-reply@your.domain.tld}
-      CANARY_ALERT_EMAIL_FROM_DISPLAY: ${CANARY_ALERT_EMAIL_FROM_DISPLAY:-Canary Tokens}
-      CANARY_ALERT_EMAIL_SUBJECT: ${CANARY_ALERT_EMAIL_SUBJECT:-Canary Token Triggered}
-      CANARY_DOMAINS: ${CANARY_DOMAINS:-canarytokens.localhost}
-      # CANARY_FORCE_HTTPS: ${CANARY_FORCE_HTTPS:-False}
-      # CANARY_FRONTEND_LOG_COUNT: ${CANARY_FRONTEND_LOG_COUNT:-10}
-      # CANARY_FRONTEND_LOG_SIZE: ${CANARY_FRONTEND_LOG_SIZE:-10485760}
-      # CANARY_GOOGLE_API_KEY: ${CANARY_GOOGLE_API_KEY:-} 
-      # CANARY_IPINFO_API_KEY: ${CANARY_IPINFO_API_KEY:-}
-      # CANARY_MAILGUN_API_KEY: ${CANARY_MAILGUN_API_KEY:-}
-      # CANARY_MAILGUN_DOMAIN_NAME: ${CANARY_MAILGUN_DOMAIN_NAME:-}
-      # CANARY_MANDRILL_API_KEY: ${CANARY_MANDRILL_API_KEY:-}
-      # CANARY_MAX_ALERTS_PER_MINUTE: ${CANARY_MAX_ALERTS_PER_MINUTE:-1000}
-      # CANARY_MAX_UPLOAD_SIZE: ${CANARY_MAX_UPLOAD_SIZE:-10485760}
-      CANARY_NXDOMAINS: ${CANARY_NXDOMAINS:-nx.127.0.0.1,nx.localhost}
-      CANARY_PUBLIC_DOMAIN: ${CANARY_PUBLIC_DOMAIN:-canarytokens-admin.localhost}
-      CANARY_PUBLIC_IP: ${CANARY_PUBLIC_IP:-127.0.0.1}
-      # CANARY_REAL_IP_HEADER: ${CANARY_REAL_IP_HEADER:-x-real-ip}
-      # CANARY_REDIS_DB: ${CANARY_REDIS_DB:-0}
-      # CANARY_REDIS_HOST: ${CANARY_REDIS_HOST:-redis}
-      # CANARY_REDIS_PORT: ${CANARY_REDIS_PORT:-6379}
-      CANARY_SENDGRID_API_KEY: ${CANARY_SENDGRID_API_KEY:-CHANGE_ME}
-      CANARY_SENDGRID_SANDBOX_MODE: ${CANARY_SENDGRID_SANDBOX_MODE:-True}
-      # CANARY_SENTRY_DSN: ${CANARY_SENTRY_DSN:-}
-      # CANARY_SENTRY_ENABLE: ${CANARY_SENTRY_ENABLE:-False}
-      # CANARY_SENTRY_ENVIRONMENT: ${CANARY_SENTRY_ENVIRONMENT:-local}
-      # CANARY_SMTP_PASSWORD: ${CANARY_SMTP_PASSWORD:-}
-      # CANARY_SMTP_PORT: ${CANARY_SMTP_PORT:-}
-      # CANARY_SMTP_SERVER: ${CANARY_SMTP_SERVER:-}
-      # CANARY_SMTP_USERNAME: ${CANARY_SMTP_USERNAME:-}
-      # CANARY_SWITCHBOARD_LOG_COUNT: ${CANARY_SWITCHBOARD_LOG_COUNT:-20}
-      # CANARY_SWITCHBOARD_LOG_SIZE: ${CANARY_SWITCHBOARD_LOG_SIZE:-500000000}
-      # CANARY_SWITCHBOARD_SCHEME: ${CANARY_SWITCHBOARD_SCHEME:-http}
-      # CANARY_TOKEN_RETURN: ${CANARY_TOKEN_RETURN:-gif}
-      CANARY_USING_NGINX: ${CANARY_USING_NGINX:-False}
-      CANARY_WEB_IMAGE_UPLOAD_PATH: ${CANARY_WEB_IMAGE_UPLOAD_PATH:-/uploads}
-      CANARY_WG_PRIVATE_KEY_SEED: ${CANARY_WG_PRIVATE_KEY_SEED:-vk/GD+frlhve/hDTTSUvqpQ/WsQtioKAri0Rt5mg7dw=}
-
-      # ERROR_LOG_WEBHOOK: ${ERROR_LOG_WEBHOOK:-}
+      <<: *shared-env
       LOG_FILE: ${LOG_FILE:-frontend.log}
     volumes:
       - logs:/logs
       - uploads:/uploads
-    ports:
-     - "8082:8082"
+    # ports:
+    # HTTP - Admin Interface
+    #  - "8082:8082"
     networks:
       network:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.canarytokens_frontend.rule=Host(`canarytokens-admin.localhost`)"
       - "traefik.http.services.canarytokens_frontend.loadbalancer.server.port=8082"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
   canarytokens-switchboard:
     image: thinkst/canarytokens:latest
     command: bash -c "cd switchboard; rm -f switchboard.pid; env | grep ^CANARY_ > ../frontend/frontend.env; cp ../frontend/frontend.env ../switchboard/switchboard.env; poetry run twistd -noy switchboard.tac --pidfile=switchboard.pid"
     restart: unless-stopped
     environment:
-      TZ: ${TZ:-Australia/Brisbane}
-
-      CANARY_ALERT_EMAIL_FROM_ADDRESS: ${CANARY_ALERT_EMAIL_FROM_ADDRESS:-do-not-reply@your.domain.tld}
-      CANARY_ALERT_EMAIL_FROM_DISPLAY: ${CANARY_ALERT_EMAIL_FROM_DISPLAY:-Canary Tokens}
-      CANARY_ALERT_EMAIL_SUBJECT: ${CANARY_ALERT_EMAIL_SUBJECT:-Canary Token Triggered}
-      CANARY_DOMAINS: ${CANARY_DOMAINS:-canarytokens.localhost}
-      # CANARY_FORCE_HTTPS: ${CANARY_FORCE_HTTPS:-False}
-      # CANARY_FRONTEND_LOG_COUNT: ${CANARY_FRONTEND_LOG_COUNT:-10}
-      # CANARY_FRONTEND_LOG_SIZE: ${CANARY_FRONTEND_LOG_SIZE:-10485760}
-      # CANARY_GOOGLE_API_KEY: ${CANARY_GOOGLE_API_KEY:-} 
-      # CANARY_IPINFO_API_KEY: ${CANARY_IPINFO_API_KEY:-}
-      # CANARY_MAILGUN_API_KEY: ${CANARY_MAILGUN_API_KEY:-}
-      # CANARY_MAILGUN_DOMAIN_NAME: ${CANARY_MAILGUN_DOMAIN_NAME:-}
-      # CANARY_MANDRILL_API_KEY: ${CANARY_MANDRILL_API_KEY:-}
-      # CANARY_MAX_ALERTS_PER_MINUTE: ${CANARY_MAX_ALERTS_PER_MINUTE:-1000}
-      # CANARY_MAX_UPLOAD_SIZE: ${CANARY_MAX_UPLOAD_SIZE:-10485760}
-      CANARY_NXDOMAINS: ${CANARY_NXDOMAINS:-nx.127.0.0.1,nx.localhost}
-      CANARY_PUBLIC_DOMAIN: ${CANARY_PUBLIC_DOMAIN:-canarytokens-admin.localhost}
-      CANARY_PUBLIC_IP: ${CANARY_PUBLIC_IP:-127.0.0.1}
-      # CANARY_REAL_IP_HEADER: ${CANARY_REAL_IP_HEADER:-x-real-ip}
-      # CANARY_REDIS_DB: ${CANARY_REDIS_DB:-0}
-      # CANARY_REDIS_HOST: ${CANARY_REDIS_HOST:-redis}
-      # CANARY_REDIS_PORT: ${CANARY_REDIS_PORT:-6379}
-      CANARY_SENDGRID_API_KEY: ${CANARY_SENDGRID_API_KEY:-CHANGE_ME}
-      CANARY_SENDGRID_SANDBOX_MODE: ${CANARY_SENDGRID_SANDBOX_MODE:-True}
-      # CANARY_SENTRY_DSN: ${CANARY_SENTRY_DSN:-}
-      # CANARY_SENTRY_ENABLE: ${CANARY_SENTRY_ENABLE:-False}
-      # CANARY_SENTRY_ENVIRONMENT: ${CANARY_SENTRY_ENVIRONMENT:-local}
-      # CANARY_SMTP_PASSWORD: ${CANARY_SMTP_PASSWORD:-}
-      # CANARY_SMTP_PORT: ${CANARY_SMTP_PORT:-}
-      # CANARY_SMTP_SERVER: ${CANARY_SMTP_SERVER:-}
-      # CANARY_SMTP_USERNAME: ${CANARY_SMTP_USERNAME:-}
-      # CANARY_SWITCHBOARD_LOG_COUNT: ${CANARY_SWITCHBOARD_LOG_COUNT:-20}
-      # CANARY_SWITCHBOARD_LOG_SIZE: ${CANARY_SWITCHBOARD_LOG_SIZE:-500000000}
-      # CANARY_SWITCHBOARD_SCHEME: ${CANARY_SWITCHBOARD_SCHEME:-http}
-      # CANARY_TOKEN_RETURN: ${CANARY_TOKEN_RETURN:-gif}
-      CANARY_USING_NGINX: ${CANARY_USING_NGINX:-False}
-      CANARY_WEB_IMAGE_UPLOAD_PATH: ${CANARY_WEB_IMAGE_UPLOAD_PATH:-/uploads}
-      CANARY_WG_PRIVATE_KEY_SEED: ${CANARY_WG_PRIVATE_KEY_SEED:-vk/GD+frlhve/hDTTSUvqpQ/WsQtioKAri0Rt5mg7dw=}
-
-      # ERROR_LOG_WEBHOOK: ${ERROR_LOG_WEBHOOK:-}
+      <<: *shared-env
       LOG_FILE: ${LOG_FILE:-switchboard.log}
 
     volumes_from:
       - canarytokens-frontend
     ports:
-     #- "25:2500"
-     #- "3306:3306"
-     #- "53:5354"
-     #- "53:5354/udp"
-     #- "6443:6443"
-     - "8083:8083"
-     #- "51820:51820/udp"
+     # SMTP
+     - "25:2500"
+     # DNS
+     - "53:5354"
+     - "53:5354/udp"
+     # MySQL/MariaDB
+     - "3306:3306"
+     - "6443:6443"
+     # HTTP - Token Interface
+     #- "8083:8083"
+     # Wireguard
+     - "51820:51820/udp"
     networks:
       network:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.canarytokens_switchboard.rule=Host(`${HOSTNAME:-canarytokens}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.canarytokens_switchboard.loadbalancer.server.port=8083"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
 volumes:
   logs:

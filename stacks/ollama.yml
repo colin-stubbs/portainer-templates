@@ -5,7 +5,7 @@ networks:
 
 services:
   ollama:
-    image: ollama/ollama:latest
+    image: docker.io/ollama/ollama:latest
     hostname: ${HOSTNAME:-ollama}
     domainname: ${DOMAINNAME:-localhost}
     volumes:

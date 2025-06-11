@@ -5,7 +5,7 @@ networks:
 
 services:
   meilisearch:
-    image: getmeili/meilisearch:latest
+    image: docker.io/getmeili/meilisearch:latest
     hostname: ${HOSTNAME:-meilisearch}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped

@@ -5,7 +5,7 @@ networks:
 
 services:
   redis:
-    image: ${IMAGE:-redis:7-alpine}
+    image: ${IMAGE:-docker.io/redis:7-alpine}
     hostname: ${HOSTNAME:-redis}
     domainname: ${DOMAINNAME:-localhost}
     restart: always

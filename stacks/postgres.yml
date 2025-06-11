@@ -5,7 +5,7 @@ networks:
 
 services:
   postgres:
-    image: postgres:${PG_MAJOR:-latest}
+    image: docker.io/postgres:${PG_MAJOR:-latest}
     hostname: ${HOSTNAME:-postgres}
     domainname: ${DOMAINNAME:-localhost}
     environment:

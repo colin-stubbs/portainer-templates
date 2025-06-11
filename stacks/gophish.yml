@@ -5,7 +5,7 @@ networks:
 
 services:
   gophish:
-    image: gophish/gophish:latest
+    image: docker.io/gophish/gophish:latest
     hostname: ${HOSTNAME:-gophish}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped

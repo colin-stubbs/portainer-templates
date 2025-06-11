@@ -5,7 +5,7 @@ networks:
 
 services:
   opcs-api:
-    image: 1password/connect-api:latest
+    image: docker.io/1password/connect-api:latest
     hostname: ${HOSTNAME:-opcs-api}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped

@@ -5,7 +5,7 @@ networks:
 
 services:
   pgadmin:
-    image: dpage/pgadmin4:${PG_MAJOR:-latest}
+    image: docker.io/dpage/pgadmin4:${PG_MAJOR:-latest}
     hostname: ${HOSTNAME:-pgadmin}
     domainname: ${DOMAINNAME:-localhost}
     environment:

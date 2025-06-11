@@ -5,7 +5,7 @@ networks:
 
 services:
   mariadb:
-    image: mariadb:${MARIADB_VERSION:-latest}
+    image: docker.io/mariadb:${MARIADB_VERSION:-latest}
     hostname: ${HOSTNAME:-mariadb}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped

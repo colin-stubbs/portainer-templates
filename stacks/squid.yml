@@ -5,7 +5,7 @@ networks:
 
 services:
   squid:
-    image: ubuntu/squid:latest
+    image: docker.io/ubuntu/squid:latest
     hostname: ${HOSTNAME:-squid}
     domainname: ${DOMAINNAME:-localhost}
     environment:

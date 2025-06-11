@@ -45,7 +45,7 @@ networks:
 
 services:
   canarytokens-frontend:
-    image: thinkst/canarytokens:latest
+    image: docker.io/thinkst/canarytokens:latest
     command: bash -c "cd frontend; env | grep ^CANARY_ > ../frontend/frontend.env; cp ../frontend/frontend.env ../switchboard/switchboard.env; poetry run python -m uvicorn app:app --host 0.0.0.0 --port 8082"
     restart: unless-stopped
     environment:
@@ -66,7 +66,7 @@ services:
       - "wud.watch=true"
 
   canarytokens-switchboard:
-    image: thinkst/canarytokens:latest
+    image: docker.io/thinkst/canarytokens:latest
     command: bash -c "cd switchboard; rm -f switchboard.pid; env | grep ^CANARY_ > ../frontend/frontend.env; cp ../frontend/frontend.env ../switchboard/switchboard.env; poetry run twistd -noy switchboard.tac --pidfile=switchboard.pid"
     restart: unless-stopped
     environment:

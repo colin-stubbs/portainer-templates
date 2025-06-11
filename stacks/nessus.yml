@@ -5,7 +5,7 @@ networks:
 
 services:
   nessus:
-    image: tenable/nessus:latest-ubuntu
+    image: docker.io/tenable/nessus:latest-ubuntu
     hostname: ${HOSTNAME:-nessus}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped

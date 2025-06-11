@@ -5,7 +5,7 @@ networks:
 
 services:
   traefik:
-    image: traefik:latest
+    image: docker.io/traefik:latest
     hostname: ${HOSTNAME:-traefik}
     domainname: ${DOMAINNAME:-localhost}
     #command:

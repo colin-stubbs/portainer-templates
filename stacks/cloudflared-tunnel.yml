@@ -5,7 +5,7 @@ networks:
 
 services:
   cloudflared-tunnel:
-    image: cloudflare/cloudflared:latest
+    image: docker.io/cloudflare/cloudflared:latest
     hostname: ${HOSTNAME:-cloudflared-tunnel}
     domainname: ${DOMAINNAME:-localhost}
     command: tunnel run

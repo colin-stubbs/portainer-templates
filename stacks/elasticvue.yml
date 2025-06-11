@@ -5,7 +5,7 @@ networks:
 
 services:
   elasticvue:
-    image: cars10/elasticvue:latest
+    image: docker.io/cars10/elasticvue:latest
     hostname: ${HOSTNAME:-elasticvue}
     domainname: ${DOMAINNAME:-localhost}
     environment:

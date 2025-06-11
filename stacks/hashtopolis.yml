@@ -5,7 +5,7 @@ networks:
 
 services:
   hashtopolis-backend:
-    image: hashtopolis/backend:latest
+    image: docker.io/hashtopolis/backend:latest
     restart: unless-stopped
     volumes:
       - hashtopolis:/usr/local/share/hashtopolis:Z

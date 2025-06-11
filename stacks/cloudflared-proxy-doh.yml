@@ -5,7 +5,7 @@ networks:
 
 services:
   cloudflared-proxy-doh:
-    image: cloudflare/cloudflared:latest
+    image: docker.io/cloudflare/cloudflared:latest
     hostname: ${HOSTNAME:-cloudflared-proxy-doh}
     domainname: ${DOMAINNAME:-localhost}
     command: proxy-dns

@@ -5,7 +5,7 @@ networks:
 
 services:
   minio:
-    image: ${IMAGE:-minio/minio:latest} # Use "minio/minio:${RELEASE_VERSION}-cpuv1" to troubleshoot compatibility issues with CPU
+    image: ${IMAGE:-docker.io/minio/minio:latest} # Use "minio/minio:${RELEASE_VERSION}-cpuv1" to troubleshoot compatibility issues with CPU
     volumes:
       - minio_data:/data
 #    ports:

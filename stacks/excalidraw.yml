@@ -5,7 +5,7 @@ networks:
 
 services:
   excalidraw:
-    image: excalidraw/excalidraw:latest
+    image: docker.io/excalidraw/excalidraw:latest
     hostname: ${HOSTNAME:-excalidraw}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped

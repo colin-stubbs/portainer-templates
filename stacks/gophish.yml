@@ -38,4 +38,4 @@ services:
       - "traefik.http.routers.gophish_admin.rule=Host(`gophish-admin.localhost`)"
       - "traefik.http.routers.gophish_admin.service=gophish_admin"
       - "traefik.http.services.gophish_admin.loadbalancer.server.port=3333"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"

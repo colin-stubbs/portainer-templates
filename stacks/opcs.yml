@@ -20,7 +20,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.opcs_api.rule=Host(`${HOSTNAME:-opcs-api}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.opcs_api.loadbalancer.server.port=8080"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
   opcs-sync:
     image: 1password/connect-sync:latest
@@ -38,7 +38,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.opcs_sync.rule=Host(`${HOSTNAME:-opcs-sync}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.opcs_sync.loadbalancer.server.port=8080"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
 volumes:
   opcs-data:

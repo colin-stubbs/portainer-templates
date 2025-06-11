@@ -33,7 +33,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.uptime_kuma.rule=Host(`${HOSTNAME:-uptime-kuma}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.uptime_kuma.loadbalancer.server.port=${UPTIME_KUMA_PORT:-8080}"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
 volumes:
   uptime_kuma:

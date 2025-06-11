@@ -4,15 +4,15 @@
     {
       "id": 1,
       "type": 3,
-      "name": "watchtower",
-      "title": "Watchtower",
-      "description": "Automatically update running Docker containers",
+      "name": "wud",
+      "title": "What's up Docker?",
+      "description": "What's up Docker? is a tool that helps you keep your Docker containers up to date.",
       "note": "TBC",
-      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/watchtower.png",
-      "categories": ["edge","System","Tools"],
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/wud.svg",
+      "categories": ["edge","System","Tools","Monitoring"],
       "repository": {
         "url": "https://github.com/colin-stubbs/portainer-templates/",
-        "stackfile": "stacks/watchtower.yml"
+        "stackfile": "stacks/wud.yml"
       },
       "env": [
         {
@@ -24,7 +24,7 @@
         {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
-          "default": "watchtower"
+          "default": "wud"
         },
         {
           "name": "DOMAINNAME",
@@ -38,82 +38,34 @@
           "default": "Australia/Brisbane"
         },
         {
-          "name": "DOCKER_CONFIG",
-          "label": "DOCKER_CONFIG",
-          "description": "Where to look for watchtower config",
-          "default": "/config"
+          "name": "WUD_SERVER_PORT",
+          "label": "WUD_SERVER_PORT",
+          "default": "3000"
         },
         {
-          "name": "WATCHTOWER_CLEANUP",
-          "label": "WATCHTOWER_CLEANUP",
-          "description": "Removes old images after updating.",
+          "name": "WUD_WATCHER_LOCAL_CRON",
+          "label": "WUD_WATCHER_LOCAL_CRON",
+          "default": "0 * * * *"
+        },
+        {
+          "name": "WUD_WATCHER_LOCAL_WATCHALL",
+          "label": "WUD_WATCHER_LOCAL_WATCHALL",
           "default": "true"
         },
         {
-          "name": "WATCHTOWER_LABEL_ENABLE",
-          "label": "WATCHTOWER_LABEL_ENABLE",
-          "description": "Monitor and update containers that have a com.centurylinklabs.watchtower.enable label set to true.",
+          "name": "WUD_WATCHER_LOCAL_WATCHBYDEFAULT",
+          "label": "WUD_WATCHER_LOCAL_WATCHBYDEFAULT",
           "default": "true"
         },
         {
-          "name": "WATCHTOWER_POLL_INTERVAL",
-          "label": "WATCHTOWER_POLL_INTERVAL",
-          "description": "Poll interval (in seconds). This value controls how frequently watchtower will poll for new images",
-          "default": "86400"
+          "name": "WUD_TRIGGER_DOCKER_CONTAINERS_PRUNE",
+          "label": "WUD_TRIGGER_DOCKER_CONTAINERS_PRUNE",
+          "default": "true"
         },
         {
-          "name": "WATCHTOWER_HTTP_API_UPDATE",
-          "label": "WATCHTOWER_HTTP_API_UPDATE",
-          "description": "Runs Watchtower in HTTP API mode, only allowing image updates to be triggered by an HTTP request.",
+          "name": "WUD_TRIGGER_DOCKER_CONTAINERS_DRYRUN",
+          "label": "WUD_TRIGGER_DOCKER_CONTAINERS_DRYRUN",
           "default": "false"
-        },
-        {
-          "name": "WATCHTOWER_HTTP_API_TOKEN",
-          "label": "WATCHTOWER_HTTP_API_TOKEN",
-          "description": "Sets an authentication token to HTTP API requests. Can also reference a file, in which case the contents of the file are used.",
-          "default": "CHANGE_ME"
-        },
-        {
-          "name": "WATCHTOWER_HTTP_API_PERIODIC_POLLS",
-          "label": "WATCHTOWER_HTTP_API_PERIODIC_POLLS",
-          "description": "Keep running periodic updates if the HTTP API mode is enabled, otherwise the HTTP API would prevent periodic polls.",
-          "default": "true"
-        },
-        {
-          "name": "WATCHTOWER_ROLLING_RESTART",
-          "label": "WATCHTOWER_ROLLING_RESTART",
-          "description": "Restart one image at time instead of stopping and starting all at once.",
-          "default": "true"
-        },
-        {
-          "name": "WATCHTOWER_NO_STARTUP_MESSAGE",
-          "label": "WATCHTOWER_NO_STARTUP_MESSAGE",
-          "description": "Do not send a message after watchtower started. Otherwise there will be an info-level notification.",
-          "default": "true"
-        },
-        {
-          "name": "WATCHTOWER_NOTIFICATIONS_LEVEL",
-          "label": "WATCHTOWER_NOTIFICATIONS_LEVEL",
-          "description": "Controls the log level which is used for the notifications. If omitted, the default log level is info. Possible values are: panic, fatal, error, warn, info, debug or trace.",
-          "default": "info"
-        },
-        {
-          "name": "WATCHTOWER_NOTIFICATION_REPORT",
-          "label": "WATCHTOWER_NOTIFICATION_REPORT",
-          "description": "Use the session report as the notification template data.",
-          "default": "true"
-        },
-        {
-          "name": "WATCHTOWER_NOTIFICATION_URL",
-          "label": "WATCHTOWER_NOTIFICATION_URL",
-          "description": "The shoutrrr service URL to be used. This option can also reference a file, in which case the contents of the file are used.",
-          "default": ""
-        },
-        {
-          "name": "WATCHTOWER_NOTIFICATION_TEMPLATE",
-          "label": "WATCHTOWER_NOTIFICATION_TEMPLATE",
-          "description": "The template used for notifications.",
-          "default": "\n{{- if .Report -}}\n    {{- with .Report -}}\n  {{len .Scanned}} Scanned, {{len .Updated}} Updated, {{len .Failed}} Failed\n        {{- range .Updated}}\n  - {{.Name}} ({{.ImageName}}): {{.CurrentImageID.ShortID}} updated to {{.LatestImageID.ShortID}}\n        {{- end -}}\n        {{- range .Fresh}}\n  - {{.Name}} ({{.ImageName}}): {{.State}}\n      {{- end -}}\n      {{- range .Skipped}}\n  - {{.Name}} ({{.ImageName}}): {{.State}}: {{.Error}}\n      {{- end -}}\n      {{- range .Failed}}\n  - {{.Name}} ({{.ImageName}}): {{.State}}: {{.Error}}\n      {{- end -}}\n    {{- end -}}\n  {{- else -}}\n    {{range .Entries -}}{{.Message}}{{\"\n\"}}{{- end -}}\n  {{- end -}}\n"
         }
       ]
     },

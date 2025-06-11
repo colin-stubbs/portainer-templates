@@ -61,4 +61,4 @@ services:
       - "9418:9418/tcp"
     labels:
       - "traefik.enable=false"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"

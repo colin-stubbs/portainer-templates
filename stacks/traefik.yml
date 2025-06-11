@@ -47,4 +47,4 @@ services:
       - "traefik.http.routers.traefik_api.service=api@internal"
       - "traefik.http.routers.traefik_api.middlewares=traefik_api"
       - "traefik.http.middlewares.traefik_api.basicauth.users=admin:$$apr1$$RV0rTsSy$$eJR8jnlH1gzdXsVaKFrcO."
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"

@@ -21,4 +21,4 @@ services:
       - "traefik.http.routers.vector_api.rule=Host(`vector-api.${DOMAINNAME:-localhost}`)"
       - "traefik.http.routers.vector_api.service=vector_api"
       - "traefik.http.services.vector_api.loadbalancer.server.port=8686"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"

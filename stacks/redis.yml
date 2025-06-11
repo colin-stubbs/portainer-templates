@@ -25,7 +25,7 @@ services:
       retries: 3
     labels:
       - "traefik.enable=false"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
 volumes:
   redisdata:

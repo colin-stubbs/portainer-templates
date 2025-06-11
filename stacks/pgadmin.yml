@@ -23,7 +23,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.pgadmin.rule=Host(`${HOSTNAME:-pgadmin}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.pgadmin.loadbalancer.server.port=80"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
 volumes:
   pgadmin:

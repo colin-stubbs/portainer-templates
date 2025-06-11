@@ -1,0 +1,44 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  wud:
+    image: docker.io/getwud/wud:latest
+    hostname: ${HOSTNAME:-wud}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: unless-stopped
+    healthcheck:
+      test: curl --fail http://localhost:${WUD_SERVER_PORT:-3000}/health || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - WUD_SERVER_PORT=${WUD_SERVER_PORT:-3000}
+      #- WUD_AUTH_BASIC_ADMIN_USER=${WUD_AUTH_BASIC_ADMIN_USER:-admin}
+      #- WUD_AUTH_BASIC_ADMIN_HASH=${WUD_AUTH_BASIC_ADMIN_HASH:-$$apr1$$RV0rTsSy$$eJR8jnlH1gzdXsVaKFrcO.}
+      - WUD_WATCHER_LOCAL_CRON=${WUD_WATCHER_LOCAL_CRON:-*/5 * * * *}
+      - WUD_WATCHER_LOCAL_WATCHALL=${WUD_WATCHER_LOCAL_WATCHALL:-true}
+      - WUD_WATCHER_LOCAL_WATCHBYDEFAULT=${WUD_WATCHER_LOCAL_WATCHBYDEFAULT:-true}
+      - WUD_TRIGGER_DOCKER_CONTAINERS_PRUNE=${WUD_TRIGGER_DOCKER_CONTAINERS_PRUNE:-true}
+      - WUD_TRIGGER_DOCKER_CONTAINERS_DRYRUN=${WUD_TRIGGER_DOCKER_CONTAINERS_DRYRUN:-false}
+      #- WUD_TRIGGER_HTTP_WEBHOOK_URL=${WUD_TRIGGER_HTTP_WEBHOOK_URL:-https://webhook.site/123e4567-e89b-12d3-a456-426614174000}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      #- /var/run/podman/podman.sock:/var/run/docker.sock
+      - wud_state:/store
+    #ports:
+    #  - 3000:${WUD_SERVER_PORT:-3000}
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wud.rule=Host(`${HOSTNAME:-wud}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.wud.loadbalancer.server.port=${WUD_SERVER_PORT:-3000}"
+      - "wud.watch=false"
+  
+volumes:
+  wud_state:

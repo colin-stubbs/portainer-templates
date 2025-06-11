@@ -5,7 +5,7 @@ networks:
 
 services:
   adminer:
-    image: adminer:latest
+    image: docker.io/adminer:latest
     hostname: ${HOSTNAME:-adminer}
     domainname: ${DOMAINNAME:-localhost}
     environment:
@@ -20,4 +20,4 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.adminer.rule=Host(`${HOSTNAME:-adminer}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.adminer.loadbalancer.server.port=8080"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"

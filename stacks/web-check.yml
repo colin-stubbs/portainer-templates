@@ -17,4 +17,4 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.web_check.rule=Host(`${HOSTNAME:-web-check}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.web_check.loadbalancer.server.port=3000"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"

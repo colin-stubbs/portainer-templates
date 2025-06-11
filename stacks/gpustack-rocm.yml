@@ -32,7 +32,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.gpustack.rule=Host(`${HOSTNAME:-gpustack}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.gpustack.loadbalancer.server.port=80"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
 volumes:
   gpustack_data:

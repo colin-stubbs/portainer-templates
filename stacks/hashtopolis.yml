@@ -25,7 +25,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.hashtopolis_backend.rule=Host(`hashtopolis-backend.localhost`)"
       - "traefik.http.services.hashtopolis_backend.loadbalancer.server.port=80"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
   hashtopolis-db:
     image: mysql:8.0
@@ -53,7 +53,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.hashtopolis.rule=Host(`${HOSTNAME:-hashtopolis}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.hashtopolis.loadbalancer.server.port=80"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
 volumes:
   hashtopolis-db:

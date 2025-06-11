@@ -22,7 +22,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.meilisearch.rule=Host(`${HOSTNAME:-meilisearch}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.meilisearch.loadbalancer.server.port=7700"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
 volumes:
   meilisearch_data:

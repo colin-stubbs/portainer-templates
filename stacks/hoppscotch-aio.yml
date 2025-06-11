@@ -82,3 +82,4 @@ services:
       - "traefik.http.routers.hoppscotch.rule=Host(`${HOSTNAME:-hoppscotch}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.routers.hoppscotch.service=hoppscotch"
       - "traefik.http.services.hoppscotch.loadbalancer.server.port=80"
+      - "wud.watch=true"

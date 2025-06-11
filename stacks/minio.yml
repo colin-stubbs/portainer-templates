@@ -34,7 +34,7 @@ services:
       - "traefik.http.routers.minio_console.rule=Host(`minio-console.${DOMAINNAME:-localhost}`)"
       - "traefik.http.routers.minio_console.service=minio_console"
       - "traefik.http.services.minio_console.loadbalancer.server.port=9001"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
 volumes:
   minio_data:

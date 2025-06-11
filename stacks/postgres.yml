@@ -25,7 +25,7 @@ services:
     networks:
       network:
     labels:
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
 
 volumes:
   postgres:

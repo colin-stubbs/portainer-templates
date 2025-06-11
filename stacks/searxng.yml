@@ -12,36 +12,28 @@ services:
       - /opt/data/portainer/config/searxng:/etc/searxng
     environment:
       - TZ=${TZ:-Australia/Brisbane}
-      - SEARXNG_HOSTNAME=${HOSTNAME:-searxng.localhost}
-      - SEARXNG_BASE_URL=https://${SEARXNG_HOSTNAME:-searxng.localhost}/
-      - SEARXNG_URL=${SEARXNG_URL:-/}
+      - SEARXNG_DEBUG=${SEARXNG_DEBUG:-false}
+      - SEARXNG_PORT=${SEARXNG_PORT:-8080}
+      - SEARXNG_BIND_ADDRESS=${SEARXNG_BIND_ADDRESS:-0.0.0.0}
+      - SEARXNG_BASE_URL=${SEARXNG_BASE_URL:-http://searxng.localhost/}
+      - SEARXNG_LIMITER=${SEARXNG_LIMITER:-false}
+      - SEARXNG_PUBLIC_INSTANCE=${SEARXNG_PUBLIC_INSTANCE:-false}
       - SEARXNG_SECRET=${SEARXNG_SECRET:-CHANGE_ME}
-      - SEARXNG_BIND_ADDRESS=${SEARXNG_BIND_ADDRESS:-[::]}
-      - SEARXNG_PORT=${SEARXNG_PORT:-80}
+      - SEARXNG_IMAGE_PROXY=${SEARXNG_IMAGE_PROXY:-false}
+      - SEARXNG_METHOD=${SEARXNG_METHOD:-POST}
+      - SEARXNG_REDIS_URL=${SEARXNG_REDIS_URL:-false}
+      - SEARXNG_STATIC_USE_HASH=${SEARXNG_STATIC_USE_HASH:-false}
       - UWSGI_WORKERS=${SEARXNG_UWSGI_WORKERS:-4}
       - UWSGI_THREADS=${SEARXNG_UWSGI_THREADS:-4}
-      - BIND_ADDRESS=${SEARXNG_BIND_ADDRESS:-[::]}:${SEARXNG_PORT:-80}
-    cap_drop:
-      - ALL
-    cap_add:
-      - CHOWN
-      - SETGID
-      - SETUID
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "1m"
-        max-file: "1"
-    restart: unless-stopped
     networks:
       network:
     healthcheck:
-      test: ['CMD-SHELL', "wget --quiet --tries=1 --spider http://localhost:${SEARXNG_PORT:-80}/healthz || exit 1"]
+      test: ['CMD-SHELL', "wget --quiet --tries=1 --spider http://localhost:${SEARXNG_PORT:-8080}/healthz || exit 1"]
       interval: 10s
       timeout: 3s
       retries: 3
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.searxng.rule=Host(`${HOSTNAME:-searxng}.${DOMAINNAME:-localhost}`)"
-      - "traefik.http.services.searxng.loadbalancer.server.port=80"
+      - "traefik.http.services.searxng.loadbalancer.server.port=${SEARXNG_PORT:-8080}"
       - "wud.watch=true"

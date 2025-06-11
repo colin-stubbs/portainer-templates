@@ -9,6 +9,12 @@ services:
     hostname: ${HOSTNAME:-linkwarden}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped
+    healthcheck:
+      test: curl --fail http://localhost:3000/api/v1/logins || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
     environment:
       - TZ=${TZ:-Australia/Brisbane}
       - DATABASE_URL=${DATABASE_URL:-postgresql://linkwarden:CHANGE_ME@postgres:5432/linkwarden}

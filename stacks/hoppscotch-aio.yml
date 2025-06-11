@@ -11,6 +11,12 @@ services:
     hostname: ${HOSTNAME:-hoppscotch}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped
+    healthcheck:
+      test: curl --fail http://localhost/desktop-app-server/api/v1/key || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
     networks:
       network:
     # ports:

@@ -16,6 +16,7 @@ services:
     #  - "--entryPoints.web.address=:80"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      #- /var/run/podman/podman.sock:/var/run/docker.sock
       # - /opt/data/portainer/config/traefik:/etc/traefik:ro
     ports:
       - "80:80/tcp"
@@ -25,10 +26,11 @@ services:
     environment:
       - TZ=${TZ:-Australia/Brisbane}
       # - TRAEFIK_PROVIDERS_FILE_FILENAME=${TRAEFIK_PROVIDERS_FILE_FILENAME:-/etc/traefik/traefik.yml}
-      - TRAEFIK_PROVIDERS_FILE_DIRECTORY=${TRAEFIK_PROVIDERS_FILE_DIRECTORY:-/etc/traefik/conf.d}
-      - TRAEFIK_PROVIDERS_FILE_WATCH=${TRAEFIK_PROVIDERS_FILE_WATCH:-true}
+      # - TRAEFIK_PROVIDERS_FILE_DIRECTORY=${TRAEFIK_PROVIDERS_FILE_DIRECTORY:-/etc/traefik/conf.d}
+      # - TRAEFIK_PROVIDERS_FILE_WATCH=${TRAEFIK_PROVIDERS_FILE_WATCH:-true}
       - TRAEFIK_PROVIDERS_DOCKER=${TRAEFIK_PROVIDERS_DOCKER:-true}
       - TRAEFIK_PROVIDERS_DOCKER_EXPOSEDBYDEFAULT=${TRAEFIK_PROVIDERS_DOCKER_EXPOSEDBYDEFAULT:-false}
+      - TRAEFIK_PING=${TRAEFIK_PING:-true}
       - TRAEFIK_API=${TRAEFIK_API:-false}
       - TRAEFIK_API_DASHBOARD=${TRAEFIK_API_DASHBOARD:-false}
       - TRAEFIK_API_INSECURE=${TRAEFIK_API_INSECURE:-false}

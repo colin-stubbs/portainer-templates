@@ -5,7 +5,7 @@ networks:
 
 services:
   searxng:
-    image: searxng/searxng:latest
+    image: docker.io/searxng/searxng:latest
     hostname: ${HOSTNAME:-searxng}
     domainname: ${DOMAINNAME:-localhost}
     volumes:

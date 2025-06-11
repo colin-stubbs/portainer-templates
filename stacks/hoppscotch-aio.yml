@@ -41,7 +41,7 @@ services:
       #   NOTE: `3200` here refers to the bundle server (port 3200) that provides the bundles,
       #   NOT where the app runs. The app itself uses the `app://` protocol with dynamic
       #   bundle names like `app://{bundle-name}/`
-      - WHITELISTED_ORIGINS=http://hoppscotch.localhost,http://app.hoppscotch.localhost,app://hoppscotch_localhost
+      - WHITELISTED_ORIGINS=${WHITELISTED_ORIGINS:-http://hoppscotch.localhost,http://app.hoppscotch.localhost,app://hoppscotch_localhost}
       - VITE_ALLOWED_AUTH_PROVIDERS=${VITE_ALLOWED_AUTH_PROVIDERS:-EMAIL}
       # - GOOGLE_CLIENT_ID=************************************************
       # - GOOGLE_CLIENT_SECRET=************************************************

@@ -5,7 +5,7 @@ networks:
 
 services:
   web-check:
-    image: lissy93/web-check:latest
+    image: docker.io/lissy93/web-check:latest
     hostname: ${HOSTNAME:-web-check}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped

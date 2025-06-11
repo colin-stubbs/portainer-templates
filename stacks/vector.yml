@@ -5,7 +5,7 @@ networks:
 
 services:
   vector:
-    image: timberio/vector:latest-alpine
+    image: docker.io/timberio/vector:latest-alpine
     hostname: ${HOSTNAME:-vector}
     domainname: ${DOMAINNAME:-localhost}
     #ports:

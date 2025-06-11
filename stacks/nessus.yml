@@ -19,9 +19,8 @@ services:
     networks:
       network:
     labels:
-# Need to use a middleware that will support HTTPS to untrusted/self-signed server cert?
-#      - "traefik.enable=true"
-#      - "traefik.http.routers.nessus.rule=Host(`nessus.localhost`)"
-#      - "traefik.http.services.nessus.loadbalancer.server.port=8834"
-#      - "traefik.http.services.nessus.loadbalancer.server.scheme=https"
-      - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.enable=true"
+      - "traefik.http.routers.nessus.rule=Host(`${HOSTNAME:-nessus}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.nessus.loadbalancer.server.port=8834"
+      - "traefik.http.services.nessus.loadbalancer.server.scheme=https"
+      - "wud.watch=true"

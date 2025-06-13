@@ -13,30 +13,85 @@ services:
     environment:
       - TZ=${TZ:-Australia/Brisbane}
 
-      ## Ollama
+      ## Disable persistent env var storage
+      - ENABLE_PERSISTENT_CONFIG=${ENABLE_PERSISTENT_CONFIG:-True}
+
+      ## Ollama - configure as per: https://docs.openwebui.com/getting-started/env-configuration/
       - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
 
       ## Searxng
-      - ENABLE_RAG_WEB_SEARCH=${ENABLE_RAG_WEB_SEARCH:-false}
-      - RAG_WEB_SEARCH_ENGINE=${RAG_WEB_SEARCH_ENGINE:-searxng}
-      - RAG_WEB_SEARCH_RESULT_COUNT=${RAG_WEB_SEARCH_RESULT_COUNT:-3}
-      - RAG_WEB_SEARCH_CONCURRENT_REQUEST=${RAG_WEB_SEARCH_CONCURRENT_REQUEST:-10}
-      - SEARXNG_QUERY_URL=${SEARXNG_QUERY_URL:-http://searxng/search?q=<query>}
+      - ENABLE_WEB_SEARCH=${ENABLE_WEB_SEARCH:-False}
+      - WEB_SEARCH_TRUST_ENV=${WEB_SEARCH_TRUST_ENV:-False}
+      - WEB_SEARCH_ENGINE=${WEB_SEARCH_ENGINE:-searxng}
+      - WEB_SEARCH_RESULT_COUNT=${WEB_SEARCH_RESULT_COUNT:-3}
+      - WEB_SEARCH_CONCURRENT_REQUEST=${WEB_SEARCH_CONCURRENT_REQUEST:-10}
+      - SEARXNG_QUERY_URL=${SEARXNG_QUERY_URL:-http://searxng:8080/search?q=<query>}
 
-      ## Web
+      ## WebUI
+      - WEBUI_URL=${WEBUI_URL:-http://open-webui.localhost}
       - OAUTH_MERGE_ACCOUNTS_BY_EMAIL=${OAUTH_MERGE_ACCOUNTS_BY_EMAIL:-false}
       - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:-secret}
-      - USE_CUDA_DOCKER=${USE_CUDA_DOCKER:-false}
       - CORS_ALLOW_ORIGIN=${CORS_ALLOW_ORIGIN:-http://open-webui.localhost}
 
+      ## OAuth
+      #- ENABLE_OAUTH_SIGNUP=${ENABLE_OAUTH_SIGNUP:-False}
+      #- OAUTH_MERGE_ACCOUNTS_BY_EMAIL=${OAUTH_MERGE_ACCOUNTS_BY_EMAIL:-False}
+      #- OAUTH_UPDATE_PICTURE_ON_LOGIN=${OAUTH_UPDATE_PICTURE_ON_LOGIN:-False}
+      #- GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-}
+      #- GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-}
+      #- GOOGLE_OAUTH_SCOPE=${GOOGLE_OAUTH_SCOPE:-}
+      #- GOOGLE_OAUTH_REDIRECT_URI=${GOOGLE_OAUTH_REDIRECT_URI:-}
+
+      ## LDAP
+      #- ENABLE_LDAP=${ENABLE_LDAP:-False}
+      #- LDAP_SERVER_LABEL=${LDAP_SERVER_LABEL:-}
+      #- LDAP_SERVER_HOST=${LDAP_SERVER_HOST:-change.me}
+      #- LDAP_SERVER_PORT=${LDAP_SERVER_PORT:-389}
+      #- LDAP_ATTRIBUTE_FOR_MAIL=${LDAP_ATTRIBUTE_FOR_MAIL:-email}
+      #- LDAP_ATTRIBUTE_FOR_USERNAME=${LDAP_ATTRIBUTE_FOR_USERNAME:-username}
+      #- LDAP_APP_DN=${LDAP_APP_DN:-}
+      #- LDAP_APP_PASSWORD=${LDAP_APP_PASSWORD:-}
+      #- LDAP_SEARCH_BASE=${LDAP_SEARCH_BASE:-}
+      #- LDAP_SEARCH_FILTER=${LDAP_SEARCH_FILTER:-}
+      #- LDAP_SEARCH_FILTERS=${LDAP_SEARCH_FILTERS:-}
+      #- LDAP_USE_TLS=${LDAP_USE_TLS:-true}
+      #- LDAP_CA_CERT_FILE=${LDAP_CA_CERT_FILE:-}
+      #- LDAP_VALIDATE_CERT=${LDAP_VALIDATE_CERT:-true}
+      #- LDAP_CIPHERS=${LDAP_CIPHERS:-ALL}
+
       ## Database
-      - DATABASE_URL=${DATABASE_URL:-postgresql://postgres:P@55w0rd@postgres:5432/postgres}
+      # - DATABASE_URL=${DATABASE_URL:-sqlite:///app/backend/data/webui.db}
+      # - DATABASE_URL=${DATABASE_URL:-postgresql://postgres:P@55w0rd@postgres:5432/postgres}
+
+      ## Vector Database
+      #- VECTOR_DB=elasticsearch
+      #- ELASTICSEARCH_API_KEY=
+      #- ELASTICSEARCH_CA_CERTS=
+      #- ELASTICSEARCH_CLOUD_ID=
+      #- ELASTICSEARCH_INDEX_PREFIX=
+      #- ELASTICSEARCH_PASSWORD=
+      #- ELASTICSEARCH_URL=
+      #- ELASTICSEARCH_USERNAME=
+
+      ## User-Agent
+      - USER_AGENT=${USER_AGENT:-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36}
+
+      ## Storage
+      # - STORAGE_PROVIDER=${STORAGE_PROVIDER:-local}
+      # TODO: Add S3 vars to point to minio
+
+      ## Proxy
+      #- http_proxy=${http_proxy:-}
+      #- https_proxy=${https_proxy:-}
+      #- no_proxy=${no_proxy:-}
 
     restart: unless-stopped
     volumes:
       - open_webui:/app/backend/data
     networks:
       network:
+#    ports:
+#      - "8080:8080"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.open_webui.rule=Host(`${HOSTNAME:-open-webui}.${DOMAINNAME:-localhost}`)"

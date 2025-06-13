@@ -12,7 +12,7 @@ services:
     environment:
       - TZ=${TZ:-Australia/Brisbane}
     volumes:
-      - "/opt/data/portainer/config/opcs/1password-credentials.json:/home/opuser/.op/1password-credentials.json"
+      - "/opt/data/portainer/config/opcs/1password-credentials.json:/home/opuser/.op/1password-credentials.json:ro:Z"
       - "opcs-data:/home/opuser/.op/data"
     networks:
       network:
@@ -30,7 +30,7 @@ services:
     environment:
       - TZ=${TZ:-Australia/Brisbane}
     volumes:
-      - "/opt/data/portainer/config/opcs/1password-credentials.json:/home/opuser/.op/1password-credentials.json"
+      - "/opt/data/portainer/config/opcs/1password-credentials.json:/home/opuser/.op/1password-credentials.json:ro:Z"
       - "opcs-data:/home/opuser/.op/data"
     networks:
       network:

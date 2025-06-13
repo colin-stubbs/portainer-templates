@@ -10,7 +10,7 @@ services:
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped
     volumes:
-      - mariadb_data:/var/lib/mysql:Z
+      - mariadb_data:/var/lib/mysql
     environment:
       - TZ=${TZ:-Australia/Brisbane}
       - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD:-CHANGE_ME}

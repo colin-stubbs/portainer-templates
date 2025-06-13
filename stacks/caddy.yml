@@ -17,8 +17,8 @@ services:
       - "443:443/udp"
       # - "2019:2019/tcp"
     volumes:
-      - /opt/data/portainer/config/caddy:/etc/caddy:ro
-      - /opt/data/portainer/config/caddy/srv:/srv:ro
+      - /opt/data/portainer/config/caddy:/etc/caddy:Z
+      - /opt/data/portainer/config/caddy/srv:/srv:ro:Z
       - caddy_data:/data
       - caddy_config:/config
     environment:

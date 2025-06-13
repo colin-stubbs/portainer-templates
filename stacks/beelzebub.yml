@@ -17,8 +17,8 @@ services:
     #  - "80:80"
     #  - "2112:2112"   # Prometheus openmetric, Not a honeypot, rather for stats about the honeypot. DON'T EXPOSE THIS!
     volumes:
-      - "/opt/data/portainer/config/beelzebub:/configurations"
-      - "/opt/data/logs/beelzebub:/logs"
+      - /opt/data/portainer/config/beelzebub:/configurations:Z
+      - /opt/data/logs/beelzebub:/logs:Z
     networks:
       network:
     labels:

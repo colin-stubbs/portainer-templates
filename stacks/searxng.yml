@@ -9,24 +9,26 @@ services:
     hostname: ${HOSTNAME:-searxng}
     domainname: ${DOMAINNAME:-localhost}
     volumes:
-      - /opt/data/portainer/config/searxng:/etc/searxng
+      - /opt/data/portainer/config/searxng:/etc/searxng:Z
     environment:
       - TZ=${TZ:-Australia/Brisbane}
       - SEARXNG_DEBUG=${SEARXNG_DEBUG:-false}
-      - SEARXNG_PORT=${SEARXNG_PORT:-8080}
       - SEARXNG_BIND_ADDRESS=${SEARXNG_BIND_ADDRESS:-0.0.0.0}
+      - SEARXNG_PORT=${SEARXNG_PORT:-8080}
       - SEARXNG_BASE_URL=${SEARXNG_BASE_URL:-http://searxng.localhost/}
       - SEARXNG_LIMITER=${SEARXNG_LIMITER:-false}
       - SEARXNG_PUBLIC_INSTANCE=${SEARXNG_PUBLIC_INSTANCE:-false}
       - SEARXNG_SECRET=${SEARXNG_SECRET:-CHANGE_ME}
       - SEARXNG_IMAGE_PROXY=${SEARXNG_IMAGE_PROXY:-false}
       - SEARXNG_METHOD=${SEARXNG_METHOD:-POST}
-      - SEARXNG_REDIS_URL=${SEARXNG_REDIS_URL:-false}
+      # - SEARXNG_REDIS_URL=${SEARXNG_REDIS_URL:-false}
       - SEARXNG_STATIC_USE_HASH=${SEARXNG_STATIC_USE_HASH:-false}
-      - UWSGI_WORKERS=${SEARXNG_UWSGI_WORKERS:-4}
-      - UWSGI_THREADS=${SEARXNG_UWSGI_THREADS:-4}
+      - UWSGI_WORKERS=${UWSGI_WORKERS:-4}
+      - UWSGI_THREADS=${UWSGI_WORKERS:-4}
     networks:
       network:
+#    ports:
+#      - "8080:8080"
     healthcheck:
       test: ['CMD-SHELL', "wget --quiet --tries=1 --spider http://localhost:${SEARXNG_PORT:-8080}/healthz || exit 1"]
       interval: 10s

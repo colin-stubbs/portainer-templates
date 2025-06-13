@@ -15,10 +15,11 @@ services:
       - FLEET_ENROLLMENT_TOKEN=${FLEET_ENROLLMENT_TOKEN:-CHANGE_ME}
     restart: unless-stopped
     volumes:
-      - /opt/data/elastic-agent:/data
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
-      - elastic_agent:/usr/share/elastic-agent/state
+      - /opt/data/elastic-agent:/data:Z
+      - /var/run/docker.sock:/var/run/docker.sock:ro:Z
+      #- /run/podman/podman.sock:/var/run/docker.sock:ro:Z
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro:Z
+      - elastic_agent_state:/usr/share/elastic-agent/state
     networks:
       network:
     healthcheck:
@@ -34,4 +35,4 @@ services:
       - "wud.watch=false"
 
 volumes:
-  elastic_agent:
+  elastic_agent_state:

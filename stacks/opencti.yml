@@ -42,7 +42,7 @@ services:
       - SMTP__USERNAME=${SMTP_USERNAME:-apikey}
       - SMTP__PASSWORD=${SMTP_PASSWORD:-CHANGE_ME}
       - SMTP__REJECT_UNAUTHORIZED=${SMTP_REJECT_UNAUTHORIZED:-true}
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     healthcheck:
@@ -69,7 +69,7 @@ services:
     deploy:
       mode: replicated
       replicas: 3
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:
@@ -87,7 +87,7 @@ services:
       - CONNECTOR_NAME=ExportFileStix2
       - CONNECTOR_SCOPE=application/json
       - CONNECTOR_LOG_LEVEL=${CONNECTOR_LOG_LEVEL:-info}
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:
@@ -107,7 +107,7 @@ services:
       - CONNECTOR_NAME=ExportFileCsv
       - CONNECTOR_SCOPE=text/csv
       - CONNECTOR_LOG_LEVEL=${CONNECTOR_LOG_LEVEL:-info}
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:
@@ -127,7 +127,7 @@ services:
       - CONNECTOR_NAME=ExportFileTxt
       - CONNECTOR_SCOPE=text/plain
       - CONNECTOR_LOG_LEVEL=${CONNECTOR_LOG_LEVEL:-info}
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:
@@ -148,7 +148,7 @@ services:
       - CONNECTOR_SCOPE=application/json,text/xml
       - CONNECTOR_AUTO=true # Enable/disable auto-import of file
       - CONNECTOR_LOG_LEVEL=${CONNECTOR_LOG_LEVEL:-info}
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:
@@ -172,7 +172,7 @@ services:
       - CONNECTOR_CONFIDENCE_LEVEL=15 # From 0 (Unknown) to 100 (Fully trusted)
       - CONNECTOR_LOG_LEVEL=${CONNECTOR_LOG_LEVEL:-info}
       - IMPORT_DOCUMENT_CREATE_INDICATOR=true
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:
@@ -196,7 +196,7 @@ services:
       - CONNECTOR_ONLY_CONTEXTUAL=false # Only extract data related to an entity (a report, a threat actor, etc.)
       - CONNECTOR_CONFIDENCE_LEVEL=15 # From 0 (Unknown) to 100 (Fully trusted)
       - CONNECTOR_LOG_LEVEL=${CONNECTOR_LOG_LEVEL:-info}
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:
@@ -220,7 +220,7 @@ services:
       - CONNECTOR_LOG_LEVEL=error
       - ABUSESSL_URL=https://sslbl.abuse.ch/blacklist/sslipblacklist.csv
       - ABUSESSL_INTERVAL=360 # Time to wait in minutes between subsequent requests
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:
@@ -244,7 +244,7 @@ services:
       - CISA_CATALOG_URL=https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
       - CISA_CREATE_INFRASTRUCTURES=false
       - CISA_TLP=TLP:CLEAR
-    restart: always
+    restart: unless-stopped
     networks:
       network:
     labels:

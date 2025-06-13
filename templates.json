@@ -1705,25 +1705,9 @@
           "default": "Australia/Brisbane"
         },
         {
-          "name": "SEARXNG_HOSTNAME",
-          "label": "SEARXNG_HOSTNAME",
-          "default": "searxng.localhost"
-        },
-        {
-          "name": "SEARXNG_BASE_URL",
-          "label": "SEARXNG_BASE_URL",
-          "default": "https://searxng.localhost/"
-        },
-        {
-          "name": "SEARXNG_URL",
-          "label": "SEARXNG_URL",
-          "default": "/"
-        },
-        {
-          "name": "SEARXNG_SECRET",
-          "label": "SEARXNG_SECRET",
-          "description": "Crucial for secure operation and should be a randomly generated, unique string.",
-          "default": "CHANGE_ME"
+          "name": "SEARXNG_DEBUG",
+          "label": "SEARXNG_DEBUG",
+          "default": "false"
         },
         {
           "name": "SEARXNG_BIND_ADDRESS",
@@ -1733,7 +1717,48 @@
         {
           "name": "SEARXNG_PORT",
           "label": "SEARXNG_PORT",
-          "default": "80"
+          "default": "8080"
+        },
+        {
+          "name": "SEARXNG_BASE_URL",
+          "label": "SEARXNG_BASE_URL",
+          "default": "https://searxng.localhost/"
+        },
+        {
+          "name": "SEARXNG_LIMITER",
+          "label": "SEARXNG_LIMITER",
+          "default": "false"
+        },
+        {
+          "name": "SEARXNG_PUBLIC_INSTANCE",
+          "label": "SEARXNG_PUBLIC_INSTANCE",
+          "default": "false"
+        },
+        {
+          "name": "SEARXNG_SECRET",
+          "label": "SEARXNG_SECRET",
+          "description": "Crucial for secure operation and should be a randomly generated, unique string.",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "SEARXNG_IMAGE_PROXY",
+          "label": "SEARXNG_IMAGE_PROXY",
+          "default": "false"
+        },
+        {
+          "name": "SEARXNG_METHOD",
+          "label": "SEARXNG_METHOD",
+          "default": "POST"
+        },
+        {
+          "name": "SEARXNG_IMAGE_PROXY",
+          "label": "SEARXNG_IMAGE_PROXY",
+          "default": "false"
+        },
+        {
+          "name": "SEARXNG_STATIC_USE_HASH",
+          "label": "SEARXNG_STATIC_USE_HASH",
+          "default": "false"
         },
         {
           "name": "UWSGI_WORKERS",
@@ -1824,6 +1849,11 @@
           "default": "false"
         },
         {
+          "name": "WEBUI_URL",
+          "label": "WEBUI_URL",
+          "default": "http://open-webui.localhost"
+        },
+        {
           "name": "WEBUI_SECRET_KEY",
           "label": "WEBUI_SECRET_KEY",
           "default": "CHANGE_ME"
@@ -1837,6 +1867,11 @@
           "name": "DATABASE_URL",
           "label": "DATABASE_URL",
           "default": "postgresql://postgres:CHANGE_ME@postgres:5432/postgres"
+        },
+        {
+          "name": "USER_AGENT",
+          "label": "USER_AGENT",
+          "default": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
         }
       ],
       "maintainer": "https://github.com/colin-stubbs/portainer-templates/"

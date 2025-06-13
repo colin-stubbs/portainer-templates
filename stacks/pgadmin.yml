@@ -16,7 +16,7 @@ services:
       - PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION=${PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION:-True}
     restart: unless-stopped
     volumes:
-      - pgadmin:/var/lib/pgadmin:rw
+      - pgadmin:/var/lib/pgadmin
     networks:
       network:
     labels:

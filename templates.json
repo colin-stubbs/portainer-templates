@@ -1836,7 +1836,7 @@
         {
           "name": "SEARXNG_QUERY_URL",
           "label": "SEARXNG_QUERY_URL",
-          "default": "http://searxng/search?q=<query>"
+          "default": "http://searxng:8080/search?q=<query>"
         },
         {
           "name": "WEBUI_URL",

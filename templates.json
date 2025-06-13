@@ -1722,7 +1722,7 @@
         {
           "name": "SEARXNG_BASE_URL",
           "label": "SEARXNG_BASE_URL",
-          "default": "https://searxng.localhost/"
+          "default": "http://searxng.localhost/"
         },
         {
           "name": "SEARXNG_LIMITER",

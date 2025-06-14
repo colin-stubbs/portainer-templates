@@ -14,6 +14,7 @@ services:
     #  - "--providers.docker=true"
     #  - "--providers.docker.exposedbydefault=false"
     #  - "--entryPoints.web.address=:80"
+    #  - "--serversTransport.insecureSkipVerify=true"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:Z
       #- /run/podman/podman.sock:/var/run/docker.sock:Z
@@ -36,6 +37,7 @@ services:
       - TRAEFIK_API_INSECURE=${TRAEFIK_API_INSECURE:-false}
       - TRAEFIK_ACCESSLOG=${TRAEFIK_ACCESSLOG:-true}
       - TRAEFIK_ACCESSLOG_ADDINTERNALS=${TRAEFIK_ACCESSLOG_ADDINTERNALS:-true}
+      - TRAEFIK_SERVERSTRANSPORT_INSECURESKIPVERIFY=${TRAEFIK_SERVERSTRANSPORT_INSECURESKIPVERIFY:-false}
     restart: unless-stopped
     networks:
       network:

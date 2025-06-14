@@ -229,6 +229,12 @@
           "label": "TRAEFIK_ACCESSLOG_ADDINTERNALS",
           "description": "Enables access log for internal services (ping, dashboard, etc...).",
           "default": "false"
+        },
+        {
+          "name": "TRAEFIK_SERVERSTRANSPORT_INSECURESKIPVERIFY",
+          "label": "TRAEFIK_SERVERSTRANSPORT_INSECURESKIPVERIFY",
+          "description": "Skip verification of the server's certificate.",
+          "default": "false"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

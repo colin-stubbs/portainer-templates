@@ -825,6 +825,50 @@
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
 		},
+		{
+      "id": 16,
+      "type": 3,
+			"name": "step-ca",
+			"title": "Smallstep CA",
+			"description": "step-ca is an online Certificate Authority (CA) for secure, automated X.509 and SSH certificate management",
+			"logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/smallstep.png",
+			"categories": [
+        "edge",
+        "Web",
+        "Security",
+				"Certificate",
+				"Tools"
+			],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/step-ca.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "step-ca"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+		},
     {
       "id": 5000,
       "type": 3,

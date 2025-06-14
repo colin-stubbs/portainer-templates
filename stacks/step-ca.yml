@@ -9,8 +9,8 @@ services:
     hostname: ${HOSTNAME:-step-ca}
     domainname: ${DOMAINNAME:-localhost}
     volumes:
-      #- step:/home/step
-      - /opt/data/portainer/config/step-ca:/home/step:Z
+      - step:/home/step
+      #- /opt/data/portainer/config/step-ca:/home/step:Z
       #- /opt/data/portainer/config/step-ca/init.passwd:/run/secrets/step-sa:Z
     environment:
       - TZ=${TZ:-Australia/Brisbane}

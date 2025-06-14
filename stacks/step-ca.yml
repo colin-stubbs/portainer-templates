@@ -1,0 +1,44 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  step-ca:
+    image: docker.io/smallstep/step-ca:latest
+    hostname: ${HOSTNAME:-step-ca}
+    domainname: ${DOMAINNAME:-localhost}
+    volumes:
+      #- step:/home/step
+      - /opt/data/portainer/config/step-ca:/home/step:Z
+      #- /opt/data/portainer/config/step-ca/init.passwd:/run/secrets/step-sa:Z
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      #- DOCKER_STEPCA_INIT_NAME=${DOCKER_STEPCA_INIT_NAME:-Smallstep}
+      #- DOCKER_STEPCA_INIT_DNS_NAMES=${DOCKER_STEPCA_INIT_DNS_NAMES:-step-ca.localhost,localhost,step-ca}
+      #- DOCKER_STEPCA_INIT_REMOTE_MANAGEMENT=${DOCKER_STEPCA_INIT_REMOTE_MANAGEMENT:-true}
+      #- DOCKER_STEPCA_INIT_PROVISIONER_NAME=${DOCKER_STEPCA_INIT_PROVISIONER_NAME:-admin}
+      #- DOCKER_STEPCA_INIT_SSH=${DOCKER_STEPCA_INIT_SSH:-true}
+      #- DOCKER_STEPCA_INIT_ACME=${DOCKER_STEPCA_INIT_ACME:-true}
+      #- DOCKER_STEPCA_INIT_PASSWORD=${DOCKER_STEPCA_INIT_PASSWORD:-CHANGE_ME}
+      #- DOCKER_STEPCA_INIT_PASSWORD_FILE=${DOCKER_STEPCA_INIT_PASSWORD_FILE:-/run/secrets/step-sa}
+    restart: always
+    networks:
+      network:
+    ports:
+      - 9000:9000
+    healthcheck:
+      test: ['CMD-SHELL', "curl -s -k https://localhost:9000/health | grep '{\"status\":\"ok\"}' || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.step-ca.rule=Host(`${HOSTNAME:-step-ca}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.step-ca.loadbalancer.server.port=9000"
+      - "traefik.http.services.step-ca.loadbalancer.server.scheme=https"
+      - "wud.watch=true"
+
+volumes:
+  step:

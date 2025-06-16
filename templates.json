@@ -836,7 +836,8 @@
         "edge",
         "Web",
         "Security",
-				"Certificate",
+        "X.509",
+				"Certificates",
 				"Tools"
 			],
       "repository": {
@@ -854,6 +855,96 @@
           "name": "HOSTNAME",
           "label": "HOSTNAME",
           "default": "step-ca"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "DOCKER_STEPCA_INIT_ADDRESS",
+          "label": "DOCKER_STEPCA_INIT_ADDRESS",
+          "default": ":443"
+        },
+        {
+          "name": "DOCKER_STEPCA_INIT_NAME",
+          "label": "DOCKER_STEPCA_INIT_NAME",
+          "default": "Smallstep"
+        },
+        {
+          "name": "DOCKER_STEPCA_INIT_DNS_NAMES",
+          "label": "DOCKER_STEPCA_INIT_DNS_NAMES",
+          "default": "step-ca.localhost,localhost,step-ca"
+        },
+        {
+          "name": "DOCKER_STEPCA_INIT_REMOTE_MANAGEMENT",
+          "label": "DOCKER_STEPCA_INIT_REMOTE_MANAGEMENT",
+          "default": "true"
+        },
+        {
+          "name": "DOCKER_STEPCA_INIT_PROVISIONER_NAME",
+          "label": "DOCKER_STEPCA_INIT_PROVISIONER_NAME",
+          "default": "admin"
+        },
+        {
+          "name": "DOCKER_STEPCA_INIT_ADMIN_SUBJECT",
+          "label": "DOCKER_STEPCA_INIT_ADMIN_SUBJECT",
+          "default": "step"
+        },
+        {
+          "name": "DOCKER_STEPCA_INIT_SSH",
+          "label": "DOCKER_STEPCA_INIT_SSH",
+          "default": "true"
+        },
+        {
+          "name": "DOCKER_STEPCA_INIT_ACME",
+          "label": "DOCKER_STEPCA_INIT_ACME",
+          "default": "true"
+        },
+        {
+          "name": "DOCKER_STEPCA_INIT_PASSWORD",
+          "label": "DOCKER_STEPCA_INIT_PASSWORD",
+          "default": "CHANGE_ME"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+		},
+		{
+      "id": 17,
+      "type": 3,
+			"name": "step-ra",
+			"title": "Smallstep ACME Registration Authority",
+			"description": "Smallstep Registration Authorities (RA) provide automated enrollment and renewal of certificates using modern techniques while extending your existing internal PKI.",
+			"logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/smallstep.png",
+			"categories": [
+        "edge",
+        "Web",
+        "Security",
+        "X.509",
+				"Certificates",
+				"Tools"
+			],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/step-ra.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "step-ra"
         },
         {
           "name": "DOMAINNAME",

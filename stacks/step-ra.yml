@@ -1,0 +1,32 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  step-ra:
+    image: docker.io/smallstep/step-ca:latest
+    hostname: ${HOSTNAME:-step-ra}
+    domainname: ${DOMAINNAME:-localhost}
+    entrypoint: ["step-ca", "/home/step/ca.json", "--issuer-password-file", "/home/step/password.txt"]
+    volumes:
+      - /opt/data/portainer/config/step-ra:/home/step:Z
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+    restart: always
+    networks:
+      network:
+    #ports:
+    #  - 9001:443
+    healthcheck:
+      test: ['CMD-SHELL', "curl -s -k https://localhost/health | grep '{\"status\":\"ok\"}' || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.step_ra.rule=Host(`${HOSTNAME:-step-ra}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.step_ra.loadbalancer.server.port=443"
+      - "traefik.http.services.step_ra.loadbalancer.server.scheme=https"
+      - "wud.watch=true"

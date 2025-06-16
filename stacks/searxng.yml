@@ -8,6 +8,7 @@ services:
     image: docker.io/searxng/searxng:latest
     hostname: ${HOSTNAME:-searxng}
     domainname: ${DOMAINNAME:-localhost}
+    restart: unless-stopped
     volumes:
       - /opt/data/portainer/config/searxng:/etc/searxng:Z
     environment:

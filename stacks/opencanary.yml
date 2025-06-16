@@ -10,9 +10,9 @@ services:
     hostname: ${HOSTNAME:-opencanary}
     domainname: ${DOMAINNAME:-localhost}
     volumes:
-      - /opt/data/portainer/config/opencanary/:/etc/opencanaryd/:ro:Z
+      - /opt/data/portainer/config/opencanary/:/etc/opencanaryd/:ro
       # Use something like the below if running Samba,
-      # - /var/log/samba-audit.log:/var/log/samba-audit.log:ro:Z
+      # - /var/log/samba-audit.log:/var/log/samba-audit.log:ro
     environment:
       - TZ=${TZ:-Australia/Brisbane}
       # OpenCanary config file supports $ENV_VAR usage, you'll need to pass them thru similar to the below if you need them.

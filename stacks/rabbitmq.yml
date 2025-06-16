@@ -12,7 +12,7 @@ services:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER:-admin}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS:-CHANGE_ME}
     volumes:
-#      - /opt/data/portainer/config/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro:Z
+#      - /opt/data/portainer/config/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
       - amqpdata:/var/lib/rabbitmq
     restart: unless-stopped
     networks:

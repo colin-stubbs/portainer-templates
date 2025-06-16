@@ -27,7 +27,7 @@ services:
       #- DB_NAME=mysql
       #- DB_FILE_PATH=username:password@(host:port)/database?charset=utf8&parseTime=True&loc=UTC
     volumes:
-      - /opt/data/portainer/config/gophish/config.json:/opt/gophish/config.json:ro:Z
+      - /opt/data/portainer/config/gophish/config.json:/opt/gophish/config.json:ro
     networks:
       network:
     labels:

@@ -13,7 +13,7 @@ services:
       - TZ=${TZ:-Australia/Brisbane}
     volumes:
       - fluentd_logs:/fluentd/log
-    #  - /opt/data/portainer/config/fluentd:/fluentd/etc:ro:Z
+    #  - /opt/data/portainer/config/fluentd:/fluentd/etc:ro
     networks:
       network:
     #ports:

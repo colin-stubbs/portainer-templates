@@ -15,8 +15,8 @@ services:
       - PGID=${PGID:-1000}
     restart: unless-stopped
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro:Z
-      # - /run/podman/podman.sock:/var/run/docker.sock:ro:Z
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # - /run/podman/podman.sock:/var/run/docker.sock:ro
       - /opt/data/portainer/config/homepage:/app/config:Z
     networks:
       network:

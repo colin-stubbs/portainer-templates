@@ -33,7 +33,7 @@ services:
       - XPACK_MANAGEMENT_PIPELINE_ID=${XPACK_MANAGEMENT_PIPELINE_ID:-["apache", "cloudwatch_logs"]}
     restart: unless-stopped
     volumes:
-      - /opt/data/portainer/config/logstash/pipeline:/usr/share/logstash/pipeline:ro:Z
+      - /opt/data/portainer/config/logstash/pipeline:/usr/share/logstash/pipeline:ro
       - logstash_data:/usr/share/logstash/data
     networks:
       network:

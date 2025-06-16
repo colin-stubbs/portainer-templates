@@ -13,7 +13,7 @@ services:
     #  - "80:80"
     #  - "6514:6514"
     volumes:
-      - /opt/data/portainer/config/vector/vector.toml:/etc/vector/vector.toml:ro:Z
+      - /opt/data/portainer/config/vector/vector.toml:/etc/vector/vector.toml:ro
     networks:
       network:
     labels:

@@ -16,9 +16,9 @@ services:
     restart: unless-stopped
     volumes:
       - /opt/data/elastic-agent:/data:Z
-      - /var/run/docker.sock:/var/run/docker.sock:ro:Z
-      #- /run/podman/podman.sock:/var/run/docker.sock:ro:Z
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro:Z
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      #- /run/podman/podman.sock:/var/run/docker.sock:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - elastic_agent_state:/usr/share/elastic-agent/state
     networks:
       network:

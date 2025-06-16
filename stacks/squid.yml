@@ -12,9 +12,9 @@ services:
       - TZ=${TZ:-Australia/Brisbane}
     restart: unless-stopped
     volumes:
-      - /opt/data/portainer/config/squid/squid.conf:/etc/squid/squid.conf:ro:Z
-      - /opt/data/logs/squid:/var/log/squid:Z
-      - squid_cache:/var/spool/squid:rw
+      - /opt/data/portainer/config/squid/squid.conf:/etc/squid/squid.conf:ro
+      - squid_logs:/var/log/squid
+      - squid_cache:/var/spool/squid
     networks:
       network:
 #    ports:
@@ -25,3 +25,4 @@ services:
 
 volumes:
   squid_cache:
+  squid_logs:

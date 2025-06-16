@@ -13,6 +13,22 @@ services:
     environment:
       - TZ=${TZ:-Australia/Brisbane}
 
+      ## Basics
+      # Don't set this unless it's essential to your use case. The start.sh script currently doesn't use it at every point that it should.
+      #- PORT=${PORT:-8080}
+      - OFFLINE_MODE=${OFFLINE_MODE:-False}
+      - SAFE_MODE=${SAFE_MODE:-False}
+      - SPACE_ID=${SPACE_ID:-default}
+      - SPACE_HOST=${SPACE_HOST:-http://localhost:3000}
+      - ADMIN_USER_EMAIL=${ADMIN_USER_EMAIL:-admin@localhost}
+      - ADMIN_USER_PASSWORD=${ADMIN_USER_PASSWORD:-password}
+      - USE_OLLAMA_DOCKER=${USE_OLLAMA_DOCKER:-False}
+      - USE_CUDA_DOCKER=${USE_CUDA_DOCKER:-False}
+
+      ## OpenAI
+      - OPENAI_API_BASE_URL=${OPENAI_API_BASE_URL:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+
       ## Disable persistent env var storage
       - ENABLE_PERSISTENT_CONFIG=${ENABLE_PERSISTENT_CONFIG:-True}
 
@@ -26,6 +42,10 @@ services:
       - WEB_SEARCH_RESULT_COUNT=${WEB_SEARCH_RESULT_COUNT:-3}
       - WEB_SEARCH_CONCURRENT_REQUEST=${WEB_SEARCH_CONCURRENT_REQUEST:-10}
       - SEARXNG_QUERY_URL=${SEARXNG_QUERY_URL:-http://searxng:8080/search?q=<query>}
+
+      ## Web
+      - WEB_LOADER_ENGINE=${WEB_LOADER_ENGINE:-safe_web}
+      #- WEB_LOADER_ENGINE=${WEB_LOADER_ENGINE:-playwright}
 
       ## WebUI
       - WEBUI_URL=${WEBUI_URL:-http://open-webui.localhost}
@@ -60,8 +80,8 @@ services:
       #- LDAP_CIPHERS=${LDAP_CIPHERS:-ALL}
 
       ## Database
-      # - DATABASE_URL=${DATABASE_URL:-sqlite:///app/backend/data/webui.db}
-      # - DATABASE_URL=${DATABASE_URL:-postgresql://postgres:P@55w0rd@postgres:5432/postgres}
+      #- DATABASE_URL=${DATABASE_URL:-sqlite:///app/backend/data/webui.db}
+      #- DATABASE_URL=${DATABASE_URL:-postgresql://postgres:P@55w0rd@postgres:5432/postgres}
 
       ## Vector Database
       #- VECTOR_DB=elasticsearch
@@ -77,7 +97,7 @@ services:
       - USER_AGENT=${USER_AGENT:-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36}
 
       ## Storage
-      # - STORAGE_PROVIDER=${STORAGE_PROVIDER:-local}
+      #- STORAGE_PROVIDER=${STORAGE_PROVIDER:-local}
       # TODO: Add S3 vars to point to minio
 
       ## Proxy

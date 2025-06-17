@@ -8,7 +8,15 @@ services:
     image: docker.io/caddy:alpine
     hostname: ${HOSTNAME:-caddy}
     domainname: ${DOMAINNAME:-localhost}
+    # Use --watch if you want Caddy to watch for changes to the Caddyfile
+    #command: ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--watch", "--adapter", "caddyfile"]
     restart: unless-stopped
+    # This healthcheck assumes that the Caddy API will not be disabled. Use a custom HTTP server config if you will disable it.
+    healthcheck:
+      test: ['CMD-SHELL', "wget --quiet --tries=1 --spider http://127.0.0.1:2019/pki/ca/local && echo OK || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
     networks:
       network:
     ports:
@@ -23,11 +31,12 @@ services:
       - caddy_config:/config
     environment:
       - TZ=${TZ:-Australia/Brisbane}
+      - CADDY_ADMIN=${CADDY_ADMIN:-localhost:2019}
       # - CF_API_TOKEN=super-secret-cloudflare-tokenvalue
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.caddy.rule=Host(`${HOSTNAME:-caddy}.${DOMAINNAME:-localhost}`)"
-      - "traefik.http.services.caddy.loadbalancer.server.port=80"
+      - "traefik.http.services.caddy.loadbalancer.server.port=2019"
       - "wud.watch=true"
 
 volumes:

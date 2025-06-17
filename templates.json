@@ -768,6 +768,11 @@
           "label": "TZ",
           "description": "Timezone",
           "default": "Australia/Brisbane"
+        },
+        {
+          "name": "CADDY_ADMIN",
+          "label": "CADDY_ADMIN",
+          "default": "localhost:2019"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

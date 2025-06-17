@@ -1,0 +1,11 @@
+services:
+  tfc-agent:
+    image: docker.io/hashicorp/tfc-agent:latest
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - TFC_AGENT_TOKEN=${TFC_AGENT_TOKEN:-CHANGE_ME}
+      - TFC_AGENT_NAME=${TFC_AGENT_NAME:-agent}
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=false"
+      - "wud.watch=true"

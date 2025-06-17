@@ -2982,6 +2982,73 @@
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10016,
+      "type": 3,
+      "name": "faraday",
+      "title": "Faraday Security",
+      "description": "Faraday Security",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/faraday.png",
+      "categories": [
+        "edge",
+        "Security",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/faraday.yml"
+      },
+      "env": [
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "FQDN",
+          "label": "FQDN",
+          "default": "faraday.localhost"
+        },
+        {
+          "name": "FARADAY_HOME",
+          "label": "FARADAY_HOME",
+          "default": "/home/faraday"
+        },
+        {
+          "name": "FARADAY_PASSWORD",
+          "label": "FARADAY_PASSWORD",
+          "default": "CHANGE_ME",
+          "description": "The password for the initial faraday admin user. This should only be set on first run, if you already have a server.ini file this will not be used."
+        },
+        {
+          "name": "PGSQL_HOST",
+          "label": "PGSQL_HOST",
+          "default": "postgres"
+        },
+        {
+          "name": "PGSQL_USER",
+          "label": "PGSQL_USER",
+          "default": "postgres"
+        },
+        {
+          "name": "PGSQL_PASSWD",
+          "label": "PGSQL_PASSWD",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "PGSQL_DBNAME",
+          "label": "PGSQL_DBNAME",
+          "default": "faraday"
+        },
+        {
+          "name": "REDIS_SERVER",
+          "label": "REDIS_SERVER",
+          "default": "redis"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

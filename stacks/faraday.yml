@@ -1,0 +1,37 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  faraday:
+    image: docker.io/faradaysec/faraday:latest
+    hostname: ${HOSTNAME:-faraday}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: always
+    entrypoint: "/entrypoint.sh"
+    volumes:
+     - config:/home/faraday/.faraday
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - FQDN=${HOSTNAME:-faraday}.${DOMAINNAME:-localhost}
+      - FARADAY_HOME=${FARADAY_HOME:-/home/faraday}
+      ## NOTE: The password should only be set on first run, if you already have a server.ini file this will not be used.
+      - FARADAY_PASSWORD=${FARADAY_PASSWORD:-CHANGE_ME}
+      - PGSQL_HOST=${PGSQL_HOST:-postgres}
+      - PGSQL_USER=${PGSQL_USER:-postgres}
+      - PGSQL_PASSWD=${PGSQL_PASSWD:-CHANGE_ME}
+      - PGSQL_DBNAME=${PGSQL_DBNAME:-faraday}
+      - REDIS_SERVER=${REDIS_SERVER:-redis}
+    ports:
+      - "5985:5985"
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.faraday.rule=Host(`${HOSTNAME:-faraday}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.faraday.loadbalancer.server.port=5985"
+      - "wud.watch=true"
+
+volumes:
+  config:

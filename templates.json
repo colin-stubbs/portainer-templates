@@ -2963,7 +2963,7 @@
       "name": "gitlab-runner",
       "title": "GitLab Runner",
       "description": "GitLab Runner",
-      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/gitlab.svg",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/gitlab.png",
       "categories": [
         "edge",
         "Development",

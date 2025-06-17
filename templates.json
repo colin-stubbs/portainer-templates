@@ -2915,6 +2915,41 @@
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10014,
+      "type": 3,
+      "name": "hashicorp-tfc-agent",
+      "title": "Hashicorp Terraform Cloud Agent",
+      "description": "Hashicorp Terraform Cloud Agent",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/terraform.svg",
+      "categories": [
+        "Development",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/hashicorp-tfc-agent.yml"
+      },
+      "env": [
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "TFC_AGENT_TOKEN",
+          "label": "TFC_AGENT_TOKEN",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "TFC_AGENT_NAME",
+          "label": "TFC_AGENT_NAME",
+          "default": "agent"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

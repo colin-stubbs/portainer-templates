@@ -13,6 +13,7 @@ services:
       - /opt/data/portainer/config/step-ra:/home/step:Z
     environment:
       - TZ=${TZ:-Australia/Brisbane}
+      - STEPDEBUG=${STEPDEBUG:-}
     restart: always
     networks:
       network:

@@ -12,7 +12,7 @@ services:
       # You should manually run something like this if you havn't otherwise created the config.toml file,
       # `docker run -v /var/run/docker.sock:/var/run/docker.sock:Z -v /opt/data/portainer/config/gitlab-runner:/etc/gitlab-runner:Z -e "TZ=Australia/Brisbane" -it docker.io/gitlab/gitlab-runner:latest register`
       # NOTE: The runner will need read-write access to /etc/gitlab-runner content, e.g. it will create and write to a file named /etc/gitlab-runner/.runner_system_id
-      # NOTE: The runner seems to need read-write access to config.toml as well :-(
+      # NOTE: The runner seems to open config.toml in read-write mode :-(
       - /opt/data/portainer/config/gitlab-runner/config.toml:/etc/gitlab-runner/config.toml:Z
     labels:
       - "traefik.enable=false"

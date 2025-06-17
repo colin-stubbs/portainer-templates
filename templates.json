@@ -2991,7 +2991,6 @@
       "description": "Faraday Security",
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/faraday.png",
       "categories": [
-        "edge",
         "Security",
         "Tools"
       ],

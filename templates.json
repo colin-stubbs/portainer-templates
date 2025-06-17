@@ -2929,6 +2929,7 @@
       "description": "Hashicorp Terraform Cloud Agent",
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/terraform.svg",
       "categories": [
+        "edge",
         "Development",
         "Tools"
       ],
@@ -2952,6 +2953,32 @@
           "name": "TFC_AGENT_NAME",
           "label": "TFC_AGENT_NAME",
           "default": "agent"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10015,
+      "type": 3,
+      "name": "gitlab-runner",
+      "title": "GitLab Runner",
+      "description": "GitLab Runner",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/gitlab.svg",
+      "categories": [
+        "edge",
+        "Development",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/gitlab-runner.yml"
+      },
+      "env": [
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

@@ -1,0 +1,16 @@
+services:
+  gitlab-runner:
+    image: docker.io/gitlab/gitlab-runner:latest
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:Z
+      #- /run/podman/podman.sock:/var/run/docker.sock:Z
+      ## You should manually run something like this if you havn't otherwise created the config.toml file,
+      # `docker run -v /var/run/docker.sock:/var/run/docker.sock:Z -v /opt/data/portainer/config/gitlab-runner:/etc/gitlab-runner:Z -e "TZ=Australia/Brisbane" -it docker.io/gitlab/gitlab-runner:latest register`
+      # NOTE: The runner will need read-write access to /etc/gitlab-runner content.
+      - /opt/data/portainer/config/gitlab-runner:/etc/gitlab-runner:Z
+    labels:
+      - "traefik.enable=false"
+      - "wud.watch=true"

@@ -5,7 +5,7 @@ networks:
 
 services:
   observium:
-    image: docker.io/colinstubbs/observium:latest
+    image: docker.io/colinstubbs/observium-ce:latest
     hostname: ${HOSTNAME:-observium}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped
@@ -13,11 +13,11 @@ services:
       - TZ=${TZ:-Australia/Brisbane}
       - OBSERVIUM_ADMIN_USER=${OBSERVIUM_ADMIN_USER:-admin}
       - OBSERVIUM_ADMIN_PASS=${OBSERVIUM_ADMIN_PASS:-CHANGE_ME}
-      - OBSERVIUM_DB_HOST=${OBSERVIUM_DB_HOST:-mariadb}
+      - s=${OBSERVIUM_DB_HOST:-mariadb}
       - OBSERVIUM_DB_NAME=${OBSERVIUM_DB_NAME:-observium}
       - OBSERVIUM_DB_USER=${OBSERVIUM_DB_USER:-observium}
       - OBSERVIUM_DB_PASS=${OBSERVIUM_DB_PASS:-CHANGE_ME}
-      - OBSERVIUM_BASE_URL=${OBSERVIUM_BASE_URL:-http://observium.localhost}
+      - OBSERVIUM_BASE_URL=${OBSERVIUM_BASE_URL:-http://${HOSTNAME:-observium}.${DOMAINNAME:-localhost}}
     volumes:
       - logs:/opt/observium/logs
       - rrds:/opt/observium/rrd

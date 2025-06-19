@@ -16,8 +16,8 @@ services:
     #  - "--entryPoints.web.address=:80"
     #  - "--serversTransport.insecureSkipVerify=true"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:Z
-      #- /run/podman/podman.sock:/var/run/docker.sock:Z
+      - /var/run/docker.sock:/var/run/docker.sock
+      #- /run/podman/podman.sock:/var/run/docker.sock
       #- /opt/data/portainer/config/traefik:/etc/traefik:ro
     ports:
       - "80:80/tcp"

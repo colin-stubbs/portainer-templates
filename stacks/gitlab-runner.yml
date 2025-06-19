@@ -5,8 +5,8 @@ services:
     environment:
       - TZ=${TZ:-Australia/Brisbane}
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:Z
-      #- /run/podman/podman.sock:/var/run/docker.sock:Z
+      - /var/run/docker.sock:/var/run/docker.sock
+      #- /run/podman/podman.sock:/var/run/docker.sock
       - config:/etc/gitlab-runner
       ## /etc/gitlab-runner/config.toml is expected to exist already.
       # You should manually run something like this if you havn't otherwise created the config.toml file,

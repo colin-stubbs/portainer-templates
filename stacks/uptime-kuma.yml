@@ -24,8 +24,8 @@ services:
       #- UPTIME_KUMA_DB_PASSWORD=${UPTIME_KUMA_DB_PASSWORD:-CHANGE_ME}
     restart: unless-stopped
     volumes:
-      #- /run/podman/podman.sock:/var/run/docker.sock:Z
-      #- /var/run/docker.sock:/var/run/docker.sock:Z
+      #- /run/podman/podman.sock:/var/run/docker.sock
+      #- /var/run/docker.sock:/var/run/docker.sock
       - uptime_kuma:/app/data
     networks:
       network:

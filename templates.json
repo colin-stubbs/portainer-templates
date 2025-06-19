@@ -3057,7 +3057,8 @@
       "description": "Observium",
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/observium.png",
       "categories": [
-        "Security",
+        "Network",
+        "Monitoring",
         "Tools"
       ],
       "repository": {

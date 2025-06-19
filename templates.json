@@ -3062,7 +3062,7 @@
       ],
       "repository": {
         "url": "https://github.com/colin-stubbs/portainer-templates/",
-        "stackfile": "stacks/faraday.yml"
+        "stackfile": "stacks/observium.yml"
       },
       "env": [
         {

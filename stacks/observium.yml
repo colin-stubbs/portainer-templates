@@ -1,0 +1,47 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  observium:
+    image: docker.io/colinstubbs/observium:latest
+    hostname: ${HOSTNAME:-observium}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - OBSERVIUM_ADMIN_USER=${OBSERVIUM_ADMIN_USER:-admin}
+      - OBSERVIUM_ADMIN_PASS=${OBSERVIUM_ADMIN_PASS:-CHANGE_ME}
+      - OBSERVIUM_DB_HOST=${OBSERVIUM_DB_HOST:-mariadb}
+      - OBSERVIUM_DB_NAME=${OBSERVIUM_DB_NAME:-observium}
+      - OBSERVIUM_DB_USER=${OBSERVIUM_DB_USER:-observium}
+      - OBSERVIUM_DB_PASS=${OBSERVIUM_DB_PASS:-CHANGE_ME}
+      - OBSERVIUM_BASE_URL=${OBSERVIUM_BASE_URL:-http://observium.localhost}
+    volumes:
+      - logs:/opt/observium/logs
+      - rrds:/opt/observium/rrd
+      #- /opt/data/portainer/config/observium/config.php:/opt/observium/config.php"
+    #ports:
+    #  - "84:80"
+    #  - "443:443"
+    #  - "4514:4514/udp"
+    #  - "4514:4514/tcp"
+    healthcheck:
+      test: curl --fail http://localhost:80/ || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
+    networks:
+      network:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.observium.rule=Host(`${HOSTNAME:-observium}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.observium.loadbalancer.server.port=80"
+      - "wud.watch=true"
+
+volumes:
+  logs:
+  rrds:
+

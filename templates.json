@@ -3048,6 +3048,81 @@
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10017,
+      "type": 3,
+      "name": "observium",
+      "title": "Observium",
+      "description": "Observium",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/observium.png",
+      "categories": [
+        "Security",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/faraday.yml"
+      },
+      "env": [
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "observium"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "OBSERVIUM_ADMIN_USER",
+          "label": "OBSERVIUM_ADMIN_USER",
+          "default": "admin"
+        },
+        {
+          "name": "OBSERVIUM_ADMIN_PASS",
+          "label": "OBSERVIUM_ADMIN_PASS",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "OBSERVIUM_DB_HOST",
+          "label": "OBSERVIUM_DB_HOST",
+          "default": "mariadb"
+        },
+        {
+          "name": "OBSERVIUM_DB_NAME",
+          "label": "OBSERVIUM_DB_NAME",
+          "default": "observium"
+        },
+        {
+          "name": "OBSERVIUM_DB_USER",
+          "label": "OBSERVIUM_DB_USER",
+          "default": "observium"
+        },
+        {
+          "name": "OBSERVIUM_DB_PASS",
+          "label": "OBSERVIUM_DB_PASS",
+          "default": "CHANGE_ME"
+        },
+        {
+          "name": "OBSERVIUM_BASE_URL",
+          "label": "OBSERVIUM_BASE_URL",
+          "default": "http://observium.localhost"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

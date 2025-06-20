@@ -61,7 +61,7 @@ services:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.canarytokens_frontend.rule=Host(`canarytokens-admin.localhost`)"
+      - "traefik.http.routers.canarytokens_frontend.rule=Host(`${HOSTNAME:-canarytokens}-admin.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.canarytokens_frontend.loadbalancer.server.port=8082"
       - "wud.watch=true"
 

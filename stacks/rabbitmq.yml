@@ -5,7 +5,7 @@ networks:
 
 services:
   rabbitmq:
-    image: ${IMAGE:-docker.io/rabbitmq:4.1-management-alpine}
+    image: ${IMAGE:-docker.io/rabbitmq:4-management-alpine}
     environment:
       - TZ=${TZ:-Australia/Brisbane}
       # Refer to: https://www.rabbitmq.com/docs/configure#supported-environment-variables

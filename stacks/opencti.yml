@@ -6,13 +6,15 @@ networks:
 services:
   opencti:
     image: docker.io/opencti/platform:${OPENCTI_VERSION:-6.6.14}
+    hostname: ${HOSTNAME:-opencti}
+    domainname: ${DOMAINNAME:-localhost}
     environment:
       - TZ=${TZ:-Australia/Brisbane}
       - APP__ADMIN__EMAIL=${OPENCTI_ADMIN_EMAIL:-admin@localhost}
       - APP__ADMIN__PASSWORD=${OPENCTI_ADMIN_PASSWORD:-CHANGE_ME}
       - APP__ADMIN__TOKEN=${OPENCTI_ADMIN_TOKEN:-CHANGE_ME}
       - APP__APP_LOGS__LOGS_LEVEL=${OPENCTI_LOG_LEVEL:-error}
-      - APP__BASE_URL=${OPENCTI_BASE_URL:-http://opencti.localhost}
+      - APP__BASE_URL=${OPENCTI_BASE_URL:-http://${HOSTNAME:-opencti}.${DOMAINNAME:-localhost}}
       - APP__HEALTH_ACCESS_KEY=${OPENCTI_HEALTH_ACCESS_KEY:-CHANGE_ME}
       - APP__PORT=${OPENCTI_PORT:-80}
       - ELASTICSEARCH__URL=${ELASTICSEARCH_URL:-http://elasticsearch:9200}

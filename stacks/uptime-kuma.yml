@@ -5,7 +5,7 @@ networks:
 
 services:
   uptime-kuma:
-    #image: louislam/uptime-kuma:beta-slim
+    #image: louislam/uptime-kuma:beta-slim-rootless
     image: ghcr.io/louislam/uptime-kuma:latest
     hostname: ${HOSTNAME:-uptime-kuma}
     domainname: ${DOMAINNAME:-localhost}

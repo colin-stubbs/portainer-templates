@@ -26,8 +26,6 @@ services:
       network:
     environment:
       - TZ=${TZ:-Australia/Brisbane}
-      # - HSA_OVERRIDE_GFX_VERSION=${HSA_OVERRIDE_GFX_VERSION:-10.3.0}
-      # - HCC_AMDGPU_TARGET=${HCC_AMDGPU_TARGET:-gfx1030}
     healthcheck:
       test: curl --silent --fail http://localhost:80/version || exit 1
       interval: 60s

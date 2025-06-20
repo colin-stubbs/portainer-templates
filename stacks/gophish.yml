@@ -32,10 +32,10 @@ services:
       network:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.gophish_public.rule=Host(`gophish.localhost`)"
+      - "traefik.http.routers.gophish_public.rule=Host(`${HOSTNAME:-gophish}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.routers.gophish_public.service=gophish_public"
       - "traefik.http.services.gophish_public.loadbalancer.server.port=80"
-      - "traefik.http.routers.gophish_admin.rule=Host(`gophish-admin.localhost`)"
+      - "traefik.http.routers.gophish_admin.rule=Host(`${HOSTNAME:-gophish}-admin.${DOMAINNAME:-localhost}`)"
       - "traefik.http.routers.gophish_admin.service=gophish_admin"
       - "traefik.http.services.gophish_admin.loadbalancer.server.port=3333"
       - "wud.watch=true"

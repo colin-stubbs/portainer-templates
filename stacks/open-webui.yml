@@ -49,7 +49,6 @@ services:
 
       ## WebUI
       - WEBUI_URL=${WEBUI_URL:-http://open-webui.localhost}
-      - OAUTH_MERGE_ACCOUNTS_BY_EMAIL=${OAUTH_MERGE_ACCOUNTS_BY_EMAIL:-false}
       - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:-secret}
       - CORS_ALLOW_ORIGIN=${CORS_ALLOW_ORIGIN:-http://open-webui.localhost}
 
@@ -57,10 +56,14 @@ services:
       #- ENABLE_OAUTH_SIGNUP=${ENABLE_OAUTH_SIGNUP:-False}
       #- OAUTH_MERGE_ACCOUNTS_BY_EMAIL=${OAUTH_MERGE_ACCOUNTS_BY_EMAIL:-False}
       #- OAUTH_UPDATE_PICTURE_ON_LOGIN=${OAUTH_UPDATE_PICTURE_ON_LOGIN:-False}
-      #- GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-}
-      #- GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-}
-      #- GOOGLE_OAUTH_SCOPE=${GOOGLE_OAUTH_SCOPE:-}
-      #- GOOGLE_OAUTH_REDIRECT_URI=${GOOGLE_OAUTH_REDIRECT_URI:-}
+      #- OAUTH_CLIENT_ID=${OAUTH_CLIENT_ID:-CHANGE_ME}
+      #- OAUTH_CLIENT_SECRET=${OAUTH_CLIENT_SECRET:-CHANGE_ME}
+      #- OAUTH_PROVIDER_NAME=${OAUTH_PROVIDER_NAME:-SSO}
+      #- OPENID_REDIRECT_URI=${OPENID_REDIRECT_URI:-http://open-webui.localhost/oauth/oidc/callback}
+      #- OPENID_PROVIDER_URL=${OPENID_PROVIDER_URL:-https://accounts.google.com/.well-known/openid-configuration}
+      #- GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-CHANGE_ME}
+      #- GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-CHANGE_ME}
+      #- GOOGLE_REDIRECT_URI=${GOOGLE_REDIRECT_URI:-http://open-webui.localhost/oauth/google/callback}
 
       ## LDAP
       #- ENABLE_LDAP=${ENABLE_LDAP:-False}

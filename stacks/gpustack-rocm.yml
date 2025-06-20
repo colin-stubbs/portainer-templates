@@ -8,6 +8,7 @@ services:
     image: docker.io/gpustack/gpustack:latest-rocm
     hostname: ${HOSTNAME:-gpustack}
     domainname: ${DOMAINNAME:-localhost}
+    restart: unless-stopped
     devices:
       - /dev/kfd:/dev/kfd
       - /dev/dri:/dev/dri
@@ -27,7 +28,12 @@ services:
       - TZ=${TZ:-Australia/Brisbane}
       # - HSA_OVERRIDE_GFX_VERSION=${HSA_OVERRIDE_GFX_VERSION:-10.3.0}
       # - HCC_AMDGPU_TARGET=${HCC_AMDGPU_TARGET:-gfx1030}
-    restart: unless-stopped
+    healthcheck:
+      test: curl --silent --fail http://localhost:80/version || exit 1
+      interval: 60s
+      retries: 3
+      start_period: 3s
+      timeout: 10s
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.gpustack.rule=Host(`${HOSTNAME:-gpustack}.${DOMAINNAME:-localhost}`)"

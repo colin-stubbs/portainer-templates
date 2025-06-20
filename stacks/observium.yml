@@ -19,19 +19,21 @@ services:
       - OBSERVIUM_DB_PASS=${OBSERVIUM_DB_PASS:-CHANGE_ME}
       - OBSERVIUM_BASE_URL=${OBSERVIUM_BASE_URL:-http://${HOSTNAME:-observium}.${DOMAINNAME:-localhost}}
     volumes:
-      - logs:/opt/observium/logs
-      - rrds:/opt/observium/rrd
+      - observium_logs:/opt/observium/logs
+      - observium_rrds:/opt/observium/rrd
+      - apache_logs:/var/log/apache2
       #- /opt/data/portainer/config/observium/config.php:/opt/observium/config.php"
     #ports:
     #  - "84:80"
     #  - "443:443"
-    #  - "4514:4514/udp"
-    #  - "4514:4514/tcp"
+    #  - "514:514/udp"
+    #  - "514:514/tcp"
+    #  - "6514:6514/tcp"
     healthcheck:
-      test: curl --fail http://localhost:80/ || exit 1
+      test: curl --silent --fail http://localhost:80/status.php | grep '{"status":"OK"}' || exit 1
       interval: 60s
-      retries: 5
-      start_period: 20s
+      retries: 3
+      start_period: 3s
       timeout: 10s
     networks:
       network:
@@ -42,6 +44,6 @@ services:
       - "wud.watch=true"
 
 volumes:
-  logs:
-  rrds:
-
+  observium_logs:
+  observium_rrds:
+  apache_logs:

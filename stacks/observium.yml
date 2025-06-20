@@ -22,7 +22,7 @@ services:
       - observium_logs:/opt/observium/logs
       - observium_rrds:/opt/observium/rrd
       - apache_logs:/var/log/apache2
-      #- /opt/data/portainer/config/observium/config.php:/opt/observium/config.php"
+      #- /opt/data/portainer/config/observium/config.php:/opt/observium/config.php
     #ports:
     #  - "84:80"
     #  - "443:443"

@@ -35,7 +35,7 @@ services:
         soft: 65536
         hard: 65536
     healthcheck:
-      test: curl --insecure --silent --user "${ELASTIC_USERNAME}:${ELASTIC_PASSWORD}" https://localhost:9200/_cat/health | cut -f4 -d' ' | grep -E '(green|yellow)' 1>/dev/null 2>&1 || exit 1
+      test: curl --insecure --silent --user "${ELASTIC_USERNAME}:${ELASTIC_PASSWORD}" http://localhost:9200/_cat/health | grep -E '"status":"(green|yellow)"' || exit 1
       interval: 30s
       timeout: 10s
       retries: 50
@@ -43,6 +43,8 @@ services:
       - esdata:/usr/share/elasticsearch/data
     networks:
       network:
+    #ports:
+    #  - 9200:9200
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.elasticsearch.rule=Host(`${HOSTNAME:-elasticsearch}.${DOMAINNAME:-localhost}`)"

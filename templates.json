@@ -3067,12 +3067,6 @@
       },
       "env": [
         {
-          "name": "TZ",
-          "label": "TZ",
-          "description": "Timezone",
-          "default": "Australia/Brisbane"
-        },
-        {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
           "default": "observium"

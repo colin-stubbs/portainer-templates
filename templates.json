@@ -3217,7 +3217,7 @@
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
-      "id": 10018,
+      "id": 10019,
       "type": 3,
       "name": "arkime-viewer",
       "title": "Arkime (viewer)",
@@ -3278,7 +3278,7 @@
         {
           "name": "ARKIME__viewPort",
           "label": "ARKIME__viewPort",
-          "default": "8005"
+          "default": "80"
         },
         {
           "name": "ARKIME__authMode",
@@ -3293,28 +3293,13 @@
         {
           "name": "ARKIME__cronQueries",
           "label": "ARKIME__cronQueries",
-          "default": "true"
-        },
-        {
-          "name": "ARKIME__interface",
-          "label": "ARKIME__interface",
-          "default": "eth0"
-        },
-        {
-          "name": "ARKIME__parsersDir",
-          "label": "ARKIME__parsersDir",
-          "default": "/opt/arkime/parsers"
-        },
-        {
-          "name": "ARKIME__pluginsDir",
-          "label": "ARKIME__pluginsDir",
-          "default": "/opt/arkime/plugins"
+          "default": "false"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     },
     {
-      "id": 10019,
+      "id": 10020,
       "type": 3,
       "name": "arkime-capture",
       "title": "Arkime (capture)",
@@ -3372,26 +3357,6 @@
           "name": "ARKIME__elasticsearch",
           "label": "ARKIME__elasticsearch",
           "default": "http://elastic:changeme@elasticsearch:9200"
-        },
-        {
-          "name": "ARKIME__viewPort",
-          "label": "ARKIME__viewPort",
-          "default": "8005"
-        },
-        {
-          "name": "ARKIME__authMode",
-          "label": "ARKIME__authMode",
-          "default": "digest"
-        },
-        {
-          "name": "ARKIME__uploadCommand",
-          "label": "ARKIME__uploadCommand",
-          "default": "/opt/arkime/bin/capture --copy -n {NODE} -r {TMPFILE} -c {CONFIG} {TAGS}"
-        },
-        {
-          "name": "ARKIME__cronQueries",
-          "label": "ARKIME__cronQueries",
-          "default": "true"
         },
         {
           "name": "ARKIME__interface",

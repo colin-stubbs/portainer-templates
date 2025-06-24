@@ -1,0 +1,42 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  arkime-cont3xt:
+    image: ${IMAGE:-ghcr.io/arkime/arkime/arkime:v5-latest}
+    hostname: ${HOSTNAME:-arkime-cont3xt}
+    domainname: ${DOMAINNAME:-localhost}
+    # custom string of commands to create cont3xt.ini file if it is missing
+    command: /bin/bash -l -c 'mkdir -p /opt/arkime/etc && touch /opt/arkime/etc/cont3xt.ini && /opt/arkime/bin/docker.sh cont3xt'
+    restart: always
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      #- ARKIME__<config>=<value>
+      #- ARKIME_<section>__<config>=<value>
+      - ARKIME_cont3xt__authMode=${ARKIME__authMode:-digest}
+      - ARKIME_cont3xt__port=${ARKIME_cont3xt__port:-80}
+      - ARKIME_cont3xt__elasticsearch=${ARKIME_cont3xt__elasticsearch:-http://elastic:changeme@elasticsearch:9200}
+      - ARKIME_cache__lmdbDir=${ARKIME_cache__lmdbDir:-/opt/arkime/cache/lmdb}
+      #- ARKIME_cache__memcachedURL=${ARKIME_cache__memcachedURL:-memcached://[user:pass@]server1[:11211],[user:pass@]server2[:11211]}
+      #- ARKIME_cache__redisURL=${ARKIME_cache__redisURL:-redis://[:password@]host:port/db-number}
+      - ARKIME_arkimeCOLONlocal__arkimeUrl=${ARKIME_arkimeCOLONlocal__arkimeUrl:-http://arkime}
+      - ARKIME_arkimeCOLONlocal__elasticsearch=${ARKIME_arkimeCOLONlocal__elasticsearch:-http://elastic:changeme@elasticsearch:9200}
+      #- ARKIME_arkimeCOLONlocal__insecure=${ARKIME_arkimeCOLONlocal__insecure:-true}
+    networks:
+      network:
+    volumes:
+      - cache:/opt/arkime/cache
+      #- etc:/opt/arkime/etc
+      #- ${DATA_DIR:-/opt/data/portainer/config/arkime}/cont3xt.ini:/opt/arkime/etc/cont3xt.ini
+      # /usr/share/GeoIP:/usr/share/GeoIP
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.arkime_cont3xt.rule=Host(`${HOSTNAME:-arkime-cont3xt}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.arkime_cont3xt.loadbalancer.server.port=80"
+      - "wud.watch=true"
+
+volumes:
+  cache:
+  #etc:

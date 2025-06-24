@@ -61,7 +61,11 @@ These are templated with the assumption that initial testing of a compose defini
 
 e.g. most compose files include labels like this exposing the web interface/s or API/s of the app thru Traefik as `%{APP_NAME}%.localhost`. Chrome, Firefox etc etc will all default to using `127.0.0.1/::1` for any sub-domain to the top level domain `localhost` so you won't have to muck about with modifying hosts files or doing anything else with DNS. Environment variables are used to allow easy override of this.
 
-An external network naemed `localnet` is always used, simply remove the `networks:` definitions if you just want to use the default bridge, or just the NETWORK env variable to your preferred alternative network.
+Application compose files typically *DO NOT* include all dependencies, e.g. I don't like my laptop having 10 instances of Redis, 5 instances of MinIO, 7 instances of MariaDB/MySQL, and a half dozen other duplicated bits'n'bobs running to simply support a dozen different apps that get almost zero usage most of the time.
+
+As such you're expected to work out where your dependencies will come from and spin them up and configure them appropriately. Combine things into your own custom compose files as needed.
+
+An external network named `localnet` is always used (unless `network_mode: host` by default is most appropriate), simply remove the `networks:` definitions if you just want to use the default bridge, or just the NETWORK env variable to your preferred alternative network.
 
 Port publishing via the host is usually commented out when routing via traefik is expected, so simply uncomment and adjust as desired.
 

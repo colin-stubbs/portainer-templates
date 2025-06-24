@@ -1,0 +1,35 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  arkime-parliament:
+    image: ${IMAGE:-ghcr.io/arkime/arkime/arkime:v5-latest}
+    hostname: ${HOSTNAME:-arkime-parliament}
+    domainname: ${DOMAINNAME:-localhost}
+    # custom string of commands to create parliament.ini file if it is missing
+    command: /bin/bash -l -c 'mkdir -p /opt/arkime/etc && touch /opt/arkime/etc/parliament.ini && /opt/arkime/bin/docker.sh parliament'
+    restart: always
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      #- ARKIME__<config>=<value>
+      #- ARKIME_<section>__<config>=<value>
+      - ARKIME_parliament__file=${ARKIME_parliament__file:-/opt/arkime/etc/parliament.issues.json}
+      - ARKIME_parliament__authMode=${ARKIME_parliament__authMode:-digest}
+      - ARKIME_parliament__port=${ARKIME_parliament__port:-80}
+      - ARKIME_parliament__usersElasticsearch=${ARKIME_parliament__usersElasticsearch:-http://elastic:changeme@elasticsearch:9200}
+    networks:
+      network:
+    #volumes:
+      #- etc:/opt/arkime/etc
+      #- ${DATA_DIR:-/opt/data/portainer/config/arkime}/parliament.ini:/opt/arkime/etc/parliament.ini
+      # /usr/share/GeoIP:/usr/share/GeoIP
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.arkime_parliament.rule=Host(`${HOSTNAME:-arkime-parliament}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.arkime_parliament.loadbalancer.server.port=80"
+      - "wud.watch=true"
+
+#volumes:
+#  etc:

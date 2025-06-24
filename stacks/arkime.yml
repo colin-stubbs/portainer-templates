@@ -1,11 +1,11 @@
 services:
-  capture-viewer:
+  arkime:
     image: ${IMAGE:-ghcr.io/arkime/arkime/arkime:v5-latest}
     hostname: ${HOSTNAME:-arkime}
     domainname: ${DOMAINNAME:-localhost}
     # custom string of commands to support config.ini file if it is missing
     ### NOTE: You will probably need to use --insecure for most self-hosted Elasticsearch HTTPS interfaces, but don't use it if you don't need it, e.g. if you can access ES via a HTTPS URL with a commonly trusted public CA signed certificate or if you have setup private CA trust via another means.
-    command: /bin/bash -l -c 'touch /opt/arkime/etc/config.ini && /opt/arkime/bin/docker.sh capture-viewer'
+    command: /bin/bash -l -c 'mkdir -p /opt/arkime/etc && touch /opt/arkime/etc/config.ini && /opt/arkime/bin/docker.sh capture-viewer'
     restart: unless-stopped
     environment:
       - TZ=${TZ:-Australia/Brisbane}
@@ -39,7 +39,8 @@ services:
         hard: -1
     volumes:
       - raw:/opt/arkime/raw
-      - etc:/opt/arkime/etc
+      #- etc:/opt/arkime/etc
+      #- ${DATA_DIR:-/opt/data/portainer/config/arkime}/config.ini:/opt/arkime/etc/config.ini
       # /usr/share/GeoIP:/usr/share/GeoIP
     labels:
       - "traefik.enable=false"
@@ -47,4 +48,4 @@ services:
 
 volumes:
   raw:
-  etc:
+  #etc:

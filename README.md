@@ -1,54 +1,57 @@
-# portainer-templates
+# Portainer Templates   
 
-Portainer Templates with a focus on security tooling.
+Container templates with a focus on security tooling.
 
 Currently includes:
-* 1Password Connect Server - expose 1Password vaults via API to enable secret storage/retrieval by software
-* Adminer - for managing various forms of databases, e.g. MySQL/MariaDB/PostgreSQL
-* Arkime - for full packet capture/logging.
-* BBOT Server - centralised storage for BBOT scan data
-* BBOT - OSINT scanning
-* Beelzebub - AI/LLM driven network honeypot
-* Browserless Chromium - headless chrome for use by software, e.g. it's a dependency for some of the tools.
-* Caddy - web server
-* Canary Tokens - for running your own canary/honey token infrastructure.
-* Change Detection - detecting, logging and alerting to changes on websites.
-* Cloudflare's cloudflared - either as a DNS-over-HTTPS proxy or as a tunneling tool.
-* CyberChef - cyber swiss army knife.
-* Elastic Agent - used with Elastic stacks.
-* Elasticsearch - stand-alone, e.g. it's a dependency for many of the tools.
-* Elasticvue - webUI to interact with/manage Elasticsearch nodes/clusters.
-* Faraday Security - vulnerability management
-* fluentd - log/data shipping
-* GitLab Runner - run CI/CD tasks privately
-* GoPhish - phish testing
-* GPUStack - run LLM models distributed across clusters/nodes
-* Hashicorp Terraform Cloud Agent - run terraform tasks from the cloud but privately/internally on your network
-* Hashtopolis - distributed hash cracking
-* Homepage - as it says, it's a homepage.
-* Hoppscotch - API interaction, e.g. testing/development/investigation
-* LinkWarden - link management and change records
-* Logstash - log/data shipping
-* MariaDB - SQL database, e.g. it's a dependency for some of the tools.
-* Meilisearch - TBC
-* MinIO - S3-like object storage
-* Tenable Nessus - vulnerability scanning
-* Observium - SNMP based monitoring of network equipment and other rando legacy type systems that can't do anything else.
-* Ollama - running LLM models
-* Open WebUI - web interface to Ollama and other AI/LLM tools/services
-* OpenCanary - network honeypot
-* OpenCTI - Cyber Threat Intelligence collection/management/search/etc
-* pgAdmin - PostgreSQL web admin interface
-* PostgreSQL - SQL database, e.g. it's a dependency for some of the tools.
-* RabbitMQ - event queue, e.g. it's a dependency for some of the tools.
-* Redis - cache, e.g. it's a dependency for some of the tools.
-* rsyslog - syslog.
-* SearXNG - meta-search with a focus on privacy/anonymity
-* Squid - web cache
-* Smallstep Certificate Authority - private certificate authority including ACME interface etc
-* Smallstep Registration Auhority - programmatic interface to Smallstep CA
-* Traefik - web server with container service integration to automate routing of traffic to containers
-* Uptime Kuma - monitoring all the things.
-* Vector - log/data shipping
-* Web Check - OSINT tool
-* What's Up Docker? - automate container updates
+| Name | Description |
+| --- | --- |
+|  [1Password Connect Server](https://developer.1password.com/docs/connect/) | Expose 1Password vaults via API to enable secret storage/retrieval by software |
+|  [Adminer](https://www.adminer.org/) | for managing various forms of databases, e.g. MySQL/MariaDB/PostgreSQL |
+|  [Arkime](https://arkime.com/) | for full packet capture/logging. |
+|  [BBOT Server](https://github.com/blacklanternsecurity/bbot-server) | centralised storage for BBOT scan data |
+|  [BBOT](https://github.com/blacklanternsecurity/bbot) | OSINT scanning |
+|  [Beelzebub](https://beelzebub-honeypot.com/) | AI/LLM driven network honeypot |
+|  [Browserless Chromium](https://www.browserless.io/) | headless chrome for use by software, e.g. it's a dependency for some of the tools. |
+|  [Caddy](https://caddyserver.com/) | web server |
+|  [Canary Tokens](https://canarytokens.org/) | for running your own canary/honey token infrastructure. |
+|  [Change Detection](https://changedetection.io/) | detecting, logging and alerting to changes on websites. |
+|  [Cloudflare's cloudflared](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/) | either as a DNS-over-HTTPS proxy or as a tunneling tool. |
+|  [CyberChef](https://github.com/gchq/CyberChef) | cyber swiss army knife. |
+|  [Elastic Agent](https://www.elastic.co/elastic-agent) | used with Elastic stacks. |
+|  [Elasticsearch](https://www.elastic.co/elasticsearch) | stand-alone, e.g. it's a dependency for many of the tools. |
+|  [Elasticvue](https://elasticvue.com/) | webUI to interact with/manage Elasticsearch nodes/clusters. |
+|  [Faraday Security](https://faradaysec.com/) | vulnerability management |
+|  [fluentd](https://www.fluentd.org/) | log/data shipping |
+|  [GitLab Runner](https://docs.gitlab.com/runner/) | run CI/CD tasks privately |
+|  [GoPhish](https://getgophish.com/) | phish testing |
+|  [GPUStack](https://gpustack.ai/) | run LLM models distributed across clusters/nodes |
+|  [Hashicorp Terraform Cloud Agent](https://developer.hashicorp.com/terraform/cloud-docs/agents/agents) | run terraform tasks from the cloud but privately/internally on your network |
+|  [Hashtopolis](https://github.com/hashtopolis) | distributed hash cracking |
+|  [Homepage](https://gethomepage.dev/) | as it says, it's a homepage. |
+|  [Hoppscotch](https://hoppscotch.com/) | API interaction, e.g. testing/development/investigation, or as an alternative to Postman |
+|  [LinkWarden](https://linkwarden.app/) | link management and change records |
+|  [Logstash](https://www.elastic.co/logstash) | log/data shipping |
+|  [MariaDB](https://mariadb.org/) | SQL database, e.g. it's a dependency for some of the tools. |
+|  [Meilisearch](https://www.meilisearch.com/) | Next generation (maybe?) search engine. |
+|  [MinIO](https://min.io/) | S3-like object storage |
+|  [Tenable Nessus](https://www.tenable.com/products/nessus) | vulnerability scanning |
+|  [Observium](https://www.observium.org/) | SNMP based monitoring of network equipment and other rando legacy type systems that can't do anything else. |
+|  [Ollama](https://ollama.com/) | running LLM models |
+|  [Open WebUI](https://openwebui.com/) | web interface to Ollama and other AI/LLM tools/services, e.g. self hosted ChatGPT alternative. |
+|  [OpenCanary](https://github.com/thinkst/opencanary) | network honeypot |
+|  [OpenCTI](https://docs.opencti.io/latest/) | Cyber Threat Intelligence collection/management/search/etc |
+|  [pgAdmin](https://www.pgadmin.org/) | PostgreSQL web admin interface |
+|  [PostgreSQL](https://www.postgresql.org/) | SQL database, e.g. it's a dependency for some of the tools. |
+|  [RabbitMQ](https://www.rabbitmq.com/) | event queue, e.g. it's a dependency for some of the tools. |
+|  [Redis](https://redis.io/) | cache, e.g. it's a dependency for some of the tools. |
+|  [rsyslog](https://www.rsyslog.com/) | syslog. |
+|  [SearXNG](https://searxng.org/) | meta-search with a focus on privacy/anonymity |
+|  [Squid](http://www.squid-cache.org/) | web cache |
+|  [Smallstep Certificate Authority](https://smallstep.com/certificates/) | private certificate authority including ACME interface etc |
+|  [Smallstep Registration Authority](https://smallstep.com/docs/step-ca/registration-authority/) | programmatic interface to Smallstep CA |
+|  [Traefik](https://traefik.io/) | web server with container service integration to automate routing of traffic to containers |
+|  [Uptime Kuma](https://github.com/louislam/uptime-kuma) | monitoring all the things. |
+|  [Vector](https://vector.dev/) | log/data shipping |
+|  [Web Check](https://github.com/maaaaz/web-check) | OSINT tool |
+|  [What's Up Docker?](https://github.com/fmartinou/whats-up-docker) | automate container updates |
+| --- | --- |

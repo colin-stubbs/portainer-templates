@@ -3143,12 +3143,6 @@
           "default": "ghcr.io/arkime/arkime/arkime:v5-latest"
         },
         {
-          "name": "TZ",
-          "label": "TZ",
-          "description": "Timezone",
-          "default": "Australia/Brisbane"
-        },
-        {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
           "default": "arkime"
@@ -3240,12 +3234,6 @@
           "default": "ghcr.io/arkime/arkime/arkime:v5-latest"
         },
         {
-          "name": "TZ",
-          "label": "TZ",
-          "description": "Timezone",
-          "default": "Australia/Brisbane"
-        },
-        {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
           "default": "arkime-viewer"
@@ -3258,6 +3246,7 @@
         {
           "name": "TZ",
           "label": "TZ",
+          "description": "Timezone",
           "default": "Australia/Brisbane"
         },
         {
@@ -3321,12 +3310,6 @@
           "name": "IMAGE",
           "label": "IMAGE",
           "default": "ghcr.io/arkime/arkime/arkime:v5-latest"
-        },
-        {
-          "name": "TZ",
-          "label": "TZ",
-          "description": "Timezone",
-          "default": "Australia/Brisbane"
         },
         {
           "name": "HOSTNAME",

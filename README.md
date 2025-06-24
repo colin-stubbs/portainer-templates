@@ -2,6 +2,7 @@
 
 Container templates with a focus on security tooling.
 
+
 Currently includes:
 | Name | Description |
 | --- | --- |
@@ -54,4 +55,48 @@ Currently includes:
 |  [Vector](https://vector.dev/) | log/data shipping |
 |  [Web Check](https://github.com/maaaaz/web-check) | OSINT tool |
 |  [What's Up Docker?](https://github.com/fmartinou/whats-up-docker) | automate container updates |
-| --- | --- |
+
+
+These are templated with the assumption that initial testing of a compose definition will be done locally in Docker Desktop/Portainer with, in most cases, Traefik based load balancing/routing via HTTP only.
+
+e.g. most compose files include labels like this exposing the web interface/s or API/s of the app thru Traefik as `%{APP_NAME}%.localhost`. Chrome, Firefox etc etc will all default to using `127.0.0.1/::1` for any sub-domain to the top level domain `localhost` so you won't have to muck about with modifying hosts files or doing anything else with DNS. Environment variables are used to allow easy override of this.
+
+An external network naemed `localnet` is always used, simply remove the `networks:` definitions if you just want to use the default bridge, or just the NETWORK env variable to your preferred alternative network.
+
+Port publishing via the host is usually commented out when routing via traefik is expected, so simply uncomment and adjust as desired.
+
+WUD watch is typically explicitly enabled. Disable if you don't want automatic updates by WUD.
+
+Restart is usually `unless-stopped`, however you may want to use `always` if auto-start after reboot is desired, so adjust as preferred.
+
+Typical compose file,
+```
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  some-app:
+    image: some.host/some-app:latest
+    hostname: ${HOSTNAME:-some-app}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - DATABASE_URL=${DATABASE_URL:-postgresql://some-app:CHANGE_ME@postgres:5432/some-app}
+    #ports:
+    #  - 3000:3000
+    networks:
+      network:
+    volumes:
+      - app_data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.some_app.rule=Host(`${HOSTNAME:-some-app}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.some_app.loadbalancer.server.port=3000"
+      - "wud.watch=true"
+
+volumes:
+  app_data:
+```

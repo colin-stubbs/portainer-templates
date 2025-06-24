@@ -23,7 +23,7 @@ services:
       #- ARKIME_cache__redisURL=${ARKIME_cache__redisURL:-redis://[:password@]host:port/db-number}
       - ARKIME_arkimeCOLONlocal__arkimeUrl=${ARKIME_arkimeCOLONlocal__arkimeUrl:-http://arkime}
       - ARKIME_arkimeCOLONlocal__elasticsearch=${ARKIME_arkimeCOLONlocal__elasticsearch:-http://elastic:changeme@elasticsearch:9200}
-      #- ARKIME_arkimeCOLONlocal__insecure=${ARKIME_arkimeCOLONlocal__insecure:-true}
+      - ARKIME_arkimeCOLONlocal__insecure=${ARKIME_arkimeCOLONlocal__insecure:-false}
     networks:
       network:
     volumes:

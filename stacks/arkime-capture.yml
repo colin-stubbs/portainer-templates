@@ -1,11 +1,11 @@
 services:
-  capture-viewer:
+  capture:
     image: ${IMAGE:-ghcr.io/arkime/arkime/arkime:v5-latest}
-    hostname: ${HOSTNAME:-arkime}
+    hostname: ${HOSTNAME:-arkime-capture}
     domainname: ${DOMAINNAME:-localhost}
     # custom string of commands to support config.ini file if it is missing
     ### NOTE: You will probably need to use --insecure for most self-hosted Elasticsearch HTTPS interfaces, but don't use it if you don't need it, e.g. if you can access ES via a HTTPS URL with a commonly trusted public CA signed certificate or if you have setup private CA trust via another means.
-    command: /bin/bash -l -c 'touch /opt/arkime/etc/config.ini && /opt/arkime/bin/docker.sh capture-viewer'
+    command: /bin/bash -l -c 'touch /opt/arkime/etc/config.ini && /opt/arkime/bin/docker.sh capture'
     restart: unless-stopped
     environment:
       - TZ=${TZ:-Australia/Brisbane}
@@ -17,15 +17,8 @@ services:
       - ARKIME__geoLite2Country=${ARKIME__geoLite2Country:-/usr/share/GeoIP/GeoLite2-Country.mmdb;/opt/arkime/etc/GeoLite2-Country.mmdb}
       - ARKIME__elasticsearch=${ARKIME__elasticsearch:-http://elastic:changeme@elasticsearch:9200}
 
-      # Viewer - https://arkime.com/settings#viewer
-      - ARKIME__viewPort=${ARKIME__viewPort:-8005}
-      - ARKIME__authMode=${ARKIME__authMode:-digest}
-      - ARKIME__uploadCommand=${ARKIME__uploadCommand:-/opt/arkime/bin/capture --copy -n {NODE} -r {TMPFILE} -c {CONFIG} {TAGS}}
-      - ARKIME__cronQueries=${ARKIME__cronQueries:-true}
-
       # Capture - https://arkime.com/settings#capture
-      ### NOTE: You should really run capture with network_mode: host to get access to the host interfaces.
-      - ARKIME__interface=${ARKIME__interface:-lo}
+      - ARKIME__interface=${ARKIME__interface:-eth0}
       - ARKIME__parsersDir=${ARKIME__parsersDir:-/opt/arkime/parsers}
       - ARKIME__pluginsDir=${ARKIME__pluginsDir:-/opt/arkime/plugins}
     network_mode: host

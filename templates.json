@@ -3123,8 +3123,9 @@
       "id": 10018,
       "type": 3,
       "name": "arkime",
-      "title": "Arkime",
-      "description": "Stand-alone Arkime capture-viewer deployment with assumed network_mode=host",
+      "title": "Arkime (capture-viewer)",
+      "description": "Stand-alone Arkime capture-viewer deployment with network_mode=host.",
+      "note": "This assumes you have already completed db init to create the Elasticsearch indices at minimum.",
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/arkime.png",
       "categories": [
         "Network",
@@ -3150,7 +3151,202 @@
         {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
-          "default": "observium"
+          "default": "arkime"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "ARKIME__geoLite2ASN",
+          "label": "ARKIME__geoLite2ASN",
+          "default": "/usr/share/GeoIP/GeoLite2-ASN.mmdb;/opt/arkime/etc/GeoLite2-ASN.mmdb"
+        },
+        {
+          "name": "ARKIME__geoLite2Country",
+          "label": "ARKIME__geoLite2Country",
+          "default": "/usr/share/GeoIP/GeoLite2-Country.mmdb;/opt/arkime/etc/GeoLite2-Country.mmdb"
+        },
+        {
+          "name": "ARKIME__elasticsearch",
+          "label": "ARKIME__elasticsearch",
+          "default": "http://elastic:changeme@elasticsearch:9200"
+        },
+        {
+          "name": "ARKIME__viewPort",
+          "label": "ARKIME__viewPort",
+          "default": "8005"
+        },
+        {
+          "name": "ARKIME__authMode",
+          "label": "ARKIME__authMode",
+          "default": "digest"
+        },
+        {
+          "name": "ARKIME__uploadCommand",
+          "label": "ARKIME__uploadCommand",
+          "default": "/opt/arkime/bin/capture --copy -n {NODE} -r {TMPFILE} -c {CONFIG} {TAGS}"
+        },
+        {
+          "name": "ARKIME__cronQueries",
+          "label": "ARKIME__cronQueries",
+          "default": "true"
+        },
+        {
+          "name": "ARKIME__interface",
+          "label": "ARKIME__interface",
+          "default": "eth0"
+        },
+        {
+          "name": "ARKIME__parsersDir",
+          "label": "ARKIME__parsersDir",
+          "default": "/opt/arkime/parsers"
+        },
+        {
+          "name": "ARKIME__pluginsDir",
+          "label": "ARKIME__pluginsDir",
+          "default": "/opt/arkime/plugins"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10018,
+      "type": 3,
+      "name": "arkime-viewer",
+      "title": "Arkime (viewer)",
+      "description": "Arkime viewer deployment with dropUser/dropGroup to www-data.",
+      "note": "This assumes you have already completed db init to create the Elasticsearch indices at minimum.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/arkime.png",
+      "categories": [
+        "Network",
+        "Monitoring",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/arkime-viewer.yml"
+      },
+      "env": [
+        {
+          "name": "IMAGE",
+          "label": "IMAGE",
+          "default": "ghcr.io/arkime/arkime/arkime:v5-latest"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "arkime-viewer"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "ARKIME__geoLite2ASN",
+          "label": "ARKIME__geoLite2ASN",
+          "default": "/usr/share/GeoIP/GeoLite2-ASN.mmdb;/opt/arkime/etc/GeoLite2-ASN.mmdb"
+        },
+        {
+          "name": "ARKIME__geoLite2Country",
+          "label": "ARKIME__geoLite2Country",
+          "default": "/usr/share/GeoIP/GeoLite2-Country.mmdb;/opt/arkime/etc/GeoLite2-Country.mmdb"
+        },
+        {
+          "name": "ARKIME__elasticsearch",
+          "label": "ARKIME__elasticsearch",
+          "default": "http://elastic:changeme@elasticsearch:9200"
+        },
+        {
+          "name": "ARKIME__viewPort",
+          "label": "ARKIME__viewPort",
+          "default": "8005"
+        },
+        {
+          "name": "ARKIME__authMode",
+          "label": "ARKIME__authMode",
+          "default": "digest"
+        },
+        {
+          "name": "ARKIME__uploadCommand",
+          "label": "ARKIME__uploadCommand",
+          "default": "/opt/arkime/bin/capture --copy -n {NODE} -r {TMPFILE} -c {CONFIG} {TAGS}"
+        },
+        {
+          "name": "ARKIME__cronQueries",
+          "label": "ARKIME__cronQueries",
+          "default": "true"
+        },
+        {
+          "name": "ARKIME__interface",
+          "label": "ARKIME__interface",
+          "default": "eth0"
+        },
+        {
+          "name": "ARKIME__parsersDir",
+          "label": "ARKIME__parsersDir",
+          "default": "/opt/arkime/parsers"
+        },
+        {
+          "name": "ARKIME__pluginsDir",
+          "label": "ARKIME__pluginsDir",
+          "default": "/opt/arkime/plugins"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10019,
+      "type": 3,
+      "name": "arkime-capture",
+      "title": "Arkime (capture)",
+      "description": "Arkime capture deployment.",
+      "note": "Uses network_mode=host by default, adjust according to your needs.",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/arkime.png",
+      "categories": [
+        "edge",
+        "Network",
+        "Monitoring",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/arkime-capture.yml"
+      },
+      "env": [
+        {
+          "name": "IMAGE",
+          "label": "IMAGE",
+          "default": "ghcr.io/arkime/arkime/arkime:v5-latest"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "arkime-capture"
         },
         {
           "name": "DOMAINNAME",

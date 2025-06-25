@@ -5,13 +5,15 @@
 #         e.g. SIEM friendly log files, bbot -t evilcorp.com -p subdomain-enum -om json -c modules.json.siem_friendly=true
 #         e.g. to Elastic Agent, bbot -t evilcorp.com -p subdomain-enum -om http -c modules.http.url=http://elastic-agent/http_endpoint -c modules.http.siem_friendly=true
 #         e.g. to bbot server, bbot -t evilcorp.com -p subdomain-enum -om http -c modules.http.url=http://bbot-server:8807/v1/events/
+#
+# NOTE: Output to bbot server does not work, apparently bbot v3.x or greater is required...
 
 services:
   bbot:
     image: ${IMAGE:-docker.io/blacklanternsecurity/bbot:stable}
     hostname: ${HOSTNAME:-bbot}
     domainname: ${DOMAINNAME:-localhost}
-    command: ["-t", "${TARGET_DOMAIN:-evilcorp.com}", "-p", "${SCAN_PROFILE:-subdomain-enum}", "-rf", "passive", "-om", "http", "-c", "modules.http.url=${BBOT_SERVER_URL:-http://bbot-server:8807/v1/events/}"]
+    command: ["-t", "${TARGET_DOMAIN:-evilcorp.com}", "-p", "${SCAN_PROFILE:-subdomain-enum}", "-rf", "passive"]
     restart: no
     environment:
       - TZ=${TZ:-Australia/Brisbane}

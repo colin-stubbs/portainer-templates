@@ -1,0 +1,24 @@
+# NOTE: bbot does not run as a service however it can be run on a schedule. 
+#       Make sure the compose goes down if you want to cleanup the container etc, however repeated runs of the same compose will reuse the same container if it still exists.
+#       You should configure something, eg. Elastic Agent/fluentd/logstash/vector, to ingest the bbot log files, OR,
+#       Use the http output to send the results as a webhook to a service like BBOT Server/Elastic/Splunk/etc
+#         e.g. SIEM friendly log files, bbot -t evilcorp.com -p subdomain-enum -om json -c modules.json.siem_friendly=true
+#         e.g. to Elastic Agent, bbot -t evilcorp.com -p subdomain-enum -om http -c modules.http.url=http://elastic-agent/http_endpoint -c modules.http.siem_friendly=true
+#         e.g. to bbot server, bbot -t evilcorp.com -p subdomain-enum -om http -c modules.http.url=http://bbot-server:8807/v1/events/
+
+services:
+  bbot:
+    image: ${IMAGE:-docker.io/blacklanternsecurity/bbot:stable}
+    hostname: ${HOSTNAME:-bbot}
+    domainname: ${DOMAINNAME:-localhost}
+    command: ["-t", "${TARGET_DOMAIN:-evilcorp.com}", "-p", "${SCAN_PROFILE:-subdomain-enum}", "-rf", "passive", "-om", "http", "-c", "modules.http.url=${BBOT_SERVER_URL:-http://bbot-server:8807/v1/events/}"]
+    restart: no
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+    volumes:
+      - ${DATA_PATH:-/opt/data/portainer/config/bbot}/config:/root/.config/bbot
+      - ${DATA_PATH:-/opt/data/portainer/config/bbot}/scans:/root/.bbot/scans
+
+# You could also use a volume for scan logs, if you have other containers running software that will do something with the them.
+#volumes:
+#  bbot_scans:

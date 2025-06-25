@@ -1,0 +1,70 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+#volumes:
+#  bbot_server_config:
+
+x-bbot-server-base: &bbot-server-base
+  image: ${IMAGE:-docker.io/colinstubbs/bbot-server:latest}
+  domainname: ${DOMAINNAME:-localhost}
+  restart: unless-stopped
+  environment:
+    - TZ=${TZ:-Australia/Brisbane}
+    #- BBOT_SERVER_CONFIG=${BBOT_SERVER_CONFIG:-/root/.config/bbot_server/config.yml}
+    - BBOT_SERVER_EVENT_STORE_MONGO_URI=${BBOT_SERVER_EVENT_STORE_MONGO_URI:-mongodb://mongo:27017/bbot_eventstore}
+    - BBOT_SERVER_ASSET_STORE_MONGO_URI=${BBOT_SERVER_ASSET_STORE_MONGO_URI:-mongodb://mongo:27017/bbot_assetstore}
+    - BBOT_SERVER_USER_STORE_MONGO_URI=${BBOT_SERVER_USER_STORE_MONGO_URI:-mongodb://mongo:27017/bbot_userstore}
+    - BBOT_SERVER_REDIS_URI=${BBOT_SERVER_REDIS_URI:-redis://redis:6379/0}
+    #- BBOT_TESTING=${BBOT_TESTING:-False}
+  networks:
+    network:
+  volumes:
+    - ${DATA_DIR:-/opt/data/portainer/config/bbot-server}:/root/.config/bbot_server
+    #- bbot_server_config:/root/.config/bbot_server
+
+services:
+  server:
+    <<: *bbot-server-base
+    hostname: ${HOSTNAME_BASE:-bbot}-server
+    #ports:
+    # - 8807:8807
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8807/v1/docs"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bbot.rule=Host(`${HOSTNAME_BASE:-bbot}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.bbot.loadbalancer.server.port=8807"
+      - "wud.watch=true"
+
+  watchdog:
+    <<: *bbot-server-base
+    hostname: ${HOSTNAME_BASE:-bbot}-server-watchdog
+    command: ["bbctl", "server", "start", "--watchdog-only"]
+    networks:
+      network:
+    depends_on:
+      server:
+        condition: service_healthy
+    labels:
+      - "traefik.enable=false"
+      - "wud.watch=true"
+
+  agent:
+    <<: *bbot-server-base
+    hostname: ${HOSTNAME_BASE:-bbot}-server-agent
+    command: ["bbctl", "agent", "start"]
+    entrypoint: ["bash", "/app/bbot_server/default_agent.sh"]
+    networks:
+      network:
+    depends_on:
+      server:
+        condition: service_healthy
+    labels:
+      - "traefik.enable=false"
+      - "wud.watch=true"

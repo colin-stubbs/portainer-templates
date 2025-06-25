@@ -1,0 +1,27 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  mongo:
+    image: ${IMAGE:-docker.io/mongo:latest}
+    hostname: ${HOSTNAME:-mongo}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME:-root}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD:-CHANGE_ME}
+    volumes:
+      - data_db:/data/db
+    networks:
+      network:
+    #ports:
+    #  - 27017:27017
+    labels:
+      - "traefik.enable=false"
+      - "wud.watch=true"
+
+volumes:
+  data_db:

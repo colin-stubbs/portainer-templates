@@ -3236,7 +3236,7 @@
         {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
-          "default": "arkime-viewer"
+          "default": "arkime"
         },
         {
           "name": "DOMAINNAME",
@@ -3355,6 +3355,201 @@
           "name": "ARKIME__pluginsDir",
           "label": "ARKIME__pluginsDir",
           "default": "/opt/arkime/plugins"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10021,
+      "type": 3,
+      "name": "arkime-cont3xt",
+      "title": "Arkime Cont3xt",
+      "description": "Arkime Cont3xt",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/arkime.png",
+      "categories": [
+        "Network",
+        "Monitoring",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/arkime-cont3xt.yml"
+      },
+      "env": [
+        {
+          "name": "IMAGE",
+          "label": "IMAGE",
+          "default": "ghcr.io/arkime/arkime/arkime:v5-latest"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "arkime-cont3xt"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "ARKIME_cont3xt__authMode",
+          "label": "ARKIME_cont3xt__authMode",
+          "default": "digest"
+        },
+        {
+          "name": "ARKIME_cont3xt__port",
+          "label": "ARKIME_cont3xt__port",
+          "default": "80"
+        },
+        {
+          "name": "ARKIME_cont3xt__elasticsearch",
+          "label": "ARKIME_cont3xt__elasticsearch",
+          "default": "http://elastic:changeme@elasticsearch:9200"
+        },
+        {
+          "name": "ARKIME_cache__lmdbDir",
+          "label": "ARKIME_cache__lmdbDir",
+          "default": "/opt/arkime/cache/lmdb"
+        },
+        {
+          "name": "ARKIME_arkimeCOLONlocal__arkimeUrl",
+          "label": "ARKIME_arkimeCOLONlocal__arkimeUrl",
+          "default": "http://arkime"
+        },
+        {
+          "name": "ARKIME_arkimeCOLONlocal__elasticsearch",
+          "label": "ARKIME_arkimeCOLONlocal__elasticsearch",
+          "default": "http://elastic:changeme@elasticsearch:9200"
+        },
+        {
+          "name": "ARKIME_arkimeCOLONlocal__insecure",
+          "label": "ARKIME_arkimeCOLONlocal__insecure",
+          "default": "false"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10022,
+      "type": 3,
+      "name": "arkime-parliament",
+      "title": "Arkime Parliament",
+      "description": "Arkime Parliament",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/arkime.png",
+      "categories": [
+        "Network",
+        "Monitoring",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/arkime-parliament.yml"
+      },
+      "env": [
+        {
+          "name": "IMAGE",
+          "label": "IMAGE",
+          "default": "ghcr.io/arkime/arkime/arkime:v5-latest"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "arkime-parliament"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "ARKIME_parliament__file",
+          "label": "ARKIME_parliament__file",
+          "default": "/opt/arkime/etc/parliament.issues.json"
+        },
+        {
+          "name": "ARKIME_parliament__authMode",
+          "label": "ARKIME_parliament__authMode",
+          "default": "digest"
+        },
+        {
+          "name": "ARKIME_parliament__port",
+          "label": "ARKIME_parliament__port",
+          "default": "80"
+        },
+        {
+          "name": "ARKIME_parliament__usersElasticsearch",
+          "label": "ARKIME_parliament__usersElasticsearch",
+          "default": "http://elastic:changeme@elasticsearch:9200"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10023,
+      "type": 3,
+      "name": "arkime-wise",
+      "title": "Arkime Wise",
+      "description": "Arkime Wise",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/arkime.png",
+      "categories": [
+        "Network",
+        "Monitoring",
+        "Tools"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/arkime-wise.yml"
+      },
+      "env": [
+        {
+          "name": "IMAGE",
+          "label": "IMAGE",
+          "default": "ghcr.io/arkime/arkime/arkime:v5-latest"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "arkime-wise"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "ARKIME_wiseService__port",
+          "label": "ARKIME_wiseService__port",
+          "default": "80"
+        },
+        {
+          "name": "ARKIME_wiseService__authMode",
+          "label": "ARKIME_wiseService__authMode",
+          "default": "digest"
+        },
+        {
+          "name": "ARKIME_wiseService__usersElasticsearch",
+          "label": "ARKIME_wiseService__usersElasticsearch",
+          "default": "http://elastic:changeme@elasticsearch:9200"
+        },
+        {
+          "name": "ARKIME_cache__type",
+          "label": "ARKIME_cache__type",
+          "default": "memory"
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

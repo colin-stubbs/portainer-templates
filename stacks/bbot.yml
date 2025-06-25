@@ -7,20 +7,49 @@
 #         e.g. to bbot server, bbot -t evilcorp.com -p subdomain-enum -om http -c modules.http.url=http://bbot-server:8807/v1/events/
 #
 # NOTE: Output to bbot server does not work, apparently bbot v3.x or greater is required...
+# NOTE: You'll get bbot v3.x if swap to using my bbot-server image as below... however, you'll need to modify modules.http.headers to add x-api-key: <bbot-server-api-key> 
+#       via config file at present, defining this via CLI does not currently appear possible. e.g. bbot.yml config file should look contain something like at minimum to send events to bbot-server,
+#
+#        modules:
+#          http:
+#            headers:
+#              x-api-key: %{API_KEY_GO_HERE}%
+
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
 
 services:
   bbot:
-    image: ${IMAGE:-docker.io/blacklanternsecurity/bbot:stable}
+    image: ${IMAGE:-docker.io/blacklanternsecurity/bbot:stable} # use this for stable bbot v2.5.0 (currently)
+    #image: ${IMAGE:-docker.io/colinstubbs/bbot-server:latest} # use this for bbot v3.x
     hostname: ${HOSTNAME:-bbot}
     domainname: ${DOMAINNAME:-localhost}
-    command: ["-t", "${TARGET_DOMAIN:-evilcorp.com}", "-p", "${SCAN_PROFILE:-subdomain-enum}", "-rf", "passive"]
+    entrypoint: ["bbot"]
+    command:
+      - "--yes"
+      - "-t"
+      - "${TARGET_DOMAIN:-evilcorp.com}"
+      - "-p"
+      - "${SCAN_PROFILE:-subdomain-enum}"
+      - "-rf"
+      - "passive"
+      ### bbot v3.x to bbot-server example, note the manual config require to set the x-api-key header described above.
+      #- "-om"
+      #- "http"
+      #- "-c"
+      #- "modules.http.url=${BBOT_SERVER_URL:-http://bbot-server:8807/v1/events/}"
     restart: no
     environment:
       - TZ=${TZ:-Australia/Brisbane}
+    networks:
+      network:
     volumes:
       - ${DATA_PATH:-/opt/data/portainer/config/bbot}/config:/root/.config/bbot
       - ${DATA_PATH:-/opt/data/portainer/config/bbot}/scans:/root/.bbot/scans
+      #- bbot_scans:/root/.bbot/scans
 
-# You could also use a volume for scan logs, if you have other containers running software that will do something with the them.
+# You could also use a volume for scan logs, if you have other containers running software that will do something with them.
 #volumes:
 #  bbot_scans:

@@ -9,8 +9,8 @@ Currently includes:
 |  [1Password Connect Server](https://developer.1password.com/docs/connect/) | Expose 1Password vaults via API to enable secret storage/retrieval by software |
 |  [Adminer](https://www.adminer.org/) | for managing various forms of databases, e.g. MySQL/MariaDB/PostgreSQL |
 |  [Arkime](https://arkime.com/) | for full packet capture/logging. |
-|  [BBOT Server](https://github.com/blacklanternsecurity/bbot-server) | centralised storage for BBOT scan data |
 |  [BBOT](https://github.com/blacklanternsecurity/bbot) | OSINT scanning |
+|  [BBOT Server](https://github.com/blacklanternsecurity/bbot-server) | centralised storage for BBOT scan data |
 |  [Beelzebub](https://beelzebub-honeypot.com/) | AI/LLM driven network honeypot |
 |  [Browserless Chromium](https://www.browserless.io/) | headless chrome for use by software, e.g. it's a dependency for some of the tools. |
 |  [Caddy](https://caddyserver.com/) | web server |
@@ -35,6 +35,8 @@ Currently includes:
 |  [MariaDB](https://mariadb.org/) | SQL database, e.g. it's a dependency for some of the tools. |
 |  [Meilisearch](https://www.meilisearch.com/) | Next generation (maybe?) search engine. |
 |  [MinIO](https://min.io/) | S3-like object storage |
+|  [MongoDB](https://www.mongodb.com) | S3-like object storage |
+|  [Mongo Express](https://github.com/mongo-express/mongo-express) | Web based admin interface to MongoDB |
 |  [Tenable Nessus](https://www.tenable.com/products/nessus) | vulnerability scanning |
 |  [Observium](https://www.observium.org/) | SNMP based monitoring of network equipment and other rando legacy type systems that can't do anything else. |
 |  [Ollama](https://ollama.com/) | running LLM models |

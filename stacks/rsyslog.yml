@@ -4,7 +4,7 @@ networks:
     external: true
 
 services:
-  redis:
+  rsyslog:
     image: ${IMAGE:-docker.io/rsyslog/rsyslog-collector:latest}
     hostname: ${HOSTNAME:-rsyslog}
     domainname: ${DOMAINNAME:-localhost}

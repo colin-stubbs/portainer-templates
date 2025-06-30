@@ -1,0 +1,19 @@
+services:
+  runzero-explorer:
+    image: ${IMAGE:-docker.io/browserless/chrome:latest}
+    domainname: ${DOMAINNAME:-localhost}
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - EXPLORER_URL=${EXPLORER_URL:-CHANGE_ME}
+    user: root
+    entrypoint: ["/bin/sh", "-l", "-c", "cd /opt/runzero ; mkdir -p /opt/runzero/etc /opt/runzero/log ; ln -sfv /opt/runzero/etc /etc/runzero ; rm -rf /var/log ; ln -sfv /opt/runzero/log /var/log ; test -f runzero-explorer.bin || wget -O runzero-explorer.bin \"${EXPLORER_URL}\" && chmod 0755 ./runzero-explorer.bin ; ./runzero-explorer.bin manual"]
+    network_mode: host
+    volumes:
+      - data:/opt/runzero
+    labels:
+      - "traefik.enable=false"
+      - "wud.watch=true"
+
+volumes:
+  data:

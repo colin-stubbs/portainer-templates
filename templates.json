@@ -3846,6 +3846,47 @@
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10025,
+      "type": 3,
+      "name": "runzero-explorer",
+      "title": "RunZero Explorer",
+      "description": "RunZero Explorer",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/runzero.png",
+      "categories": [
+        "Security",
+        "Scanning",
+        "Tools",
+        "Asset Management"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/runzero-explorer.yml"
+      },
+      "env": [
+        {
+          "name": "IMAGE",
+          "label": "IMAGE",
+          "default": "docker.io/browserless/chrome:latest"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "EXPLORER_URL",
+          "label": "EXPLORER_URL",
+          "default": "https://console.runzero.com/download/explorer/%{CHANGE_DOWNLOAD_TOKEN}/%{CHANGE_VERSION}/runzero-agent-linux-%{CHANGE_ARCH}.bin"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

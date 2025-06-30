@@ -3855,6 +3855,7 @@
       "description": "RunZero Explorer",
       "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/runzero.png",
       "categories": [
+        "edge",
         "Security",
         "Scanning",
         "Tools",

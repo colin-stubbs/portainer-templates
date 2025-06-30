@@ -7,7 +7,8 @@ services:
       - TZ=${TZ:-Australia/Brisbane}
       - EXPLORER_URL=${EXPLORER_URL:-CHANGE_ME}
     user: root
-    entrypoint: ["/bin/sh", "-l", "-c", "cd /opt/runzero ; mkdir -p /opt/runzero/etc /opt/runzero/log ; ln -sfv /opt/runzero/etc /etc/runzero ; rm -rf /var/log ; ln -sfv /opt/runzero/log /var/log ; test -f runzero-explorer.bin || wget -O runzero-explorer.bin \"${EXPLORER_URL}\" && chmod 0755 ./runzero-explorer.bin ; ./runzero-explorer.bin manual"]
+    working_dir: /opt/runzero
+    entrypoint: ["/bin/sh", "-l", "-c", "mkdir -p etc log ; ln -sfv /opt/runzero/etc /etc/runzero ; rm -rf /var/log ; ln -sfv /opt/runzero/log /var/log ; test -x \"`find . -type f -regex './runzero-agent-.+' -print -quit`\" || wget -O runzero-agent-default.bin \"${EXPLORER_URL}\" && chmod 0755 ./runzero-agent-default.bin ; while true ; do echo \"### Executing `find . -type f -regex './runzero-agent-.+' -print -quit`...\" ; `find . -type f -regex './runzero-agent-.+' -print -quit` manual ; sleep 60 ; done"]
     network_mode: host
     volumes:
       - data:/opt/runzero

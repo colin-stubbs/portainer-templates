@@ -19,6 +19,11 @@ services:
       network:
     #ports:
     #  - 27017:27017
+    healthcheck:
+      test: mongosh localhost:27017/test --quiet --eval "db.runCommand('ping')" | grep 'ok'
+      interval: 10s
+      timeout: 5s
+      retries: 3
     labels:
       - "traefik.enable=false"
       - "wud.watch=true"

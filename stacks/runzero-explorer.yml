@@ -2,14 +2,17 @@ services:
   runzero-explorer:
     image: ${IMAGE:-docker.io/browserless/chrome:latest}
     domainname: ${DOMAINNAME:-localhost}
-    restart: unless-stopped
+    restart: always
     environment:
       - TZ=${TZ:-Australia/Brisbane}
       - EXPLORER_URL=${EXPLORER_URL:-CHANGE_ME}
     user: root
     working_dir: /opt/runzero
-    entrypoint: ["/bin/sh", "-l", "-c", "mkdir -p etc log ; ln -sfv /opt/runzero/etc /etc/runzero ; rm -rf /var/log ; ln -sfv /opt/runzero/log /var/log ; test -x \"`find . -type f -regex './runzero-agent-.+' -print -quit`\" || wget -O runzero-agent-default.bin \"${EXPLORER_URL}\" && chmod 0755 ./runzero-agent-default.bin ; while true ; do echo \"### Executing `find . -type f -regex './runzero-agent-.+' -print -quit`...\" ; `find . -type f -regex './runzero-agent-.+' -print -quit` manual ; sleep 60 ; done"]
+    entrypoint: ["/bin/sh", "-l", "-c", "apt update ; apt install -y wireless-tools iw net-tools ; mkdir -p etc log ; ln -sfv /opt/runzero/etc /etc/runzero ; rm -rf /var/log ; ln -sfv /opt/runzero/log /var/log ; test -x \"`find . -type f -regex './runzero-agent-.+' -print -quit`\" || wget -O runzero-agent-default.bin \"${EXPLORER_URL}\" && chmod 0755 ./runzero-agent-default.bin ; while true ; do echo \"### Executing `find . -type f -regex './runzero-agent-.+' -print -quit`...\" ; `find . -type f -regex './runzero-agent-.+' -print -quit` manual ; sleep 60 ; done"]
     network_mode: host
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
     volumes:
       - data:/opt/runzero
     labels:

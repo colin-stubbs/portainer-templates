@@ -5,7 +5,7 @@ networks:
 
 services:
   ollama:
-    image: docker.io/ollama/ollama:rocm
+    image: ${IMAGE:-docker.io/ollama/ollama:rocm}
     hostname: ${HOSTNAME:-ollama}
     domainname: ${DOMAINNAME:-localhost}
     devices:

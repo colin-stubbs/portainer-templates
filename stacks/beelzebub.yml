@@ -5,7 +5,7 @@ networks:
 
 services:
   beelzebub:
-    image: docker.io/m4r10/beelzebub:latest
+    image: ${IMAGE:-docker.io/m4r10/beelzebub:latest}
     hostname: ${HOSTNAME:-beelzebub}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped
@@ -18,7 +18,7 @@ services:
     #  - "2112:2112"   # Prometheus openmetric, Not a honeypot, rather for stats about the honeypot. DON'T EXPOSE THIS!
     volumes:
       - /opt/data/portainer/config/beelzebub:/configurations:Z
-      - /opt/data/logs/beelzebub:/logs:Z
+      - logs:/logs:Z
     networks:
       network:
     labels:
@@ -27,3 +27,6 @@ services:
       - "traefik.http.routers.beelzebub_http.service=beelzebub_http"
       - "traefik.http.services.beelzebub_http.loadbalancer.server.port=80"
       - "wud.watch=true"
+
+volumes:
+  logs:

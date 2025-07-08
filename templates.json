@@ -1054,6 +1054,16 @@
           "default": "Australia/Brisbane"
         },
         {
+          "name": "ME_CONFIG_MONGODB_URL",
+          "label": "ME_CONFIG_MONGODB_URL",
+          "default": "mongodb://mongodb:27017"
+        },
+        {
+          "name": "ME_CONFIG_CONNECT_RETRIES",
+          "label": "ME_CONFIG_CONNECT_RETRIES",
+          "default": "10"
+        },
+        {
           "name": "ME_CONFIG_BASICAUTH_USERNAME",
           "label": "ME_CONFIG_BASICAUTH_USERNAME",
           "default": "admin"
@@ -1064,21 +1074,6 @@
           "default": "CHANGE_ME"
         },
         {
-          "name": "ME_CONFIG_OPTIONS_EDITORTHEME",
-          "label": "ME_CONFIG_OPTIONS_EDITORTHEME",
-          "default": "default"
-        },
-        {
-          "name": "ME_CONFIG_REQUEST_SIZE",
-          "label": "ME_CONFIG_REQUEST_SIZE",
-          "default": "100kb"
-        },
-        {
-          "name": "ME_CONFIG_SITE_BASEURL",
-          "label": "ME_CONFIG_SITE_BASEURL",
-          "default": "/"
-        },
-        {
           "name": "ME_CONFIG_SITE_COOKIESECRET",
           "label": "ME_CONFIG_SITE_COOKIESECRET",
           "default": "CHANGE_ME"
@@ -1086,46 +1081,6 @@
         {
           "name": "ME_CONFIG_SITE_SESSIONSECRET",
           "label": "ME_CONFIG_SITE_SESSIONSECRET",
-          "default": "CHANGE_ME"
-        },
-        {
-          "name": "ME_CONFIG_SITE_SSL_ENABLED",
-          "label": "ME_CONFIG_SITE_SSL_ENABLED",
-          "default": "false"
-        },
-        {
-          "name": "ME_CONFIG_SITE_SSL_CRT_PATH",
-          "label": "ME_CONFIG_SITE_SSL_CRT_PATH",
-          "default": ""
-        },
-        {
-          "name": "ME_CONFIG_SITE_SSL_KEY_PATH",
-          "label": "ME_CONFIG_SITE_SSL_KEY_PATH",
-          "default": ""
-        },
-        {
-          "name": "ME_CONFIG_MONGODB_PORT",
-          "label": "ME_CONFIG_MONGODB_PORT",
-          "default": "27017"
-        },
-        {
-          "name": "ME_CONFIG_MONGODB_SERVER",
-          "label": "ME_CONFIG_MONGODB_SERVER",
-          "default": "mongo"
-        },
-        {
-          "name": "ME_CONFIG_MONGODB_ENABLE_ADMIN",
-          "label": "ME_CONFIG_MONGODB_ENABLE_ADMIN",
-          "default": "true"
-        },
-        {
-          "name": "ME_CONFIG_MONGODB_ADMINUSERNAME",
-          "label": "ME_CONFIG_MONGODB_ADMINUSERNAME",
-          "default": "root"
-        },
-        {
-          "name": "ME_CONFIG_MONGODB_ADMINPASSWORD",
-          "label": "ME_CONFIG_MONGODB_ADMINPASSWORD",
           "default": "CHANGE_ME"
         }
       ],

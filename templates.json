@@ -968,7 +968,7 @@
 		{
       "id": 18,
       "type": 3,
-			"name": "mongo",
+			"name": "mongodb",
 			"title": "MongoDB",
 			"description": "MongoDB is a NoSQL database that provides high performance, high availability, and easy scalability.",
 			"logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/mongo.jpeg",
@@ -989,7 +989,7 @@
         {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
-          "default": "step-ra"
+          "default": "mongodb"
         },
         {
           "name": "DOMAINNAME",
@@ -1040,7 +1040,7 @@
         {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
-          "default": "step-ra"
+          "default": "mongo-express"
         },
         {
           "name": "DOMAINNAME",

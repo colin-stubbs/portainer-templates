@@ -47,7 +47,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.linkwarden.rule=Host(`${HOSTNAME:-linkwarden}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.linkwarden.loadbalancer.server.port=3000"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   linkwarden_data:

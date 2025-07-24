@@ -27,7 +27,9 @@ services:
       retries: 5
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   mariadb_data:

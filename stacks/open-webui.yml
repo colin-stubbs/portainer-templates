@@ -125,7 +125,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.open_webui.rule=Host(`${HOSTNAME:-open-webui}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.open_webui.loadbalancer.server.port=8080"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   open_webui:

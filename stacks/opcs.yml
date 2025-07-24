@@ -38,7 +38,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.opcs_sync.rule=Host(`${HOSTNAME:-opcs-sync}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.opcs_sync.loadbalancer.server.port=8080"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   opcs-data:

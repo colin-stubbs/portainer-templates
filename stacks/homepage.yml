@@ -24,4 +24,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.homepage.rule=Host(`${HOSTNAME:-homepage}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.homepage.loadbalancer.server.port=3000"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"

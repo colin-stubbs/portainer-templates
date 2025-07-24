@@ -29,7 +29,9 @@ services:
       - rsyslog_logs:/var/log
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   rsyslog_logs:

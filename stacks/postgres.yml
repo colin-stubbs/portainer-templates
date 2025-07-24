@@ -25,7 +25,10 @@ services:
     networks:
       network:
     labels:
-      - "wud.watch=true"
+      - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=false"
+      - "wud.watch=false"
+      - "io.containers.autoupdate=local"
 
 volumes:
   postgres:

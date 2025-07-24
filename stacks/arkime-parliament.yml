@@ -29,7 +29,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.arkime_parliament.rule=Host(`${HOSTNAME:-arkime-parliament}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.arkime_parliament.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 #volumes:
 #  etc:

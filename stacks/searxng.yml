@@ -39,4 +39,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.searxng.rule=Host(`${HOSTNAME:-searxng}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.searxng.loadbalancer.server.port=${SEARXNG_PORT:-8080}"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"

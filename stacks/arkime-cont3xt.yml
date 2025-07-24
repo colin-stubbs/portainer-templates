@@ -35,7 +35,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.arkime_cont3xt.rule=Host(`${HOSTNAME:-arkime-cont3xt}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.arkime_cont3xt.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   cache:

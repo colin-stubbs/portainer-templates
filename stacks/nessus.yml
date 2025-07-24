@@ -23,4 +23,6 @@ services:
       - "traefik.http.routers.nessus.rule=Host(`${HOSTNAME:-nessus}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.nessus.loadbalancer.server.port=8834"
       - "traefik.http.services.nessus.loadbalancer.server.scheme=https"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"

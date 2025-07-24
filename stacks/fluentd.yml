@@ -21,7 +21,9 @@ services:
     #  - "24224:24224/udp"
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   fluentd_logs:

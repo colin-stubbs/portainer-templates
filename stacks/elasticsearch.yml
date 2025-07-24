@@ -49,7 +49,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.elasticsearch.rule=Host(`${HOSTNAME:-elasticsearch}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.elasticsearch.loadbalancer.server.port=9200"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   esdata:

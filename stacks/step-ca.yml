@@ -43,7 +43,9 @@ services:
       - "traefik.http.services.step_ca.loadbalancer.server.port=443"
       - "traefik.http.services.step_ca.loadbalancer.server.scheme=https"
       - "traefik.http.services.step_ca.loadbalancer.serversTransport=insecure"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 #volumes:
 #  step:

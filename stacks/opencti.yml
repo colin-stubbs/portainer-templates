@@ -56,7 +56,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.opencti.rule=Host(`${HOSTNAME:-opencti}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.opencti.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=false"
       - "wud.watch=false"
+      - "io.containers.autoupdate=local"
 
   worker:
     image: docker.io/opencti/worker:${OPENCTI_VERSION:-6.6.14}
@@ -76,7 +78,9 @@ services:
       network:
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=false"
       - "wud.watch=false"
+      - "io.containers.autoupdate=local"
 
   connector-export-file-stix:
     image: docker.io/opencti/connector-export-file-stix:${OPENCTI_VERSION:-6.6.14}
@@ -94,7 +98,9 @@ services:
       network:
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=false"
       - "wud.watch=false"
+      - "io.containers.autoupdate=local"
     depends_on:
       opencti:
         condition: service_healthy
@@ -114,7 +120,9 @@ services:
       network:
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=false"
       - "wud.watch=false"
+      - "io.containers.autoupdate=local"
     depends_on:
       opencti:
         condition: service_healthy
@@ -134,7 +142,9 @@ services:
       network:
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=false"
       - "wud.watch=false"
+      - "io.containers.autoupdate=local"
     depends_on:
       opencti:
         condition: service_healthy
@@ -155,7 +165,9 @@ services:
       network:
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=false"
       - "wud.watch=false"
+      - "io.containers.autoupdate=local"
     depends_on:
       opencti:
         condition: service_healthy
@@ -179,7 +191,9 @@ services:
       network:
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=false"
       - "wud.watch=false"
+      - "io.containers.autoupdate=local"
     depends_on:
       opencti:
         condition: service_healthy
@@ -203,7 +217,9 @@ services:
       network:
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=false"
       - "wud.watch=false"
+      - "io.containers.autoupdate=local"
     depends_on:
       opencti:
         condition: service_healthy
@@ -227,7 +243,9 @@ services:
       network:
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=false"
       - "wud.watch=false"
+      - "io.containers.autoupdate=local"
     depends_on:
       opencti:
         condition: service_healthy
@@ -251,7 +269,9 @@ services:
       network:
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=false"
       - "wud.watch=false"
+      - "io.containers.autoupdate=local"
     depends_on:
       opencti:
         condition: service_healthy

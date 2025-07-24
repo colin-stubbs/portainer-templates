@@ -30,4 +30,6 @@ services:
       - "traefik.http.routers.step_ra.rule=Host(`${HOSTNAME:-step-ra}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.step_ra.loadbalancer.server.port=443"
       - "traefik.http.services.step_ra.loadbalancer.server.scheme=https"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"

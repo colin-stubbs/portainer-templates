@@ -8,4 +8,6 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"

@@ -20,4 +20,6 @@ services:
     networks:
       network:
     labels:
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"

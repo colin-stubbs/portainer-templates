@@ -37,7 +37,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.caddy.rule=Host(`${HOSTNAME:-caddy}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.caddy.loadbalancer.server.port=2019"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   caddy_data:

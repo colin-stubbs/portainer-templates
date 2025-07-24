@@ -16,7 +16,9 @@ services:
       - /opt/data/portainer/config/gitlab-runner/config.toml:/etc/gitlab-runner/config.toml:Z
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   config:

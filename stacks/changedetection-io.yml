@@ -25,7 +25,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.changedetection_io.rule=Host(`${HOSTNAME:-changedetection-io}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.changedetection_io.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   changedetection_io:

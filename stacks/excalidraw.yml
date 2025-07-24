@@ -17,4 +17,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.excalidraw.rule=Host(`${HOSTNAME:-excalidraw}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.excalidraw.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"

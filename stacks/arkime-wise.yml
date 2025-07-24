@@ -33,7 +33,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.arkime_wise.rule=Host(`${HOSTNAME:-arkime-wise}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.arkime_wise.loadbalancer.server.port=${ARKIME_wiseService__port:-80}"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 #volumes:
 #  etc:

@@ -63,7 +63,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.canarytokens_frontend.rule=Host(`${HOSTNAME:-canarytokens}-admin.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.canarytokens_frontend.loadbalancer.server.port=8082"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
   canarytokens-switchboard:
     image: docker.io/thinkst/canarytokens:latest
@@ -94,7 +96,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.canarytokens_switchboard.rule=Host(`${HOSTNAME:-canarytokens}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.canarytokens_switchboard.loadbalancer.server.port=8083"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   logs:

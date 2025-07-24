@@ -53,7 +53,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.hashtopolis.rule=Host(`${HOSTNAME:-hashtopolis}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.hashtopolis.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   hashtopolis-db:

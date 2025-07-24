@@ -32,7 +32,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.elastic_agent.rule=Host(`${HOSTNAME:-elastic-agent}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.elastic_agent.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=false"
       - "wud.watch=false"
+      - "io.containers.autoupdate=local"
 
 volumes:
   elastic_agent_state:

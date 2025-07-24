@@ -88,4 +88,6 @@ services:
       - "traefik.http.routers.hoppscotch.rule=Host(`${HOSTNAME:-hoppscotch}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.routers.hoppscotch.service=hoppscotch"
       - "traefik.http.services.hoppscotch.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"

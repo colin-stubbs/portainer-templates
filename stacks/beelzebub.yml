@@ -26,7 +26,9 @@ services:
       - "traefik.http.routers.beelzebub_http.rule=Host(`${HOSTNAME:-beelzebub}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.routers.beelzebub_http.service=beelzebub_http"
       - "traefik.http.services.beelzebub_http.loadbalancer.server.port=80"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   logs:

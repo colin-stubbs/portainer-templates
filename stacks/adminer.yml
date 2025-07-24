@@ -20,4 +20,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.adminer.rule=Host(`${HOSTNAME:-adminer}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.adminer.loadbalancer.server.port=8080"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"

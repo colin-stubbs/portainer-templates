@@ -49,4 +49,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.mongo_express.rule=Host(`${HOSTNAME:-mongo-express}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.mongo_express.loadbalancer.server.port=8081"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"

@@ -21,7 +21,9 @@ services:
 #      - "3128:3128/tcp"
     labels:
       - "traefik.enable=false"
+      - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
 
 volumes:
   squid_cache:

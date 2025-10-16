@@ -3990,7 +3990,7 @@
         {
           "name": "HOSTNAME",
           "label": "HOSTNAME",
-          "default": "jupyter-notebook"
+          "default": "llama-cpp"
         },
         {
           "name": "DOMAINNAME",

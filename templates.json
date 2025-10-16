@@ -4020,6 +4020,12 @@
           "label": "LLAMA_ARG_PORT",
           "description": "The port to use",
           "default": "80"
+        },
+        {
+          "name": "LLAMA_ARG_DEVICE",
+          "label": "LLAMA_ARG_DEVICE",
+          "description": "Control which devices to use",
+          "default": ""
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"

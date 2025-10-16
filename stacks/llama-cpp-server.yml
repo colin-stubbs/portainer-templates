@@ -1,0 +1,33 @@
+networks:
+  network:
+    name: ${NETWORK:-localnet}
+    external: true
+
+services:
+  llama-cpp-server:
+    image: ${IMAGE:-ghcr.io/ggml-org/llama.cpp:server-vulkan}
+    hostname: ${HOSTNAME:-llama-cpp}
+    domainname: ${DOMAINNAME:-localhost}
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - /opt/amdgpu:/opt/amdgpu:ro
+      - /opt/gguf:/app/models
+    networks:
+      network:
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+      - LLAMA_ARG_MODEL=${LLAMA_ARG_MODEL:-/app/models/gemma-3-12b-it-q4_0.gguf}
+      - LLAMA_ARG_HOST=${LLAMA_ARG_HOST:-0.0.0.0}
+      - LLAMA_ARG_PORT=${LLAMA_ARG_PORT:-80}
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.llama_cpp.rule=Host(`${HOSTNAME:-llama-cpp}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.llama_cpp.loadbalancer.server.port=${LLAMA_ARG_PORT:-80}"
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
+      - "io.containers.autoupdate=registry"

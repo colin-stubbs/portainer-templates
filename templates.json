@@ -3962,6 +3962,67 @@
         }
       ],
       "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
+    },
+    {
+      "id": 10027,
+      "type": 3,
+      "name": "llama-cpp-server",
+      "title": "llama.cpp Server",
+      "description": "llama.cpp server",
+      "logo": "https://raw.githubusercontent.com/colin-stubbs/portainer-templates/refs/heads/main/images/llama-cpp.png",
+      "categories": [
+        "edge",
+        "AI",
+        "LLM",
+        "GPU"
+      ],
+      "repository": {
+        "url": "https://github.com/colin-stubbs/portainer-templates/",
+        "stackfile": "stacks/llama-cpp-server.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK",
+          "label": "NETWORK",
+          "description": "Which existing user defined network to connect the container too. Note that 'bridge' will not work.",
+          "default": "localnet"
+        },
+        {
+          "name": "HOSTNAME",
+          "label": "HOSTNAME",
+          "default": "jupyter-notebook"
+        },
+        {
+          "name": "DOMAINNAME",
+          "label": "DOMAINNAME",
+          "default": "localhost"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "Timezone",
+          "default": "Australia/Brisbane"
+        },
+        {
+          "name": "LLAMA_ARG_MODEL",
+          "label": "LLAMA_ARG_MODEL",
+          "description": "The model to use",
+          "default": "/app/models/gemma-3-12b-it-q4_0.gguf"
+        },
+        {
+          "name": "LLAMA_ARG_HOST",
+          "label": "LLAMA_ARG_HOST",
+          "description": "The host to use",
+          "default": "0.0.0.0"
+        },
+        {
+          "name": "LLAMA_ARG_PORT",
+          "label": "LLAMA_ARG_PORT",
+          "description": "The port to use",
+          "default": "80"
+        }
+      ],
+      "maintainer": " https://github.com/colin-stubbs/portainer-templates/"
     }
   ]
 }

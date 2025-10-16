@@ -24,7 +24,9 @@ services:
       retries: 3
     labels:
       - "traefik.enable=false"
-      - "wud.watch=true"
+      - "com.centurylinklabs.watchtower.enable=false"
+      - "wud.watch=false"
+      - "io.containers.autoupdate=local"
 
 volumes:
   amqpdata:

@@ -47,7 +47,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.wud.rule=Host(`${HOSTNAME:-wud}.${DOMAINNAME:-localhost}`)"
       - "traefik.http.services.wud.loadbalancer.server.port=${WUD_SERVER_PORT:-3000}"
-      - "wud.watch=false"
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "wud.watch=true"
+      - "io.containers.autoupdate=registry"
   
 volumes:
   wud_state:

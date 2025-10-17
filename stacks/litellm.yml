@@ -9,90 +9,59 @@ services:
     hostname: ${HOSTNAME:-litellm}
     domainname: ${DOMAINNAME:-localhost}
     restart: unless-stopped
-    #########################################
-    ## Uncomment these lines to start proxy with a config.yaml file ##
-    # volumes:
-    #  - ./config.yaml:/app/config.yaml
-    # command:
-    #  - "--config=/app/config.yaml"
-    ##############################################
+    volumes:
+      - /opt/data/portainer/config/litellm/config.yaml:/app/config.yaml
+    command:
+      - "--config=/app/config.yaml"
     networks:
       network:
-    ports:
-      - "4000:4000" # Map the container port to the host, change the host port if necessary
+    #ports:
+    #  - "4000:4000" # Map the container port to the host, change the host port if necessary
     environment:
       - TZ=${TZ:-Australia/Brisbane}
+
       # Required variables
       - LITELLM_MASTER_KEY=${LITELLM_MASTER_KEY:-sk-1234} # Your master key for the proxy server. Can use this to send /chat/completion requests etc, e.g. $(openssl rand -base64 32)
       - LITELLM_SALT_KEY=${LITELLM_SALT_KEY:-sk-XXXXXXXX} # Can NOT CHANGE THIS ONCE SET - It is used to encrypt/decrypt credentials stored in DB. If value of 'LITELLM_SALT_KEY' changes your models cannot be retrieved from DB, e.g. $(openssl rand -base64 32)
       - DATABASE_URL=${DATABASE_URL:-postgresql://llmproxy:dbpassword9090@db:5432/litellm}
 
-      # Optional variables
+      # Optional variables - refer to: https://docs.litellm.ai/docs/proxy/config_settings#environment-variables---reference
+      - LITELLM_MODE=${LITELLM_MODE:-development} # Operating mode for LiteLLM (e.g., production, development)
+      - JSON_LOGS=${JSON_LOGS:-True} # Enable JSON logging
       - STORE_MODEL_IN_DB=${STORE_MODEL_IN_DB:-True} # allows adding models to proxy via UI
 
-      # Ollama
-      - OLLAMA_API_BASE=${OLLAMA_API_BASE:-http://ollama.internal}
-      #- OLLAMA_API_KEY=${OLLAMA_API_KEY:-}
-      # OpenAI
-      #- OPENAI_API_KEY=${OPENAI_API_KEY:-}
-      #- OPENAI_BASE_URL=${OPENAI_BASE_URL:-}
-      # Cohere
-      #- COHERE_API_KEY=${COHERE_API_KEY:-}
-      # OpenRouter
-      #- OR_SITE_URL=${OR_SITE_URL:-}
-      #- OR_APP_NAME=${OR_APP_NAME:-LiteLLM Example app}
-      #- OR_API_KEY=${OR_API_KEY:-}
-      # Azure API base URL
-      #- AZURE_API_BASE=${AZURE_API_BASE:-}
-      # Azure API version
-      #- AZURE_API_VERSION=${AZURE_API_VERSION:-}
-      # Azure API key
-      #- AZURE_API_KEY=${AZURE_API_KEY:-}
-      # Replicate
-      #- REPLICATE_API_KEY=${REPLICATE_API_KEY:-}
-      #- REPLICATE_API_TOKEN=${REPLICATE_API_TOKEN:-}
-      # Anthropic
-      #- ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
-      # Infisical
-      #- INFISICAL_TOKEN=${INFISICAL_TOKEN:-}
-      # Novita AI
-      #- NOVITA_API_KEY=${NOVITA_API_KEY:-}
-      # INFINITY
-      #- INFINITY_API_KEY=${INFINITY_API_KEY:-}
+      # Outbound SMTP/Email delivery,
+      #- SMTP_HOST=${SMTP_HOST:-smtp.sendgrid.net}
+      #- SMTP_USERNAME=${SMTP_USERNAME:-apikey}
+      #- SMTP_PASSWORD=${SMTP_PASSWORD:-CHANGE_ME}
+      #- SMTP_PORT=${SMTP_PORT:-587}
+      #- SMTP_SENDER_EMAIL=${SMTP_SENDER_EMAIL:-your@email.com}
+      #- SMTP_TLS=${SMTP_TLS:-True}
 
-    #depends_on:
-    #  - db  # Indicates that this service depends on the 'db' service, ensuring 'db' starts first
+      # Webhook alerting, https://docs.litellm.ai/docs/proxy/alerting
+      #- WEBHOOK_URL=${WEBHOOK_URL:-}
+
+      # Redis, 
+      #- REDIS_HOST=${REDIS_HOST:-redis.internal}
+      #- REDIS_PASSWORD=${REDIS_PASSWORD:-yourpassword}
+      #- REDIS_PORT=${REDIS_PORT:-6379}
+
+      # Custom variables, some supported, others just for use within config.yaml
+      - OLLAMA_API_BASE=${OLLAMA_API_BASE:-http://ollama.internal}
+      - LLAMA_CPP_API_BASE=${LLAMA_CPP_API_BASE:-http://llama-cpp.internal}
+      - OPENAI_API_BASE=${LLAMA_CPP_API_BASE:-http://llama-cpp.internal}
+
     healthcheck:  # Defines the health check configuration for the container
       test: [ "CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:4000/health/liveliness || exit 1" ]  # Command to execute for health check
       interval: 30s  # Perform health check every 30 seconds
       timeout: 10s   # Health check command times out after 10 seconds
       retries: 3     # Retry up to 3 times if health check fails
       start_period: 40s  # Wait 40 seconds after container start before beginning health checks
+
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.logstash_api.rule=Host(`${HOSTNAME:-litellm}.${DOMAINNAME:-localhost}`)"
-      - "traefik.http.services.logstash_api.loadbalancer.server.port=4000"
+      - "traefik.http.routers.litellm.rule=Host(`${HOSTNAME:-litellm}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.litellm.loadbalancer.server.port=4000"
       - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
       - "io.containers.autoupdate=registry"
-
-  #db:
-  #  image: postgres:16
-  #  restart: always
-  #  container_name: litellm_db
-  #  environment:
-  #    POSTGRES_DB: litellm
-  #    POSTGRES_USER: llmproxy
-  #    POSTGRES_PASSWORD: dbpassword9090
-  #  #ports:
-  #  #  - "5432:5432"
-  #  #volumes:
-  #  #  - postgres_data:/var/lib/postgresql/data # Persists Postgres data across container restarts
-  #  healthcheck:
-  #    test: ["CMD-SHELL", "pg_isready -d litellm -U llmproxy"]
-  #    interval: 1s
-  #    timeout: 5s
-  #    retries: 10
-
-#volumes:
-#  postgres_data:

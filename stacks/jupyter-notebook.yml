@@ -8,20 +8,21 @@ services:
     image: ${IMAGE:-quay.io/jupyter/pytorch-notebook:latest}
     hostname: ${HOSTNAME:-jupyter-pytorch-notebook}
     domainname: ${DOMAINNAME:-localhost}
+    #command: ["start-notebook.py","--no-browser","--ip=0.0.0.0"]
     restart: unless-stopped
     volumes:
       - jupyter-notebook-data:/home/jovyan
     networks:
       network:
-    #ports:
-    #  - "8888:8888"
+    ports:
+      - "8888:8888"
     environment:
       - TZ=${TZ:-Australia/Brisbane}
       #- JUPYTER_PORT=${JUPYTER_PORT:-8888}
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.logstash_api.rule=Host(`${HOSTNAME:-jupyter-notebook}.${DOMAINNAME:-localhost}`)"
-      - "traefik.http.services.logstash_api.loadbalancer.server.port=8888"
+      - "traefik.http.routers.jupyter_notebook.rule=Host(`${HOSTNAME:-jupyter-notebook}.${DOMAINNAME:-localhost}`)"
+      - "traefik.http.services.jupyter_notebook.loadbalancer.server.port=8888"
       - "com.centurylinklabs.watchtower.enable=true"
       - "wud.watch=true"
       - "io.containers.autoupdate=registry"
